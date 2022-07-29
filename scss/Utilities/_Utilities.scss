@@ -1,0 +1,32 @@
+@import "ThirdParty/ThirdParty";
+@import "Fonts/Fonts";
+
+a {
+    text-decoration: none;
+}
+
+ol {
+    list-style: none;
+    counter-reset: item;
+
+    & li {
+        counter-increment: item;
+        margin-bottom: 5px;
+
+        &:before {
+            margin-right: 5px;
+            content: counter(item) '.';
+            font-weight: 700;
+        }
+    }
+}
+
+ul {
+    & li {
+        &:before {
+            content: '•';
+            margin-right: 5px;
+            font-weight: 700;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+@import "../Mixins";
+
+.layout {
+    display: flex;
+    flex-direction: column;
+
+    &__row {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        gap: var(--spacing--medium);
+        margin-bottom: var(--spacing--medium);
+        @include mobileSize((
+            display: flex,
+            flex-direction: column
+        ));
+
+        &--ignoreMobile
+        {
+            @include mobileSize((
+                display: grid,
+                grid-auto-flow: column,
+                grid-auto-columns: 1fr
+            ));
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__column {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing--medium);
+        
+        &--double {
+            flex-grow: 2;
+        }
+    }
+
+    &--small {
+        gap: var(--spacing--small);
+    }
+}
+
+@import "Navigation/Navigation";
+@import "ScrollBar/ScrollBar";
+@import "Footer/Footer";
+
+@import "Section/Section";
+@import "Content/Content";
+
+@import "Pages/Pages";

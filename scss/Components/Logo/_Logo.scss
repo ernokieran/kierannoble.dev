@@ -1,0 +1,18 @@
+.logo {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: rgba(var(--logo-color));
+    font-size: var(--font-large);
+    font-family: var(--font-family--block);
+
+    &:before {
+        content: "Kieran"
+    }
+
+    &:after {
+        content: "Noble";
+        opacity: 0.3;
+    }
+}

@@ -1,0 +1,13 @@
+.layout {
+    &--portfolio {
+        max-width: var(--max-width);
+        padding: 50px;
+        font-family: var(--font-family--normal);
+        margin: auto;
+        @include mobileSize((
+            padding: 24px
+        ));
+    }
+}
+
+@import "Items";

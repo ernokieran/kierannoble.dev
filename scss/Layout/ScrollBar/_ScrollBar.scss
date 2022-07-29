@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+    width: 5px;
+
+    &-thumb {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 30px;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    &-track {
+        background: rgba(100, 100, 100, 0.5);
+    }
+}
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+  }
