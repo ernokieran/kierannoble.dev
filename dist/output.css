@@ -2,7 +2,6 @@
 :root {
   --max-width: 1200px;
   --theme-color: 0, 150, 136;
-  --logo-color: var(--theme-color);
   --font-extraLarge: 42px;
   --font-large: 22px;
   --font-medium: 18px;
@@ -34,23 +33,28 @@
   flex-direction: column;
 }
 .layout__row {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
+  display: flex;
   gap: var(--spacing--medium);
   margin-bottom: var(--spacing--medium);
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 767px) {
   .layout__row {
-    display: flex;
     flex-direction: column;
   }
 }
+.layout__row * {
+  flex-grow: 1;
+}
+.layout__row--equal {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
 @media screen and (max-width: 767px) {
-  .layout__row--ignoreMobile {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
+  .layout__row--equal {
+    display: flex;
+    flex-direction: column;
   }
 }
 .layout__row:last-child {
@@ -78,7 +82,7 @@
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
-  color: rgba(var(--logo-color));
+  color: rgba(var(--theme-color));
   font-size: var(--font-small);
   font-family: var(--font-family--block);
   opacity: 0.65;
@@ -94,7 +98,7 @@
   opacity: 1;
 }
 .navigation--default {
-  --logo-color: 0, 0, 0;
+  --theme-color: 0, 0, 0;
 }
 
 ::-webkit-scrollbar {
@@ -127,6 +131,13 @@ body {
   letter-spacing: 0.5px;
   margin-top: 12px;
 }
+.footer__contact a {
+  text-decoration: none;
+  color: #666;
+}
+.footer__contact a:hover {
+  color: black;
+}
 .footer__contact-note {
   font-size: 11px;
   letter-spacing: 0.5px;
@@ -142,7 +153,6 @@ body {
   margin-top: 0;
 }
 .footer .logo {
-  color: black;
   font-size: var(--font-medium);
 }
 
@@ -176,7 +186,7 @@ body {
   box-shadow: var(--shadow--medium);
 }
 .section--primary {
-  background-color: rgba(var(--theme-color), var(--backgroundAlpha));
+  background-color: rgba(var(--theme-color));
   color: rgba(255, 255, 255, 0.7);
 }
 .section--primary .section__title {
@@ -193,7 +203,7 @@ body {
   color: rgb(255, 255, 255);
 }
 .section--secondary {
-  --backgroundAlpha: 0.45;
+  --backgroundAlpha: 0.35;
   --textAlpha: 0.85;
   background-color: rgba(var(--theme-color), var(--backgroundAlpha));
   color: rgba(var(--theme-color), var(--textAlpha));
@@ -251,20 +261,17 @@ body {
 }
 
 .harmony {
-  --theme-color: 204, 88, 66;
-  --theme-background: url("https://web.archive.org/web/20220226213305im_/http://jessdesigntan.com/images/card-fitness.jpg");
-  --theme-logo: url("https://web.archive.org/web/20220226212236im_/http://jessdesigntan.com/images/fitness-logo.png");
-  --theme-description: "Harmony Description";
-  --logo-color: var(--theme-color);
+  --theme-color: 74, 67, 181;
+  --theme-background: url("/dist/tempimg/card-harmony.png");
 }
 
 .photi {
-  --theme-color: #0740e5;
+  --theme-color: 14, 25, 24;
   --theme-background: url("URL");
 }
 
 .pinewood {
-  --theme-color: #012b5d;
+  --theme-color: 1, 43, 93;
   --theme-background: url("URL");
 }
 
@@ -273,7 +280,7 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
-  color: rgba(var(--logo-color));
+  color: rgba(var(--theme-color));
   font-size: var(--font-large);
   font-family: var(--font-family--block);
 }
@@ -283,6 +290,9 @@ body {
 .logo:after {
   content: "Noble";
   opacity: 0.3;
+}
+.logo--default {
+  color: black;
 }
 
 .intro {
@@ -319,11 +329,12 @@ body {
 .intro__description {
   line-height: 26px;
   font-family: var(--font-family--normal);
+  color: #777;
 }
 .intro__avatar {
   border-radius: 100%;
-  height: 150px;
-  width: 150px;
+  height: 135px;
+  width: 135px;
   margin: auto;
 }
 
@@ -527,4 +538,16 @@ ul li:before {
   content: "•";
   margin-right: 5px;
   font-weight: 700;
+}
+
+.text--center {
+  text-align: center;
+}
+
+body {
+  min-height: calc(100vh - 100px);
+}
+
+main {
+  flex-grow: 1;
 }

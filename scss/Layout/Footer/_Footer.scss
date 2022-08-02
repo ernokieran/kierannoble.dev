@@ -7,6 +7,15 @@
         font-size: 16px;
         letter-spacing: 0.5px;
         margin-top: 12px;
+
+        & a {
+            text-decoration: none;
+            color: #666;
+
+            &:hover {
+                color: black;
+            }
+        }
     
         &-note {
             font-size: 11px;
@@ -29,7 +38,6 @@
     }
 
     & .logo {
-        color: black;
         font-size: var(--font-medium);
     }
 }

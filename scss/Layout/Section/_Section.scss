@@ -33,7 +33,7 @@
     }
 
     &--primary {
-        background-color: rgba(var(--theme-color), var(--backgroundAlpha));
+        background-color: rgba(var(--theme-color));
         color: rgba(255, 255, 255, 0.7);
 
         & .section__title {
@@ -55,7 +55,7 @@
     }
 
     &--secondary {
-        --backgroundAlpha: 0.45;
+        --backgroundAlpha: 0.35;
         --textAlpha: 0.85;
         background-color: rgba(var(--theme-color), var(--backgroundAlpha));
         color: rgba(var(--theme-color), var(--textAlpha));

@@ -5,23 +5,27 @@
     flex-direction: column;
 
     &__row {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: 1fr;
+        display: flex;
         gap: var(--spacing--medium);
         margin-bottom: var(--spacing--medium);
+        flex-wrap: wrap;
         @include mobileSize((
-            display: flex,
             flex-direction: column
         ));
 
-        &--ignoreMobile
-        {
+        & * {
+            flex-grow: 1;
+        }
+
+        &--equal {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 1fr;
+
             @include mobileSize((
-                display: grid,
-                grid-auto-flow: column,
-                grid-auto-columns: 1fr
-            ));
+                display: flex,
+                flex-direction: column
+            ))
         }
 
         &:last-child {

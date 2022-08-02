@@ -3,7 +3,7 @@
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
-    color: rgba(var(--logo-color));
+    color: rgba(var(--theme-color));
     font-size: var(--font-large);
     font-family: var(--font-family--block);
 
@@ -14,5 +14,9 @@
     &:after {
         content: "Noble";
         opacity: 0.3;
+    }
+
+    &--default {
+        color: black;
     }
 }

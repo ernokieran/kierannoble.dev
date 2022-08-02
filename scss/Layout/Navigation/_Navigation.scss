@@ -10,7 +10,7 @@
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 2px;
-        color: rgba(var(--logo-color));
+        color: rgba(var(--theme-color));
         font-size: var(--font-small);
         font-family: var(--font-family--block);
         opacity: 0.65;
@@ -27,6 +27,6 @@
     }
     
     &--default {
-        --logo-color: 0, 0, 0;
+        --theme-color: 0, 0, 0;
     }
 }

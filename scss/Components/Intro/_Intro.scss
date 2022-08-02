@@ -1,6 +1,6 @@
 @import "../../Mixins";
 
-$avatarSize: 150px;
+$avatarSize: 135px;
 
 .intro {
     display: flex;
@@ -35,6 +35,7 @@ $avatarSize: 150px;
     &__description {
         line-height: 26px;
         font-family: var(--font-family--normal);
+        color: #777;
     }
 
     &__avatar {
