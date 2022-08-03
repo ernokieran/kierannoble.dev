@@ -1,13 +1,4 @@
 (function() {
-    let pages = [
-        {
-            name: 'harmony',
-
-        }, 
-        {
-            name: 'portfolioCards'
-        }
-];
 
     let ViewModel = function() {
         let self = this;

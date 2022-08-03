@@ -16,6 +16,12 @@
                 "Pages/Items/_Harmony.js",
                 "Pages/Items/_Pinewood.js"
             ]
+        }],
+        "main": [{
+            "outputFileName": "main.js",
+            "inputFiles": [
+                "Pages/Main/_Main.js"
+            ]
         }]
     }
 }

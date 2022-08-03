@@ -2,6 +2,7 @@ const { watch, task, series, parallel } = require('gulp');
 const gulp = require('gulp'),
     concat = require('gulp-concat'),
     merge = require("merge-stream"),
+    uglify = require('gulp-uglify'),
     sass = require('gulp-sass')(require('sass'));
 
 let jsConfig = require('./jsbundleconfig.json');
@@ -17,6 +18,7 @@ gulp.task('build:js', function() {
     const tasks = Object.values(jsConfig.bundleGroups).flat().map(function (options) {
         return gulp.src(options.inputFiles, { cwd: jsConfig.baseDir })
             .pipe(concat(options.outputFileName))
+            .pipe(uglify())
             .pipe(gulp.dest(jsConfig.baseOutDir));
     })
     
