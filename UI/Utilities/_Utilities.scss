@@ -47,4 +47,5 @@ main {
 html {
     --vh: 100vh;
     max-height: var(--vh);
+    scroll-behavior: smooth;
 }

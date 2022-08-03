@@ -9,6 +9,7 @@
         gap: var(--spacing--medium);
         margin-bottom: var(--spacing--medium);
         flex-wrap: wrap;
+        flex-direction: row;
         @include mobileSize((
             flex-direction: column
         ));
@@ -26,6 +27,12 @@
                 display: flex,
                 flex-direction: column
             ))
+        }
+
+        &--ignoreMobile {
+            @include mobileSize((
+                flex-direction: row
+            ));
         }
 
         &:last-child {
@@ -47,6 +54,10 @@
         gap: var(--spacing--small);
     }
 
+    &--nomargin {
+        margin-bottom: 0;
+    }
+
     &--nogap {
         gap: 0;
     }
@@ -62,9 +73,7 @@
     }
 }
 
-@import "Navigation/Navigation";
 @import "ScrollBar/ScrollBar";
-@import "Footer/Footer";
 
 @import "Section/Section";
 @import "Content/Content";

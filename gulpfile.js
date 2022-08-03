@@ -1,6 +1,5 @@
 const { watch, task, series, parallel } = require('gulp');
 const gulp = require('gulp'),
-    deploy = require('gulp-gh-pages')
     concat = require('gulp-concat'),
     merge = require("merge-stream"),
     sass = require('gulp-sass')(require('sass'));
@@ -29,12 +28,5 @@ gulp.task('build', parallel('build:scss', 'build:js'));
 gulp.task('watch', function () {
     return watch('UI/**', series('build'));
 });
-
-gulp.task('deploy:files', () => {
-    return gulp.src("./dist/**/*")
-    .pipe(deploy());
-})
-
-gulp.task('deploy', series('build', 'deploy:files'));
 
 gulp.task('default', parallel('build:scss', 'build:js'));
