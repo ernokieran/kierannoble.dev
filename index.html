@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <title>Kieran Noble</title>
-    <link rel="stylesheet" href="/dist/output.css">
-    <link rel="shortcut icon" type="image/png" href="/dist/favicon.png" />
-    <link rel="preload" href="/dist/brandon-grotesque-black.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/dist/Lato-Bold.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/dist/Lato-Light.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/dist/Lato-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <meta name="description" content="Kieran Noble's personal portfolio and projects">
+    <link rel="stylesheet" href="/dist/output.css" async>
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preload" href="/assets/fonts/brandon-grotesque-black.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/Lato-Bold.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/assets/fonts/Lato-Regular.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 
-<!-- Version: 20220802-1259 -->
-
 <body class="layout layout--portfolio">
-    <nav class="navigation navigation--default">
+    <nav class="navigation">
         <a class="logo" href="/"></a>
+        <a class="navigation__action" href="/assets/KieranNoble-CV-Aug22.pdf">CV</a>
     </nav>
     <header class="intro">
-        <img class="intro__avatar" src="/dist/kieran.webp" height="150">
+        <img class="intro__avatar" src="https://aylo.net/static/portfolio/kieran.webp" height="150"
+            alt="A photo of Kieran Noble">
         <div class="intro__text-container">
-            <h1 class="intro__name">Howdy, I'm Kieran</h1>
-            <h2 class="intro__title">Full Stack Developer</h2>
+            <div class="intro__name">Howdy, I'm Kieran</div>
+            <div class="intro__title">Full Stack Developer</div>
             <div class="seperator seperator--small"></div>
             <div class="intro__description">Hello There! I'm an aspiring and enthusiastic full stack web experience
                 developer 🙋‍♂️</div>
@@ -33,15 +34,34 @@
     <div class="seperator"></div>
     <main class="layout">
         <section class="layout__row">
-            <h2 class="text--center">
-                I'm currently building this site, for more information please take a look at my
-                <a href="https://aylo.net/portfolio">existing portfolio</a> or email me at
-                <a href="mailto:howdy@kierannoble.dev">howdy@kierannoble.dev</a>
-            </h2>
-            <h2 class="text--center">
-                If you would like to find out more, you can find me on 
-                <a href="mailto:howdy@kierannoble.dev">LinkedIn</a>
-                </h2>
+            <a href="harmony.html" class="harmony layout__column--double">
+                <article class="portfolio-card">
+                    <div class="portfolio-card__title">
+                        <img class="portfolio-card__title-logo" src="/assets/projects/harmony/logo.svg" width="195"
+                            height="45" alt="Harmony Logo">
+                        <div class="portfolio-card__title-description">An E-Commerce platform for a modern music store
+                        </div>
+                    </div>
+                    <div class="portfolio-card__chip">
+                        Backend
+                    </div>
+                    <div class="portfolio-card__action"></div>
+                    <span class="portfolio-card__action-text"></span>
+                </article>
+            </a>
+            <a href="pinewood.html" class="pinewood">
+                <article class="portfolio-card">
+                    <div class="portfolio-card__title">
+                        <img class="portfolio-card__title-logo" src="/assets/projects/pinewood/logo.svg">
+                        <div class="portfolio-card__title-description">Software Development Placement</div>
+                    </div>
+                    <div class="portfolio-card__chip">
+                        Internship
+                    </div>
+                    <div class="portfolio-card__action"></div>
+                    <span class="portfolio-card__action-text"></span>
+                </article>
+            </a>
         </section>
     </main>
     <footer class="footer">
@@ -51,6 +71,20 @@
             <a href="mailto:howdy@kierannoble.dev">howdy@kierannoble.dev</a>
         </div>
         <div class="footer__contact-note">Feel free to drop me an email, I'd ❤️ to hear from you!</div>
+        <div class="footer__socialLinks">
+            <a href="https://www.linkedin.com/in/kierannoble/" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="https://twitter.com/aylokieran" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/twitter.svg" alt="Twitter">
+            </a>
+            <a href="https://t.me/aylokieran" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/telegram.svg" alt="Telegram">
+            </a>
+            <a href="mailto:howdy@kierannoble.dev" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/email.svg" alt="Email">
+            </a>
+        </div>
     </footer>
 </body>
 

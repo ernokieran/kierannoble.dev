@@ -71,6 +71,20 @@
 .layout--small {
   gap: var(--spacing--small);
 }
+.layout--nogap {
+  gap: 0;
+}
+.layout--portfolio {
+  max-width: var(--max-width);
+  padding: 50px;
+  font-family: var(--font-family--normal);
+  margin: auto;
+}
+@media screen and (max-width: 767px) {
+  .layout--portfolio {
+    padding: 24px;
+  }
+}
 
 .navigation {
   display: flex;
@@ -96,9 +110,6 @@
 }
 .navigation__action:hover {
   opacity: 1;
-}
-.navigation--default {
-  --theme-color: 0, 0, 0;
 }
 
 ::-webkit-scrollbar {
@@ -248,33 +259,6 @@ body {
   }
 }
 
-.layout--portfolio {
-  max-width: var(--max-width);
-  padding: 50px;
-  font-family: var(--font-family--normal);
-  margin: auto;
-}
-@media screen and (max-width: 767px) {
-  .layout--portfolio {
-    padding: 24px;
-  }
-}
-
-.harmony {
-  --theme-color: 74, 67, 181;
-  --theme-background: url("/dist/tempimg/card-harmony.png");
-}
-
-.photi {
-  --theme-color: 14, 25, 24;
-  --theme-background: url("URL");
-}
-
-.pinewood {
-  --theme-color: 1, 43, 93;
-  --theme-background: url("URL");
-}
-
 .logo {
   display: inline-block;
   text-transform: uppercase;
@@ -385,7 +369,7 @@ body {
 }
 .portfolio-card__action {
   position: absolute;
-  background: url("../dist/arrow-btn.svg") center center no-repeat;
+  background: url("/assets/arrow.svg") center center no-repeat;
   background-size: 15px;
   width: 40px;
   height: 40px;
@@ -502,19 +486,23 @@ table {
 
 @font-face {
   font-family: "brandon_grotesqueblack";
-  src: url("../dist/brandon-grotesque-black.woff2") format("woff2");
+  src: url("/assets/fonts/brandon-grotesque-black.woff2") format("woff2");
+  font-display: swap;
 }
 @font-face {
   font-family: "Lato Bold";
-  src: url("../dist/Lato-Bold.ttf") format("truetype");
+  src: url("/assets/fonts/Lato-Bold.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Lato Light";
-  src: url("../dist/Lato-Light.ttf") format("truetype");
+  src: url("/assets/fonts/Lato-Light.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Lato";
-  src: url("../dist/Lato-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/Lato-Regular.ttf") format("truetype");
+  font-display: swap;
 }
 a {
   text-decoration: none;
@@ -550,4 +538,18 @@ body {
 
 main {
   flex-grow: 1;
+}
+
+.home .navigation {
+  --theme-color: 0, 0, 0;
+}
+
+.harmony {
+  --theme-color: 74, 67, 181;
+  --theme-background: url("/assets/projects/harmony/card.webp");
+}
+
+.pinewood {
+  --theme-color: 1, 43, 93;
+  --theme-background: url("/assets/projects/pinewood/card.webp");
 }

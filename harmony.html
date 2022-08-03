@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="harmony">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <title>Harmony - Kieran Noble</title>
+    <meta name="description" content="Kieran Noble's personal portfolio and projects">
     <link rel="stylesheet" href="/dist/output.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preload" href="/assets/fonts/brandon-grotesque-black.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/Lato-Bold.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/assets/fonts/Lato-Regular.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 
-<body class="harmony layout layout--portfolio">
+<body class="layout layout--portfolio">
     <nav class="navigation">
         <a class="logo" href="/"></a>
-        <a class="navigation__action" href="#">CV</a>
+        <a class="navigation__action" href="/assets/KieranNoble-CV-Aug22.pdf">CV</a>
     </nav>
     <header class="section section--primary section--centered">
         <div class="content layout__column layout__column--ignoreMobile layout--small">
             <div class="section__title">
-                <img src="dist/tempimg/harmony-white.svg" class="section__logo" width="200px">
+                <img src="assets/projects/harmony/logo.svg" class="section__logo" width="200px" alt="Harmony Logo">
             </div>
             <h2 class="section__subtitle">An E-Commerce platform for the modern music industry</h2>
             <h3>This project is the outcome of <a href="https://www.iweb.co.uk/">iWeb</a>'s client briefing during an
@@ -47,13 +53,13 @@
         <section class="section section--centered">
             <div class="content layout layout__column">
                 <span class="section__title">Initial Designs</span>
-                <img class="section__image" src="/dist/tempimg/9ELCCCuU9fCRdzrnlFd0VhRUcrfNRGJJ1ghkwzKZ.png">
+                    <img class="section__image" src="assets/projects/harmony/initial-designs.webp" alt="Initial designs">
                 <p class="section__subtitle">These wireframe designs were received very well by the client and were
                     praised for them looking and
                     feeling like something that could be implemented into a real and professional looking product that
                     the client would actually make.</p>
                 <p>Ultimately, we collectively decided that we would take a hybrid
-                    betweent the two wireframe designs and create a product that implemented the 'best' parts from each
+                    between the two wireframe designs and create a product that implemented the 'best' parts from each
                     design into the UI/UX prototype.</p>
             </div>
         </section>
@@ -61,11 +67,11 @@
             <div class="content layout layout__column layout--small">
                 <div class="layout layout__row layout__row--equal">
                     <div>
-                        <img class="section__image" src="/dist/tempimg/IysyFGJKrWtMQEXDntNIN962xePyVwFGyX3tXwzs.png">
+                        <img class="section__image" src="assets/projects/harmony/prototype-ui.webp" alt="Prototype user interface">
                     </div>
                     <div class="layout layout__column layout--small">
                         <span class="section__title">UI/UX Prototype</span>
-                        <div class="section__subtitle">After the meeting with the client, we implemented the inital
+                        <div class="section__subtitle">After the meeting with the client, we implemented the initial
                             version of our UI/UX Prototype.</div>
                         <p>We tried to play to the strenghs of the team, and as Sam was the member with the most
                             experience in UI Design, he was tasked with implementing the prototype of the core layout
@@ -87,18 +93,18 @@
                     to take these designs which up until now were static pages and start to build a data framework
                     around it. For this, I took the lead as I have the most experience in backend development.</p>
                 <p>I started by taking the design and breaking the elements into distinct components, such as buttons,
-                    navigation items, footers (etc) and converting them so they are reusable and extensible throughout
+                    navigation items, footers (etc) and converting them, so they are reusable and extensible throughout
                     the application. Once this had been completed I could move onto creating a data structure for the
                     application.</p>
                 <p>As this web application is primary used for creating a cart and ordering music from the store, the
                     data for the music had to be organised carefully to allow for a few key pieces of functionality:
                     each release can have different release types (CD, Vinyl, Digital), each of which can have many
                     groupings within them, such as a CD release may have multiple discs. Similarly, within each of these
-                    discs (if they exist), there can be many tracks, which may be diffrent to a track on another release
+                    discs (if they exist), there can be many tracks, which may be different to a track on another release
                     type. This problem is compounded by the functionality that links merch to album listings and their
                     tracks.</p>
                 <p>Throughout this process we kept in contact with the client to ensure that they were happy with the
-                    progess being made and so that we could receive relevant feedback and make changes with the 8 weeks
+                    progress being made and so that we could receive relevant feedback and make changes with the 8 weeks
                     that we had to complete this project from conception to final delivery.</p>
             </div>
         </section>
@@ -106,11 +112,11 @@
             <div class="content layout layout__column layout--small">
                 <span class="section__title">Final Product</span>
                 <a href="https://harmony.aylo.net/"><span class="section__subtitle">View Here</span></a>
-                <div class="">
-                    <img class="section__image" src="/dist/tempimg/KjIqU9Y5ddcFSgI7frxXqVyxWmUioQ9MhkCtH6HG.png" 1>
+                <div>
+                    <img class="section__image" src="assets/projects/harmony/final-product.webp" alt="Final product">
                 </div>
-                <p>Ultimately, this project received a grade of 96% (1st), which is accrediable in no small part to the
-                    great team that we had - our attiudes to succeed and the love and passion that we all had fro the
+                <p>Ultimately, this project received a grade of 96% (1st), which is accredible in no small part to the
+                    great team that we had - our attitudes to succeed and the love and passion that we all had for the
                     project was noted by the client who congratulated us on creating a project that functions the way
                     that it does so quickly and professionally. </p>
                 <p>
@@ -127,18 +133,21 @@
     <footer class="footer">
         <div class="logo logo--default"></div>
         <div class="footer__contact">
-            <a href="mailto:kieran@aylo.net">howdy@kierannoble.dev</a>
+            <a href="mailto:howdy@kierannoble.dev">howdy@kierannoble.dev</a>
         </div>
         <div class="footer__contact-note">Feel free to drop me an email, I'd ❤️ to hear from you!</div>
         <div class="footer__socialLinks">
-            <a href="#" class="socialLink">
-                <img class="socialLink__image" src="https://upload.wikimedia.org/wikipedia/commons/f/f8/LinkedIn_icon_circle.svg">
+            <a href="https://www.linkedin.com/in/kierannoble/" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/linkedin.svg" alt="LinkedIn">
             </a>
-            <a href="#" class="socialLink">
-                <img class="socialLink__image" src="https://cdn.freebiesupply.com/logos/large/2x/twitter-3-logo-svg-vector.svg">
+            <a href="https://twitter.com/aylokieran" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/twitter.svg" alt="Twitter">
             </a>
-            <a href="#" class="socialLink">
-                <img class="socialLink__image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Circle-icons-mail.svg/2048px-Circle-icons-mail.svg.png">
+            <a href="https://t.me/aylokieran" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/telegram.svg" alt="Telegram">
+            </a>
+            <a href="mailto:howdy@kierannoble.dev" class="socialLink">
+                <img class="socialLink__image" src="/assets/social/email.svg" alt="Email">
             </a>
         </div>
     </footer>
