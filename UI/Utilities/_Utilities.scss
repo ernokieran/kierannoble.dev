@@ -43,3 +43,8 @@ body {
 main {
     flex-grow: 1;
 }
+
+html {
+    --vh: 100vh;
+    max-height: var(--vh);
+}

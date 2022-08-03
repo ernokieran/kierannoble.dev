@@ -1,0 +1,12 @@
+{
+    "baseDir": "./UI",
+    "baseOutDir": "./dist",
+    "bundleGroups": {
+        "common": [{
+            "outputFileName": "site.js",
+            "inputFiles": [
+                "Layout/_Layout.js"
+            ]
+        }]
+    }
+}
