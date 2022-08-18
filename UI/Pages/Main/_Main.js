@@ -1,19 +1,19 @@
-(function() {
+test = (function () {
 
-    let ViewModel = function() {
+    let ViewModel = function () {
         let self = this;
 
         self.selectedContent = ko.observable(utilities.componentNames.portfolioCards);
 
-        self.content = ko.pureComputed(function() {
+        self.content = ko.pureComputed(function () {
             return ko.unwrap(self.hasSelectedContent) ? self.selectedContent() : self.koComponents.portfolioCards;
         });
 
-        self.hasSelectedContent = ko.pureComputed(function() {
+        self.hasSelectedContent = ko.pureComputed(function () {
             return self.selectedContent() != utilities.componentNames.portfolioCards;
         });
 
-        self.showIntro = ko.pureComputed(function() {
+        self.showIntro = ko.pureComputed(function () {
             return !self.hasSelectedContent();
         });
 
@@ -54,19 +54,20 @@
             self.selectedContent(content);
 
             utilities.rootElement.className = content;
-            window.scrollTo(0, 0);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 75);
         };
 
-        function _goHome()
-        {
+        function _goHome() {
             _updateSelectedContent(utilities.componentNames.portfolioCards);
         };
 
         (function _init() {
-            document.addEventListener("backbutton", (e) => {
-                e.preventDefault();
-            })
+            utilities.preventBackNavigation(_goHome);
         })();
+
+            
 
     };
 

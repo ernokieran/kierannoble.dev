@@ -7,6 +7,7 @@
     transition: transform 0.3s ease;
     background: var(--theme-background) bottom center no-repeat;
     background-size: auto var(--portfolio-card-size);
+    cursor: pointer;
 
     &__chip {
         position: absolute;

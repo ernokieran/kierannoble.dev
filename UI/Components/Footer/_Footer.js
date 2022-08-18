@@ -24,6 +24,9 @@
                     <img class="socialLink__image" src="/assets/social/email.svg" alt="Email">
                 </a>
             </div>
+            <div class="footer__version">
+                v20220818-1932
+            </div>
         </footer>
     `;
 

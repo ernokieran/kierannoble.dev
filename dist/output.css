@@ -241,7 +241,7 @@ body {
   font-size: var(--font-small);
   font-family: var(--font-family--block);
   opacity: 0.65;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, color 0.5s ease-in-out;
   margin-top: auto;
 }
 @media screen and (max-width: 767px) {
@@ -265,11 +265,16 @@ body {
   margin-right: -10px;
   opacity: 0.6;
   transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
 .navigation__back--hidden {
   opacity: 0;
   margin-right: calc(var(--spacing--medium) * -1);
   margin-left: -25px;
+}
+.navigation .logo {
+  cursor: pointer;
+  transition: color 0.5s ease-in-out;
 }
 
 .intro {
@@ -343,6 +348,11 @@ body {
   display: flex;
   justify-content: center;
 }
+.footer__version {
+  font-size: var(--font-extraSmall);
+  color: #ccc;
+  margin-top: 6px;
+}
 .footer .seperator {
   margin-top: 0;
 }
@@ -381,6 +391,7 @@ body {
   transition: transform 0.3s ease;
   background: var(--theme-background) bottom center no-repeat;
   background-size: auto var(--portfolio-card-size);
+  cursor: pointer;
 }
 .portfolio-card__chip {
   position: absolute;

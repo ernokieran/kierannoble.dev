@@ -14,7 +14,7 @@
         font-size: var(--font-small);
         font-family: var(--font-family--block);
         opacity: 0.65;
-        transition: opacity 0.25s ease;
+        transition: opacity 0.25s ease, color 0.5s ease-in-out;
         margin-top: auto;
 
         @include mobileSize((
@@ -39,11 +39,17 @@
         margin-right: -10px;
         opacity: 0.6;
         transition: all 0.5s ease-in-out;
+        cursor: pointer;
 
         &--hidden {
             opacity: 0;
             margin-right: calc(var(--spacing--medium) * -1);
             margin-left: -25px;
         }
+    }
+    
+    & .logo {
+        cursor: pointer;
+        transition: color 0.5s ease-in-out;
     }
 }
