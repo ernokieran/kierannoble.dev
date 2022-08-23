@@ -1,4 +1,4 @@
-test = (function () {
+(function () {
 
     let ViewModel = function () {
         let self = this;
@@ -73,5 +73,23 @@ test = (function () {
 
     (function _init() {
         ko.applyBindings(new ViewModel(), utilities.rootElement);
+
+        let head = document.getElementsByTagName("head")[0];
+
+        setTimeout(() => {
+            document.querySelectorAll("template")
+            .forEach((t) => { 
+                t.content.querySelectorAll("img")
+                    .forEach((e) => {
+                        let element = document.createElement("link");
+
+                        element.setAttribute("rel", "preload");
+                        element.setAttribute("as", "image");
+                        element.setAttribute("href", e.src);
+                        head.appendChild(element);
+                    });
+            })
+        }, 1000)
     })();
+    
 })();
