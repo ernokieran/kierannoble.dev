@@ -1,11 +1,9 @@
-const { watch, task, series, parallel } = require('gulp');
+const { watch, series, parallel } = require('gulp');
 const gulp = require('gulp'),
     concat = require('gulp-concat'),
-    merge = require("merge-stream"),
+    requirejs = require("requirejs"),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass')(require('sass'));
-
-let jsConfig = require('./jsbundleconfig.json');
 
 gulp.task('build:scss', function () {
     return gulp.src('UI/main.scss', {allowEmpty: true})
@@ -15,14 +13,24 @@ gulp.task('build:scss', function () {
 });
 
 gulp.task('build:js', function() {
-    const tasks = Object.values(jsConfig.bundleGroups).flat().map(function (options) {
-        return gulp.src(options.inputFiles, { cwd: jsConfig.baseDir })
-            .pipe(concat(options.outputFileName))
-            .pipe(uglify())
-            .pipe(gulp.dest(jsConfig.baseOutDir));
-    })
-    
-    return merge(tasks);
+    requirejs.optimize({
+        baseUrl: ".",
+        include: [
+            "init"
+        ],
+        inlineText: true,
+        mainConfigFile: "requireconfig.js",
+        out: "dist/site.js",
+        paths: {
+            knockout: "UI/Utilities/ThirdParty/Knockout/knockout.3.5.0-min",
+            text: "UI/Utilities/ThirdParty/RequireText/text.min"
+        },
+        removeCombined: true
+    });
+
+    return gulp.src("dist/site.js")
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('build', parallel('build:scss', 'build:js'));

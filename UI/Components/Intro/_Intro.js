@@ -1,15 +1,23 @@
-(function () {
-    let name = utilities.componentNames.intro;
+define(["knockout", "utilities", "text!introTemplate"],
+    function(ko, utilities, template) {
 
-    ko.components.register(name, {
+        const COMPONENT_NAME = utilities.componentNames.intro;
 
-        template: { element: utilities.templateId(name) },
-
-        viewModel: function (params) {
-            var self = this;
-            
+        function register() {
+            if (!ko.components.isRegistered(COMPONENT_NAME)) {
+                ko.components.register(COMPONENT_NAME, {
+                    template: template,
+                    viewModel: function (params) {
+                        var self = this;
+        
+                    }
+                });
+            }
         }
 
-    });
+        return {
+            register: register
+        };
 
-}());
+    }    
+)

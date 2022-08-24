@@ -1,21 +1,30 @@
-(function () {
-    let name = utilities.componentNames.footer;
+define(["knockout", "utilities", "text!footerTemplate", "text!version"],
+    function(ko, utilities, template, version) {
 
-    ko.components.register(name, {
+        const COMPONENT_NAME = utilities.componentNames.footer;
 
-        template: { element: utilities.templateId(name) },
+        function register() {
+            if (!ko.components.isRegistered(COMPONENT_NAME)) {
+                ko.components.register(COMPONENT_NAME, {
+                    template: template,
+                    viewModel: function (params) {
+                        var self = this;
 
-        viewModel: function (params) {
-            var self = this;
-
-            self.hasSelectedContent = params.data.hasSelectedContent;
-
-            self.showSeperator = ko.pureComputed(function () {
-                return !self.hasSelectedContent();
-            });
-
+                        self.version = ko.observable(version);
+        
+                        self.hasSelectedContent = params.data.hasSelectedContent;
+        
+                        self.showSeperator = ko.pureComputed(function () {
+                            return !self.hasSelectedContent();
+                        });
+                    }
+                });
+            }
         }
 
-    });
+        return {
+            register: register
+        };
 
-}());
+    }    
+)

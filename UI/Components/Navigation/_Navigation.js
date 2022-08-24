@@ -1,17 +1,25 @@
-(function () {
-    let name = utilities.componentNames.navigation;
+define(["knockout", "utilities", "text!navigationTemplate"],
+    function(ko, utilities, template) {
 
-    ko.components.register(name, {
+        const COMPONENT_NAME = utilities.componentNames.navigation;
 
-        template: { element: utilities.templateId(name) },
-
-        viewModel: function (params) {
-            var self = this;
-
-            self.hasSelectedContent = params.data.hasSelectedContent;
-            self.goHome = params.functions.goHome;
+        function register() {
+            if (!ko.components.isRegistered(COMPONENT_NAME)) {
+                ko.components.register(COMPONENT_NAME, {
+                    template: template,
+                    viewModel: function (params) {
+                        var self = this;
+        
+                        self.hasSelectedContent = params.data.hasSelectedContent;
+                        self.goHome = params.functions.goHome;
+                    }
+                });
+            }
         }
 
-    });
+        return {
+            register: register
+        };
 
-}());
+    }    
+)

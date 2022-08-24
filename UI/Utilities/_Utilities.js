@@ -1,5 +1,4 @@
-var utilities = (function() {
-
+define(["utilsComponentNames", "utilsPreloadAssets"], function(componentNames, preloadAssets) {
     function templateId(name) {
         return "template-" + name;
     }
@@ -14,10 +13,6 @@ var utilities = (function() {
         var _hash = "!";
         var preventBack = function () {
             global.location.href += "#";
-
-            global.setTimeout(function () {
-                global.location.href += "!";
-            }, 50);
         };
 
         global.onhashchange = function () {
@@ -46,7 +41,9 @@ var utilities = (function() {
 
     return {
         templateId: templateId,
+        componentNames: componentNames,
         rootElement: document.getElementById('portfolio'),
+        preloadAssets: preloadAssets,
         preventBackNavigation: preventBackNavigation
     }
-})();
+});
