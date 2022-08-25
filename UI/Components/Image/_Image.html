@@ -1,0 +1,7 @@
+<div data-bind="click: actionClicked">
+    <!-- ko if: clickable -->
+    <span class="image__action"></span>
+    <span class="image__action-text"></span>
+    <!-- /ko -->
+    <img class="image" data-bind="attr: { src: imageUrl },  css: { 'no-shadow': !shadow() }">
+</div>

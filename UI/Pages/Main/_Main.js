@@ -8,7 +8,8 @@
                     self.selectedContent = ko.observable(utilities.componentNames.portfolioCards);
 
                     self.content = ko.pureComputed(function () {
-                        return ko.unwrap(self.hasSelectedContent) ? self.selectedContent() : self.koComponents.portfolioCards;
+                        // return ko.unwrap(self.hasSelectedContent) ? self.selectedContent() : self.koComponents.portfolioCards;
+                        return self.koComponents[ko.unwrap(self.selectedContent)];
                     });
 
                     self.hasSelectedContent = ko.pureComputed(function () {
@@ -18,7 +19,6 @@
                     self.showIntro = ko.pureComputed(function () {
                         return !self.hasSelectedContent();
                     });
-
 
                     self.slideshowImages = ko.observableArray([]);
                     self.slideshowDownloadUrl = ko.observable(undefined);
@@ -56,6 +56,22 @@
                             params: {
                                 functions: {
                                     updateSelectedContent: _updateSelectedContent
+                                }
+                            }
+                        },
+                        pinewood: {
+                            name: utilities.componentNames.pinewood,
+                            params: {
+                                functions: {
+                                    setSlideshowContent: _setSlideshowContent
+                                }
+                            }
+                        },
+                        harmony: {
+                            name: utilities.componentNames.harmony,
+                            params: {
+                                functions: {
+                                    setSlideshowContent: _setSlideshowContent
                                 }
                             }
                         },

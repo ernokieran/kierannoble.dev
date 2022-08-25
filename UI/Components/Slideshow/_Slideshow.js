@@ -105,6 +105,7 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         }
 
                         function _bindEvents() {
+                            document.addEventListener("click", (e) => { if (e.srcElement.classList.contains("slideshow__image")) { _close(); } })
                             document.addEventListener("touchstart", _touchStart);
                             document.addEventListener("touchend", _touchEnd);
                             document.addEventListener("keydown", _keypress, true);

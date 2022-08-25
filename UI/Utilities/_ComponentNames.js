@@ -7,7 +7,8 @@ define([],
             footer: "footer",
             harmony: "harmony",
             pinewood: "pinewood",
-            slideshow: "slideshow"
+            slideshow: "slideshow",
+            image: "image"
         };
 
     }    

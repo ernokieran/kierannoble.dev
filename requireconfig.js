@@ -19,6 +19,8 @@ require.config({
         footerTemplate: "UI/Components/Footer/_Footer.html",
         slideshow: "UI/Components/Slideshow/_Slideshow",
         slideshowTemplate: "UI/Components/Slideshow/_Slideshow.html",
+        image: "UI/Components/Image/_Image",
+        imageTemplate: "UI/Components/Image/_Image.html",
         version: "version.txt"
     }
 });

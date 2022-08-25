@@ -25,11 +25,9 @@
     }
 
     &__image {
+        position: relative;
+        width: fit-content;
         margin: auto;
-        max-width: var(--image-max-width);
-        width: 100%;
-        border-radius: var(--rounded--large);
-        box-shadow: var(--shadow--medium);
     }
 
     &--primary {

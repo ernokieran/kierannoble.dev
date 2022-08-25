@@ -139,11 +139,9 @@ body {
   font-size: var(--font-medium);
 }
 .section__image {
+  position: relative;
+  width: fit-content;
   margin: auto;
-  max-width: var(--image-max-width);
-  width: 100%;
-  border-radius: var(--rounded--large);
-  box-shadow: var(--shadow--medium);
 }
 .section--primary {
   background-color: rgba(var(--theme-color));
@@ -458,6 +456,45 @@ body {
   transform: scale(1.015);
 }
 
+.image {
+  margin: auto;
+  max-width: var(--image-max-width);
+  width: 100%;
+  border-radius: var(--rounded--large);
+  box-shadow: var(--shadow--medium);
+}
+.image__action {
+  position: absolute;
+  background: url("/assets/arrow.svg") center center no-repeat;
+  background-size: 15px;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(var(--theme-color), 0.8);
+  top: 16px;
+  right: 16px;
+  border-radius: 100%;
+  box-shadow: var(--shadow--medium);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+.image__action-text {
+  opacity: 0;
+  text-transform: uppercase;
+  color: white;
+  font-size: var(--font-extraSmall);
+  letter-spacing: 1px;
+  position: absolute;
+  top: 28px;
+  right: 57px;
+  transition: opacity 0.3s ease;
+}
+.image__action-text:before {
+  content: "View Media";
+}
+.image__action:hover ~ .image__action-text {
+  opacity: 0.8;
+}
+
 .slideshow {
   position: fixed;
   top: 0;
@@ -673,6 +710,10 @@ html {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.no-shadow {
+  box-shadow: none;
 }
 
 .portfolioCards .navigation {
