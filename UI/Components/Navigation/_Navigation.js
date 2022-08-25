@@ -12,6 +12,7 @@ define(["knockout", "utilities", "text!navigationTemplate"],
         
                         self.hasSelectedContent = params.data.hasSelectedContent;
                         self.goHome = params.functions.goHome;
+                        self.showCV = params.functions.showCV;
                     }
                 });
             }

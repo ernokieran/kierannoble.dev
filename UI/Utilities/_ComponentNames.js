@@ -6,7 +6,8 @@ define([],
             portfolioCards: "portfolioCards",
             footer: "footer",
             harmony: "harmony",
-            pinewood: "pinewood"
+            pinewood: "pinewood",
+            slideshow: "slideshow"
         };
 
     }    

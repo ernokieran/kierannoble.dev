@@ -17,6 +17,8 @@ require.config({
         harmonyTemplate: "UI/Pages/Items/_Harmony.html",
         footer: "UI/Components/Footer/_Footer",
         footerTemplate: "UI/Components/Footer/_Footer.html",
+        slideshow: "UI/Components/Slideshow/_Slideshow",
+        slideshowTemplate: "UI/Components/Slideshow/_Slideshow.html",
         version: "version.txt"
     }
 });

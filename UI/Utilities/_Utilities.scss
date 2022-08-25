@@ -49,3 +49,7 @@ html {
     max-height: var(--vh);
     scroll-behavior: smooth;
 }
+
+.no-scroll {
+    overflow: hidden;
+}

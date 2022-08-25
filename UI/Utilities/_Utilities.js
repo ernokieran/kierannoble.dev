@@ -1,8 +1,4 @@
 define(["utilsComponentNames", "utilsPreloadAssets"], function(componentNames, preloadAssets) {
-    function templateId(name) {
-        return "template-" + name;
-    }
-
     function preventBackNavigation(cb = undefined) {
         let global = window;
 
@@ -13,6 +9,10 @@ define(["utilsComponentNames", "utilsPreloadAssets"], function(componentNames, p
         var _hash = "!";
         var preventBack = function () {
             global.location.href += "#";
+
+            global.setTimeout(function () {
+                global.location.href += "!";
+            }, 50);
         };
 
         global.onhashchange = function () {
@@ -26,7 +26,7 @@ define(["utilsComponentNames", "utilsPreloadAssets"], function(componentNames, p
             }
         };
 
-        global.onload = function () {
+        function init() {
             preventBack();
 
             document.body.onkeydown = function (e) {
@@ -37,10 +37,11 @@ define(["utilsComponentNames", "utilsPreloadAssets"], function(componentNames, p
                 e.stopPropagation();
             };
         }
+
+        init();
     };
 
     return {
-        templateId: templateId,
         componentNames: componentNames,
         rootElement: document.getElementById('portfolio'),
         preloadAssets: preloadAssets,

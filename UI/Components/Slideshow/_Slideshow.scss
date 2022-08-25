@@ -1,0 +1,100 @@
+.slideshow {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    background-color: rgba(51, 51, 51, 0.85);
+
+    &__button {
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        cursor: pointer;
+        border-radius: var(--rounded--extraLarge);
+        box-shadow: var(--shadow--medium);
+        background: url("/assets/arrow.svg") center center no-repeat, #333;
+        opacity: 0.9;
+
+        &--next, &--previous {
+            top: 50%;
+            margin-top: -25px;
+            background-size: 15px;
+        }
+
+        &--next {
+            right: 16px;
+        }
+
+        &--previous {
+            left: 16px;
+            transform: rotate(180deg);
+        }
+
+        &--close {
+            top: 16px;
+            right: 16px;
+            background: url("/assets/close.svg") center center no-repeat, #333;
+        }
+
+        &--download {
+            top: 16px;
+            right: calc((16px * 4) + 12px);
+            background: url("/assets/download.svg") center center no-repeat, #333;
+            background-size: 15px;
+        }
+
+        &:hover {
+            background-color: darken(#333, 10%);
+        }
+    }
+
+    &__image {
+        height: calc(100% - 90px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & img {
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        &--full {
+            height: 100%;
+        }
+    }
+
+    &__thumbnail {
+        background: rgba(51, 51, 51, 0.75);
+
+        & img {
+            width: auto;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        &s {
+            display: flex;
+            max-width: var(--max-width);
+            overflow-x: auto;
+            gap: 6px;
+
+            &-holder {
+                width: 100%;
+                bottom: 8px;
+                position: fixed;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+
+    }
+
+    &--shown {
+        display: block;
+    }
+}

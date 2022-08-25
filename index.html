@@ -16,7 +16,7 @@
     <link rel="preload" href="/assets/fonts/Lato-Regular.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 
-<body class="layout layout--portfolio">
+<body class="layout layout--portfolio" data-bind="css: { 'no-scroll': hasSlideshow() }">
 
     <div data-bind="component: koComponents.navigation"></div>
     <!-- ko if: showIntro -->
@@ -24,6 +24,8 @@
     <!-- /ko -->
     <main class="layout" data-bind="component: content"></main>
     <div data-bind="component: koComponents.footer"></div>
+
+    <div data-bind="component: koComponents.slideshow"></div>
 
 </body>
 

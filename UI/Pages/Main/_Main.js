@@ -19,7 +19,23 @@
                         return !self.hasSelectedContent();
                     });
 
+
+                    self.slideshowImages = ko.observableArray([]);
+                    self.slideshowDownloadUrl = ko.observable(undefined);
+                    self.hasSlideshow = ko.pureComputed(function() {
+                        return ko.unwrap(self.slideshowImages).length > 0;
+                    })
+
                     self.koComponents = {
+                        slideshow: {
+                            name: utilities.componentNames.slideshow,
+                            params: {
+                                data: {
+                                    slideshowImages: self.slideshowImages,
+                                    downloadUrl: self.slideshowDownloadUrl
+                                }
+                            }
+                        },
                         navigation: {
                             name: utilities.componentNames.navigation,
                             params: {
@@ -27,7 +43,8 @@
                                     hasSelectedContent: self.hasSelectedContent
                                 },
                                 functions: {
-                                    goHome: _goHome
+                                    goHome: _goHome,
+                                    showCV: _showCV
                                 }
                             }
                         },
@@ -52,6 +69,19 @@
                         }
                     };
 
+                    function _setSlideshowContent(slideshowImages, downloadUrl = undefined)
+                    {
+                        self.slideshowImages(slideshowImages);
+                        self.slideshowDownloadUrl(downloadUrl);
+                    }
+
+                    function _showCV() { 
+                        _setSlideshowContent(
+                            ["/assets/KieranNoble-CV-Aug22.webp"],
+                            "/assets/KieranNoble-CV-Aug22.pdf"
+                        );
+                    };
+                    
                     function _updateSelectedContent(content) {
                         self.selectedContent(content);
 

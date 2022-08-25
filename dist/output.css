@@ -97,6 +97,7 @@
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
@@ -243,6 +244,7 @@ body {
   opacity: 0.65;
   transition: opacity 0.25s ease, color 0.5s ease-in-out;
   margin-top: auto;
+  cursor: pointer;
 }
 @media screen and (max-width: 767px) {
   .navigation__action {
@@ -456,6 +458,90 @@ body {
   transform: scale(1.015);
 }
 
+.slideshow {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  background-color: rgba(51, 51, 51, 0.85);
+}
+.slideshow__button {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  cursor: pointer;
+  border-radius: var(--rounded--extraLarge);
+  box-shadow: var(--shadow--medium);
+  background: url("/assets/arrow.svg") center center no-repeat, #333;
+  opacity: 0.9;
+}
+.slideshow__button--next, .slideshow__button--previous {
+  top: 50%;
+  margin-top: -25px;
+  background-size: 15px;
+}
+.slideshow__button--next {
+  right: 16px;
+}
+.slideshow__button--previous {
+  left: 16px;
+  transform: rotate(180deg);
+}
+.slideshow__button--close {
+  top: 16px;
+  right: 16px;
+  background: url("/assets/close.svg") center center no-repeat, #333;
+}
+.slideshow__button--download {
+  top: 16px;
+  right: 76px;
+  background: url("/assets/download.svg") center center no-repeat, #333;
+  background-size: 15px;
+}
+.slideshow__button:hover {
+  background-color: #1a1a1a;
+}
+.slideshow__image {
+  height: calc(100% - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slideshow__image img {
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.slideshow__image--full {
+  height: 100%;
+}
+.slideshow__thumbnail {
+  background: rgba(51, 51, 51, 0.75);
+}
+.slideshow__thumbnail img {
+  width: auto;
+  height: 60px;
+  cursor: pointer;
+}
+.slideshow__thumbnails {
+  display: flex;
+  max-width: var(--max-width);
+  overflow-x: auto;
+  gap: 6px;
+}
+.slideshow__thumbnails-holder {
+  width: 100%;
+  bottom: 8px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+}
+.slideshow--shown {
+  display: block;
+}
+
 .socialLink {
   margin: 0 5px;
 }
@@ -583,6 +669,10 @@ html {
   --vh: 100vh;
   max-height: var(--vh);
   scroll-behavior: smooth;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 .portfolioCards .navigation {
