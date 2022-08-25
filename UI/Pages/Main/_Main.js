@@ -5,15 +5,14 @@
                 let viewModel = function () {
                     let self = this;
 
-                    self.selectedContent = ko.observable(utilities.componentNames.portfolioCards);
+                    self.selectedContent = ko.observable(utilities.componentNames.pages.portfolioCards);
 
                     self.content = ko.pureComputed(function () {
-                        // return ko.unwrap(self.hasSelectedContent) ? self.selectedContent() : self.koComponents.portfolioCards;
-                        return self.koComponents[ko.unwrap(self.selectedContent)];
+                        return self.koComponents.pages[ko.unwrap(self.selectedContent)];
                     });
 
                     self.hasSelectedContent = ko.pureComputed(function () {
-                        return self.selectedContent() != utilities.componentNames.portfolioCards;
+                        return self.selectedContent() != utilities.componentNames.pages.portfolioCards;
                     });
 
                     self.showIntro = ko.pureComputed(function () {
@@ -27,6 +26,57 @@
                     })
 
                     self.koComponents = {
+                        layout: {
+                            navigation: {
+                                name: utilities.componentNames.layout.navigation,
+                                params: {
+                                    data: {
+                                        hasSelectedContent: self.hasSelectedContent
+                                    },
+                                    functions: {
+                                        goHome: _goHome,
+                                        showCV: _showCV
+                                    }
+                                }
+                            },
+                            intro: {
+                                name: utilities.componentNames.layout.intro
+                            },
+                            footer: {
+                            name: utilities.componentNames.layout.footer,
+                            params: {
+                                data: {
+                                    hasSelectedContent: self.hasSelectedContent
+                                }
+                            }
+                        }
+                        },
+                        pages: {
+                            portfolioCards: {
+                                name: utilities.componentNames.pages.portfolioCards,
+                                params: {
+                                    functions: {
+                                        updateSelectedContent: _updateSelectedContent
+                                    }
+                                }
+                            },
+                            pinewood: {
+                                name: utilities.componentNames.pages.pinewood,
+                                params: {
+                                    functions: {
+                                        setSlideshowContent: _setSlideshowContent
+                                    }
+                                }
+                            },
+                            harmony: {
+                                name: utilities.componentNames.pages.harmony,
+                                params: {
+                                    functions: {
+                                        setSlideshowContent: _setSlideshowContent
+                                    }
+                                }
+                            },
+                        },
                         slideshow: {
                             name: utilities.componentNames.slideshow,
                             params: {
@@ -36,53 +86,6 @@
                                 }
                             }
                         },
-                        navigation: {
-                            name: utilities.componentNames.navigation,
-                            params: {
-                                data: {
-                                    hasSelectedContent: self.hasSelectedContent
-                                },
-                                functions: {
-                                    goHome: _goHome,
-                                    showCV: _showCV
-                                }
-                            }
-                        },
-                        intro: {
-                            name: utilities.componentNames.intro
-                        },
-                        portfolioCards: {
-                            name: utilities.componentNames.portfolioCards,
-                            params: {
-                                functions: {
-                                    updateSelectedContent: _updateSelectedContent
-                                }
-                            }
-                        },
-                        pinewood: {
-                            name: utilities.componentNames.pinewood,
-                            params: {
-                                functions: {
-                                    setSlideshowContent: _setSlideshowContent
-                                }
-                            }
-                        },
-                        harmony: {
-                            name: utilities.componentNames.harmony,
-                            params: {
-                                functions: {
-                                    setSlideshowContent: _setSlideshowContent
-                                }
-                            }
-                        },
-                        footer: {
-                            name: utilities.componentNames.footer,
-                            params: {
-                                data: {
-                                    hasSelectedContent: self.hasSelectedContent
-                                }
-                            }
-                        }
                     };
 
                     function _setSlideshowContent(slideshowImages, downloadUrl = undefined)
@@ -108,7 +111,7 @@
                     };
 
                     function _goHome() {
-                        _updateSelectedContent(utilities.componentNames.portfolioCards);
+                        _updateSelectedContent(utilities.componentNames.pages.portfolioCards);
                     };
 
                     (function _init() {

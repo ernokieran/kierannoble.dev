@@ -29,7 +29,7 @@
 
     &__back {
         background: url("/assets/arrow.svg") center center no-repeat;
-        background-size: 15px;
+        background-size: var(--action-icon-size);
         width: 25px;
         height: 25px;
         background-color: rgba(var(--theme-color));

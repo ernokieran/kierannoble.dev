@@ -1,7 +1,7 @@
-define(["knockout", "utilities", "text!pinewoodTemplate", "slideshow"],
-    function(ko, utilities, template, slideshow) {
+define(["knockout", "utilities", "text!pinewoodTemplate"],
+    function(ko, utilities, template) {
 
-        const COMPONENT_NAME = utilities.componentNames.pinewood;
+        const COMPONENT_NAME = utilities.componentNames.pages.pinewood;
 
         function register() {
             if (!ko.components.isRegistered(COMPONENT_NAME)) {

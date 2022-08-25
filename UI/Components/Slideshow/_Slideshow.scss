@@ -20,29 +20,29 @@
         &--next, &--previous {
             top: 50%;
             margin-top: -25px;
-            background-size: 15px;
+            background-size: var(--action-icon-size);
         }
 
         &--next {
-            right: 16px;
+            right: var(--slideshow-spacing);
         }
 
         &--previous {
-            left: 16px;
+            left: var(--slideshow-spacing);
             transform: rotate(180deg);
         }
 
         &--close {
-            top: 16px;
-            right: 16px;
+            top: var(--slideshow-spacing);
+            right: var(--slideshow-spacing);
             background: url("/assets/close.svg") center center no-repeat, #333;
         }
 
         &--download {
-            top: 16px;
-            right: calc((16px * 4) + 12px);
+            top: var(--slideshow-spacing);
+            right: calc((var(--slideshow-spacing) * 4) + calc(var(--slideshow-spacing) - 4px));
             background: url("/assets/download.svg") center center no-repeat, #333;
-            background-size: 15px;
+            background-size: var(--action-icon-size);
         }
 
         &:hover {

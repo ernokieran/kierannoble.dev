@@ -14,9 +14,11 @@
   --spacing--large: 30px;
   --spacing--medium: 24px;
   --spacing--small: 12px;
+  --slideshow-spacing: 16px;
   --rounded--extraLarge: 30px;
   --rounded--large: 7px;
   --rounded--medium: 5px;
+  --action-icon-size: 15px;
   --font-family--block: "brandon_grotesqueblack";
   --font-family--normal: "Lato";
   --font-family--light: "Lato Light";
@@ -254,7 +256,7 @@ body {
 }
 .navigation__back {
   background: url("/assets/arrow.svg") center center no-repeat;
-  background-size: 15px;
+  background-size: var(--action-icon-size);
   width: 25px;
   height: 25px;
   background-color: rgba(var(--theme-color));
@@ -409,7 +411,7 @@ body {
 .portfolio-card__action {
   position: absolute;
   background: url("/assets/arrow.svg") center center no-repeat;
-  background-size: 15px;
+  background-size: var(--action-icon-size);
   width: 40px;
   height: 40px;
   background-color: rgba(var(--theme-color));
@@ -466,7 +468,7 @@ body {
 .image__action {
   position: absolute;
   background: url("/assets/arrow.svg") center center no-repeat;
-  background-size: 15px;
+  background-size: var(--action-icon-size);
   width: 32px;
   height: 32px;
   background-color: rgba(var(--theme-color), 0.8);
@@ -517,25 +519,25 @@ body {
 .slideshow__button--next, .slideshow__button--previous {
   top: 50%;
   margin-top: -25px;
-  background-size: 15px;
+  background-size: var(--action-icon-size);
 }
 .slideshow__button--next {
-  right: 16px;
+  right: var(--slideshow-spacing);
 }
 .slideshow__button--previous {
-  left: 16px;
+  left: var(--slideshow-spacing);
   transform: rotate(180deg);
 }
 .slideshow__button--close {
-  top: 16px;
-  right: 16px;
+  top: var(--slideshow-spacing);
+  right: var(--slideshow-spacing);
   background: url("/assets/close.svg") center center no-repeat, #333;
 }
 .slideshow__button--download {
-  top: 16px;
-  right: 76px;
+  top: var(--slideshow-spacing);
+  right: calc(var(--slideshow-spacing) * 4 + var(--slideshow-spacing) - 4px);
   background: url("/assets/download.svg") center center no-repeat, #333;
-  background-size: 15px;
+  background-size: var(--action-icon-size);
 }
 .slideshow__button:hover {
   background-color: #1a1a1a;

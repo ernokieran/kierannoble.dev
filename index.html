@@ -18,12 +18,12 @@
 
 <body class="layout layout--portfolio" data-bind="css: { 'no-scroll': hasSlideshow() }">
 
-    <div data-bind="component: koComponents.navigation"></div>
+    <div data-bind="component: koComponents.layout.navigation"></div>
     <!-- ko if: showIntro -->
-    <div data-bind="component: koComponents.intro"></div>
+    <div data-bind="component: koComponents.layout.intro"></div>
     <!-- /ko -->
     <main class="layout" data-bind="component: content"></main>
-    <div data-bind="component: koComponents.footer"></div>
+    <div data-bind="component: koComponents.layout.footer"></div>
 
     <div data-bind="component: koComponents.slideshow"></div>
 

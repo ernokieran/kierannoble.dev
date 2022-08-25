@@ -1,7 +1,7 @@
 define(["knockout", "utilities", "text!navigationTemplate"],
     function(ko, utilities, template) {
 
-        const COMPONENT_NAME = utilities.componentNames.navigation;
+        const COMPONENT_NAME = utilities.componentNames.layout.navigation;
 
         function register() {
             if (!ko.components.isRegistered(COMPONENT_NAME)) {

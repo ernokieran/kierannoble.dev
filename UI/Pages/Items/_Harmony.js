@@ -1,7 +1,7 @@
 define(["knockout", "utilities", "text!harmonyTemplate"],
     function(ko, utilities, template) {
 
-        const COMPONENT_NAME = utilities.componentNames.harmony;
+        const COMPONENT_NAME = utilities.componentNames.pages.harmony;
 
         function register() {
             if (!ko.components.isRegistered(COMPONENT_NAME)) {

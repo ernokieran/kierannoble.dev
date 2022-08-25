@@ -1,14 +1,18 @@
 define([],
     function() {
         return {
-            navigation: "navigation",
-            intro: "intro",
-            portfolioCards: "portfolioCards",
-            footer: "footer",
-            harmony: "harmony",
-            pinewood: "pinewood",
             slideshow: "slideshow",
-            image: "image"
+            image: "image",
+            layout: {
+                footer: "footer",
+                intro: "intro",
+                navigation: "navigation",
+            },
+            pages: {
+                harmony: "harmony",
+                pinewood: "pinewood",
+                portfolioCards: "portfolioCards",
+            }
         };
 
     }    

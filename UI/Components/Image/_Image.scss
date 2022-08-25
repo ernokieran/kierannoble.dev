@@ -8,7 +8,7 @@
     &__action {
         position: absolute;
         background: url("/assets/arrow.svg") center center no-repeat;
-        background-size: 15px;
+        background-size: var(--action-icon-size);
         width: 32px;
         height: 32px;
         background-color: rgba(var(--theme-color), 0.8);

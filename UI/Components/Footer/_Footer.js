@@ -1,7 +1,7 @@
 define(["knockout", "utilities", "text!footerTemplate", "text!version"],
     function(ko, utilities, template, version) {
 
-        const COMPONENT_NAME = utilities.componentNames.footer;
+        const COMPONENT_NAME = utilities.componentNames.layout.footer;
 
         function register() {
             if (!ko.components.isRegistered(COMPONENT_NAME)) {
