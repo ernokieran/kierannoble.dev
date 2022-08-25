@@ -10,8 +10,8 @@ define([],
             },
             pages: {
                 harmony: "harmony",
+                home: "home",
                 pinewood: "pinewood",
-                portfolioCards: "portfolioCards",
             }
         };
 

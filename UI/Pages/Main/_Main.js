@@ -5,14 +5,16 @@
                 let viewModel = function () {
                     let self = this;
 
-                    self.selectedContent = ko.observable(utilities.componentNames.pages.portfolioCards);
+                    const HOME_PAGE = utilities.componentNames.pages.home;
+
+                    self.selectedContent = ko.observable(HOME_PAGE);
 
                     self.content = ko.pureComputed(function () {
                         return self.koComponents.pages[ko.unwrap(self.selectedContent)];
                     });
 
                     self.hasSelectedContent = ko.pureComputed(function () {
-                        return self.selectedContent() != utilities.componentNames.pages.portfolioCards;
+                        return self.selectedContent() != HOME_PAGE;
                     });
 
                     self.showIntro = ko.pureComputed(function () {
@@ -24,6 +26,10 @@
                     self.hasSlideshow = ko.pureComputed(function() {
                         return ko.unwrap(self.slideshowImages).length > 0;
                     })
+
+                    self.pageName = ko.pureComputed(function() {
+                        return ko.unwrap(self.hasSelectedContent) ? ko.unwrap(self.selectedContent) : "";
+                    });
 
                     self.koComponents = {
                         layout: {
@@ -52,8 +58,8 @@
                         }
                         },
                         pages: {
-                            portfolioCards: {
-                                name: utilities.componentNames.pages.portfolioCards,
+                            home: {
+                                name: utilities.componentNames.pages.home,
                                 params: {
                                     functions: {
                                         updateSelectedContent: _updateSelectedContent
@@ -111,7 +117,7 @@
                     };
 
                     function _goHome() {
-                        _updateSelectedContent(utilities.componentNames.pages.portfolioCards);
+                        _updateSelectedContent(HOME_PAGE);
                     };
 
                     (function _init() {

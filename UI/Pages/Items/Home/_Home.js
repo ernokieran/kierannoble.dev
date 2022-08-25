@@ -1,7 +1,7 @@
-define(["knockout", "utilities", "text!portfolioCardsTemplate"],
+define(["knockout", "utilities", "text!homeTemplate"],
     function(ko, utilities, template) {
 
-        const COMPONENT_NAME = utilities.componentNames.pages.portfolioCards;
+        const COMPONENT_NAME = utilities.componentNames.pages.home;
 
         function register() {
             if (!ko.components.isRegistered(COMPONENT_NAME)) {

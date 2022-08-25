@@ -1,10 +1,10 @@
 (function() {
 
-    require(["main", "navigation", "intro", "portfolioCards", "pinewood", "harmony", "footer", "slideshow", "image"],
-        function(main, intro, navigation, portfolioCards, pinewood, harmony, footer, slideshow, image) {
+    require(["main", "navigation", "intro", "home", "pinewood", "harmony", "footer", "slideshow", "image"],
+        function(main, intro, navigation, home, pinewood, harmony, footer, slideshow, image) {
             navigation.register();
             intro.register();
-            portfolioCards.register();
+            home.register();
 
             pinewood.register();
             harmony.register();
