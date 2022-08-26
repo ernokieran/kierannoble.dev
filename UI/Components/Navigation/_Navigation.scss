@@ -39,13 +39,17 @@
         margin-top: -3px;
         margin-right: -10px;
         opacity: 0.6;
-        transition: all 0.5s ease-in-out;
+        transition: opacity 0.25s ease, all 0.5s ease-in-out;
         cursor: pointer;
 
         &--hidden {
             opacity: 0;
             margin-right: calc(var(--spacing--medium) * -1);
             margin-left: -25px;
+        }
+
+        &:hover {
+            opacity: 1;
         }
     }
     

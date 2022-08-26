@@ -82,6 +82,22 @@
                                     }
                                 }
                             },
+                            experimentalImagery: {
+                                name: utilities.componentNames.pages.experimentalImagery,
+                                params: {
+                                    functions: {
+                                        setSlideshowContent: _setSlideshowContent
+                                    }
+                                }
+                            },
+                            partsAndSections: {
+                                name: utilities.componentNames.pages.partsAndSections,
+                                params: {
+                                    functions: {
+                                        setSlideshowContent: _setSlideshowContent
+                                    }
+                                }
+                            },
                         },
                         slideshow: {
                             name: utilities.componentNames.slideshow,
@@ -115,6 +131,20 @@
                             utilities.rootElement.scrollIntoView();
                         }, 100);
                     };
+
+                    _test = function() {
+                        _setSlideshowContent(_generate());
+
+                        function _generate() {
+                            let items = [];
+
+                            for(let i = 0; i < 209; i++) {
+                                items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
+                            }
+
+                            return items;
+                        }
+                    }
 
                     function _goHome() {
                         _updateSelectedContent(HOME_PAGE);

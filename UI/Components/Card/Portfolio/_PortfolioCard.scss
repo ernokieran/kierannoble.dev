@@ -1,7 +1,7 @@
 .portfolio-card {
     position: relative;
     height: var(--portfolio-card-size);
-    min-width: 360px;
+    min-width: 250px;
     border-radius: var(--rounded--medium);
     box-shadow: var(--shadow--small);
     transition: transform 0.3s ease;
@@ -65,7 +65,7 @@
         &-logo {
             margin: auto;
             margin-top: 70px;
-            height: 45px;
+            height: 50px;
         }
 
         &-description {
@@ -74,7 +74,11 @@
             letter-spacing: 1px;
             color: white;
             text-align: center;
+            margin: auto;
+            width: auto;
             margin-top: 10px;
+            max-width: 300px;
+            padding: 0 var(--spacing--medium);
         }
     }
 

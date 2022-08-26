@@ -147,8 +147,10 @@ define('utilsComponentNames',[],
                 navigation: "navigation",
             },
             pages: {
+                experimentalImagery: "experimentalImagery",
                 harmony: "harmony",
                 home: "home",
+                partsAndSections: "partsAndSections",
                 pinewood: "pinewood",
             }
         };
@@ -379,6 +381,22 @@ define('utilities',["utilsComponentNames", "utilsPreloadAssets"],
                                     }
                                 }
                             },
+                            experimentalImagery: {
+                                name: utilities.componentNames.pages.experimentalImagery,
+                                params: {
+                                    functions: {
+                                        setSlideshowContent: _setSlideshowContent
+                                    }
+                                }
+                            },
+                            partsAndSections: {
+                                name: utilities.componentNames.pages.partsAndSections,
+                                params: {
+                                    functions: {
+                                        setSlideshowContent: _setSlideshowContent
+                                    }
+                                }
+                            },
                         },
                         slideshow: {
                             name: utilities.componentNames.slideshow,
@@ -412,6 +430,20 @@ define('utilities',["utilsComponentNames", "utilsPreloadAssets"],
                             utilities.rootElement.scrollIntoView();
                         }, 100);
                     };
+
+                    _test = function() {
+                        _setSlideshowContent(_generate());
+
+                        function _generate() {
+                            let items = [];
+
+                            for(let i = 0; i < 209; i++) {
+                                items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
+                            }
+
+                            return items;
+                        }
+                    }
 
                     function _goHome() {
                         _updateSelectedContent(HOME_PAGE);
@@ -489,7 +521,7 @@ define('intro',["knockout", "utilities", "text!introTemplate"],
     }    
 );
 
-define('text!homeTemplate',[],function () { return '<section class="layout__row">\r\n    <div class="harmony layout__column--double" data-bind="click: setContent.bind($data, \'harmony\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/harmony/logo.svg" width="195"\r\n                    height="45" alt="Harmony Logo">\r\n                <div class="portfolio-card__title-description">An E-Commerce platform for a modern music store\r\n                </div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Backend\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n    <div href="pinewood.html" class="pinewood" data-bind="click: setContent.bind($data, \'pinewood\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/pinewood/logo.svg" width="195"\r\n                height="45" alt="Pinewood Logo">\r\n                <div class="portfolio-card__title-description">Software Development Placement</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Internship\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n</section>';});
+define('text!homeTemplate',[],function () { return '<section class="layout__row">\r\n    <div class="harmony layout__column--double" data-bind="click: setContent.bind($data, \'harmony\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/harmony/logo.svg" width="195" height="55"\r\n                    alt="Harmony Logo">\r\n                <div class="portfolio-card__title-description">An E-Commerce platform for a modern music store\r\n                </div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Backend\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n    <div class="pinewood" data-bind="click: setContent.bind($data, \'pinewood\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/pinewood/logo.svg" width="195" height="55"\r\n                    alt="Pinewood Logo">\r\n                <div class="portfolio-card__title-description">Software Development Placement</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Internship\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n</section>\r\n<!-- <section class="layout__row">\r\n    <div class="experimentalImagery" data-bind="click: setContent.bind($data, \'experimentalImagery\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/experimentalimagery/logo.svg" width="240"\r\n                    height="55" alt="Experimental Imagery">\r\n                <div class="portfolio-card__title-description">A-Level Photography Component One</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Photography\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n    <div class="partsAndSections" data-bind="click: setContent.bind($data, \'partsAndSections\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/partsandsections/" width="240" height="55"\r\n                    alt="Parts and Sections">\r\n                <div class="portfolio-card__title-description">A-Level Photography Component Two</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Photography\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n</section> -->';});
 
 define('home',["knockout", "utilities", "text!homeTemplate"],
     function(ko, utilities, template) {
@@ -689,10 +721,130 @@ define('harmony',["knockout", "utilities", "text!harmonyTemplate"],
     }    
 );
 
+define('text!experimentalImageryTemplate',[],function () { return '<header class="section section--primary section--centered">\r\n    <div class="content layout__column layout__column--ignoreMobile layout--small">\r\n        <div class="section__title">\r\n            <img src="/assets/projects/experimentalimagery/logo.svg" class="section__logo" width="300px" alt="experimentalImagery">\r\n        </div>\r\n        <h2 class="section__subtitle">A-Level Photography Component One - Marked at Grade A</h2>\r\n    </div>\r\n</header>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--primary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Project Book</span>\r\n        <div class="section__image" data-bind="component: koComponents.images.book"></div>\r\n    </div>\r\n</section>';});
+
+define('experimentalImagery',["knockout", "utilities", "text!experimentalImageryTemplate"],
+    function(ko, utilities, template) {
+
+        const COMPONENT_NAME = utilities.componentNames.pages.experimentalImagery;
+
+        function register() {
+            if (!ko.components.isRegistered(COMPONENT_NAME)) {
+                ko.components.register(COMPONENT_NAME, {
+                    template: template,
+                    viewModel: function (params) {
+                        var self = this;
+
+                        self.koComponents = {
+                            images: {
+                                book: {
+                                    name: utilities.componentNames.image,
+                                    params: {
+                                        data: {
+                                            imageUrl: "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp"
+                                        },
+                                        functions: {
+                                            actionClicked: _showFinalBookSlideshow
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        function _showFinalBookSlideshow() {
+                            params.functions.setSlideshowContent(_generate(), "/assets/projects/experimentalimagery/Experimental Imagery Final.pdf");
+
+                            function _generate() {
+                                let items = [];
+
+                                for(let i = 0; i < 209; i++) {
+                                    items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
+                                }
+
+                                return items;
+                            }
+                        };
+        
+                    }
+                });
+            }
+
+            utilities.preloadAssets.addAsset([
+                "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp"
+            ]);
+        }
+
+        return {
+            register: register
+        };
+
+    }    
+);
+
+define('text!partsAndSectionsTemplate',[],function () { return '<header class="section section--primary section--centered">\r\n    <div class="content layout__column layout__column--ignoreMobile layout--small">\r\n        <div class="section__title">\r\n            <!-- <img src="/assets/projects/partsandsections/logo.svg" class="section__logo" width="200px" alt="partsAndSections"> -->\r\n            Parts and Sections\r\n        </div>\r\n        <h2 class="section__subtitle">A-Level Photography Component Two & Exam - Marked at Grade A</h2>\r\n        <p>‘Photographing part of an object, view or person can\r\n            be a way of creating abstract imagery or observing the\r\n            subject more closely. Sonya Noskowiak often recorded\r\n            very carefully selected portions of her subjects to\r\n            direct attention to their detail and textural qualities.\r\n            Judith Turner’s photographs of columns and leaves are\r\n            often severely cropped to emphasize the repeated shapes\r\n            and forms seen in close-up sections of her subjects. At\r\n            times Patrick Caulfield’s paintings show just part of\r\n            an interior, leaving the viewer to imagine what is left\r\n            outside the frame. Produce your own response, making\r\n            reference to appropriate work by others.’ <strong>(96 Marks)</strong></p>\r\n    </div>\r\n</header>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--primary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Project Book</span>\r\n        <div class="section__image" data-bind="component: koComponents.images.book"></div>\r\n    </div>\r\n</section>';});
+
+define('partsAndSections',["knockout", "utilities", "text!partsAndSectionsTemplate"],
+    function(ko, utilities, template) {
+
+        const COMPONENT_NAME = utilities.componentNames.pages.partsAndSections;
+
+        function register() {
+            if (!ko.components.isRegistered(COMPONENT_NAME)) {
+                ko.components.register(COMPONENT_NAME, {
+                    template: template,
+                    viewModel: function (params) {
+                        var self = this;
+
+                        self.koComponents = {
+                            images: {
+                                book: {
+                                    name: utilities.componentNames.image,
+                                    params: {
+                                        data: {
+                                            imageUrl: "/assets/projects/partsandsections/book/Parts and Sections Final_0.webp"
+                                        },
+                                        functions: {
+                                            actionClicked: _showFinalBookSlideshow
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        function _showFinalBookSlideshow() {
+                            params.functions.setSlideshowContent(_generate(), "/assets/projects/partsandsections/Parts and Sections Final.pdf");
+
+                            function _generate() {
+                                let items = [];
+
+                                for(let i = 0; i < 103; i++) {
+                                    items.push(`/assets/projects/partsandsections/book/Parts and Sections Final_${i}.webp`)
+                                }
+
+                                return items;
+                            }
+                        };
+        
+                    }
+                });
+            }
+
+            utilities.preloadAssets.addAsset([
+                "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp"
+            ]);
+        }
+
+        return {
+            register: register
+        };
+
+    }    
+);
+
 define('text!footerTemplate',[],function () { return '<footer class="footer">\r\n    <!-- ko if: showSeperator -->\r\n    <div class="seperator"></div>\r\n    <!-- /ko -->\r\n    <div class="logo logo--default"></div>\r\n    <div class="footer__contact">\r\n        <a href="mailto:howdy@kierannoble.dev">howdy@kierannoble.dev</a>\r\n    </div>\r\n    <div class="footer__contact-note">Feel free to drop me an email, I\'d ❤️ to hear from you!</div>\r\n    <div class="footer__socialLinks">\r\n        <a href="https://www.linkedin.com/in/kierannoble/" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/linkedin.svg" alt="LinkedIn">\r\n        </a>\r\n        <a href="https://twitter.com/aylokieran" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/twitter.svg" alt="Twitter">\r\n        </a>\r\n        <a href="https://t.me/aylokieran" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/telegram.svg" alt="Telegram">\r\n        </a>\r\n        <a href="mailto:howdy@kierannoble.dev" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/email.svg" alt="Email">\r\n        </a>\r\n    </div>\r\n    <div class="footer__version" data-bind="text: version">\r\n    </div>\r\n</footer>';});
 
 
-define('text!version',[],function () { return '20220825-1427';});
+define('text!version',[],function () { return '220726-1056';});
 
 define('footer',["knockout", "utilities", "text!footerTemplate", "text!version"],
     function(ko, utilities, template, version) {
@@ -896,16 +1048,20 @@ define('image',["knockout", "utilities", "text!imageTemplate", "slideshow"],
 
     }    
 );
+let _test;
+
 (function() {
 
-    require(["main", "navigation", "intro", "home", "pinewood", "harmony", "footer", "slideshow", "image"],
-        function(main, intro, navigation, home, pinewood, harmony, footer, slideshow, image) {
+    require(["main", "navigation", "intro", "home", "pinewood", "harmony", "experimentalImagery", "partsAndSections", "footer", "slideshow", "image"],
+        function(main, intro, navigation, home, pinewood, harmony, experimentalImagery, partsAndSections, footer, slideshow, image) {
             navigation.register();
             intro.register();
             home.register();
 
             pinewood.register();
             harmony.register();
+            experimentalImagery.register();
+            partsAndSections.register();
 
             footer.register();
 

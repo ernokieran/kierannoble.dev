@@ -9,8 +9,10 @@ define([],
                 navigation: "navigation",
             },
             pages: {
+                experimentalImagery: "experimentalImagery",
                 harmony: "harmony",
                 home: "home",
+                partsAndSections: "partsAndSections",
                 pinewood: "pinewood",
             }
         };
