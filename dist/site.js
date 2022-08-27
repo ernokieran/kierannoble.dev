@@ -431,20 +431,6 @@ define('utilities',["utilsComponentNames", "utilsPreloadAssets"],
                         }, 100);
                     };
 
-                    _test = function() {
-                        _setSlideshowContent(_generate());
-
-                        function _generate() {
-                            let items = [];
-
-                            for(let i = 0; i < 209; i++) {
-                                items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
-                            }
-
-                            return items;
-                        }
-                    }
-
                     function _goHome() {
                         _updateSelectedContent(HOME_PAGE);
                     };
@@ -521,7 +507,7 @@ define('intro',["knockout", "utilities", "text!introTemplate"],
     }    
 );
 
-define('text!homeTemplate',[],function () { return '<section class="layout__row">\r\n    <div class="harmony layout__column--double" data-bind="click: setContent.bind($data, \'harmony\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/harmony/logo.svg" width="195" height="55"\r\n                    alt="Harmony Logo">\r\n                <div class="portfolio-card__title-description">An E-Commerce platform for a modern music store\r\n                </div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Backend\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n    <div class="pinewood" data-bind="click: setContent.bind($data, \'pinewood\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/pinewood/logo.svg" width="195" height="55"\r\n                    alt="Pinewood Logo">\r\n                <div class="portfolio-card__title-description">Software Development Placement</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Internship\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n</section>\r\n<!-- <section class="layout__row">\r\n    <div class="experimentalImagery" data-bind="click: setContent.bind($data, \'experimentalImagery\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/experimentalimagery/logo.svg" width="240"\r\n                    height="55" alt="Experimental Imagery">\r\n                <div class="portfolio-card__title-description">A-Level Photography Component One</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Photography\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n    <div class="partsAndSections" data-bind="click: setContent.bind($data, \'partsAndSections\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/partsandsections/" width="240" height="55"\r\n                    alt="Parts and Sections">\r\n                <div class="portfolio-card__title-description">A-Level Photography Component Two</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Photography\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n</section> -->';});
+define('text!homeTemplate',[],function () { return '<section class="layout__row">\r\n    <div class="harmony layout__column--double" data-bind="click: setContent.bind($data, \'harmony\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/harmony/logo.svg" width="195" height="55"\r\n                    alt="Harmony Logo">\r\n                <div class="portfolio-card__title-description">An E-Commerce platform for a modern music store\r\n                </div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Backend\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n    <div class="pinewood" data-bind="click: setContent.bind($data, \'pinewood\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/pinewood/logo.svg" width="195" height="55"\r\n                    alt="Pinewood Logo">\r\n                <div class="portfolio-card__title-description">Software Development Placement</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Internship\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n</section>\r\n<section class="layout__row">\r\n    <div class="experimentalImagery" data-bind="click: setContent.bind($data, \'experimentalImagery\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/experimentalimagery/logo.svg" width="240"\r\n                    height="55" alt="Experimental Imagery">\r\n                <div class="portfolio-card__title-description">A-Level Photography Component One</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Photography\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n    <div class="partsAndSections" data-bind="click: setContent.bind($data, \'partsAndSections\')">\r\n        <article class="portfolio-card">\r\n            <div class="portfolio-card__title">\r\n                <img class="portfolio-card__title-logo" src="/assets/projects/partsandsections/logo.svg" width="240" height="55"\r\n                    alt="Parts and Sections">\r\n                <div class="portfolio-card__title-description">A-Level Photography Component Two</div>\r\n            </div>\r\n            <div class="portfolio-card__chip">\r\n                Photography\r\n            </div>\r\n            <div class="portfolio-card__action"></div>\r\n            <span class="portfolio-card__action-text"></span>\r\n        </article>\r\n    </div>\r\n</section>';});
 
 define('home',["knockout", "utilities", "text!homeTemplate"],
     function(ko, utilities, template) {
@@ -721,10 +707,10 @@ define('harmony',["knockout", "utilities", "text!harmonyTemplate"],
     }    
 );
 
-define('text!experimentalImageryTemplate',[],function () { return '<header class="section section--primary section--centered">\r\n    <div class="content layout__column layout__column--ignoreMobile layout--small">\r\n        <div class="section__title">\r\n            <img src="/assets/projects/experimentalimagery/logo.svg" class="section__logo" width="300px" alt="experimentalImagery">\r\n        </div>\r\n        <h2 class="section__subtitle">A-Level Photography Component One - Marked at Grade A</h2>\r\n    </div>\r\n</header>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--primary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Project Book</span>\r\n        <div class="section__image" data-bind="component: koComponents.images.book"></div>\r\n    </div>\r\n</section>';});
+define('text!experimentalImageryTemplate',[],function () { return '<header class="section section--primary section--centered">\r\n    <div class="content layout__column layout__column--ignoreMobile layout--small">\r\n        <div class="section__title">\r\n            <img src="/assets/projects/experimentalimagery/logo.svg" class="section__logo" width="300px"\r\n                alt="experimentalImagery">\r\n        </div>\r\n        <h2 class="section__subtitle">A-Level Photography Component One - Marked at Grade A</h2>\r\n    </div>\r\n</header>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Project Introduction</span>\r\n        <p>\r\n            In Component One of my Photography A-Level, I was given the topic of “Experimental Imagery”, which I\r\n            interpreted as a way to try and bend the ‘rules’ of photography and create something that isn’t usually seen\r\n            within the world of photography.\r\n        </p>\r\n        <p>\r\n            Within this, I tried to investigate techniques new and old that aren’t seen much because they are often seen\r\n            as “too experimental” or out of the contemporary world, within these themes I explored ways to portray the\r\n            world and people in a way that may make the viewer think twice about what they are seeing as well as how it\r\n            should make them feel.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--right">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Initial Development</span>\r\n        <p>\r\n            The project initially started with looking at how colour can affect a viewer’s experience of a photograph.\r\n            Focusing first on how the lack of colour and artificial depth looks, before moving more into selective use\r\n            of colour as well as creating artificial colour in a photo.\r\n        </p>\r\n        <p>\r\n            During this process I began to look at how the shape of colour matters – using bokeh and colour together to\r\n            control a viewer’s perception of a location. At this time, I also began to look into how video can be used\r\n            to further increase a viewer’s connection to a location.\r\n        </p>\r\n        <p>\r\n            After this I began to look into how I could ‘destroy’ a photo just enough to warp a viewer’s perception of\r\n            an image, but not so much that it is no longer recognisable. One technique that I really liked, but ended up\r\n            not making it into the final investigation was creating something that felt unnatural, but used human hands,\r\n            the results of this can be seen below:\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Initial Outcomes</span>\r\n        <div class="layout layout__row layout__row--equal section__image" data-bind="click: showHandsSlideshow">\r\n            <img class="image" src="/assets/projects/experimentalimagery/Hands_1.webp">\r\n            <img class="image" src="/assets/projects/experimentalimagery/Hands_2.webp">\r\n            <img class="image" src="/assets/projects/experimentalimagery/Hands_3.webp">\r\n            <span class="image__action"></span>\r\n            <span class="image__action-text"></span>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Further Development</span>\r\n        <p>\r\n            As well as this, another favourite image of mine from this project is where I split the colours and blurred\r\n            a model’s face to give a sense of broken and unrecognisable to the viewer – where they couldn’t see the\r\n            facial features of the person but could see the rest in a ‘broken world’. The result of this can be seen\r\n            below:\r\n        </p>\r\n        <div class="section__image" data-bind="component: koComponents.images.colours">\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--primary section--centered">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Glitch Development</span>\r\n        <p>\r\n            Moving towards the end of the project, I began to once again look at how the world of photography, which is\r\n            generally a snapshot of time in a single image, could move more towards the world of video and more so the\r\n            motion of the world within the photographs.\r\n        </p>\r\n        <p>\r\n            This method of motion in a single still photo was inspired by Mura Masa ‘s music video ‘What If I Go?’,\r\n            which used a digital form of a style of 3D photography, popularised by the Nimslo 3D film camera from the\r\n            1980s, where I used the same moment in time but with multiple shots from slightly differing angles, to give\r\n            a ‘frozen in time’ sense to the viewer, were they can see more than they should be able to. I then used\r\n            these frames to create a looping gif, such as the ones below:\r\n        </p>\r\n        <div class="layout layout__row layout__row--equal section__image">\r\n            <video src="/assets/projects/experimentalimagery/Motion_1.mp4" class="image" controls loop muted></video>\r\n            <video src="/assets/projects/experimentalimagery/Motion_2.mp4" class="image" controls loop muted></video>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary section--right">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Final Development</span>\r\n        <p>\r\n            From this, I developed a look that was similar to Super8 film, and incorporated it into a ‘music video’\r\n            style outcome, which used the techniques developed throughout the project to give a futuristic and\r\n            old-fashioned contract to the viewer, within a confusing yet motion-filled outcome that bends the rules of\r\n            photography and what is expected both from the artist and the viewer\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Final Outcomes</span>\r\n        <div class="layout layout__column layout--nogap layout--small section__image" data-bind="click: showFinalSlideshow">\r\n            <div class="layout layout__row layout__row--equal">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_1.webp">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_2.webp">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_3.webp">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_4.webp">\r\n            </div>\r\n            <div class="layout layout__row layout__row--equal">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_5.webp">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_6.webp">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_7.webp">\r\n                <img class="image" src="/assets/projects/experimentalimagery/Final_8.webp">\r\n            </div>\r\n            <span class="image__action"></span>\r\n            <span class="image__action-text"></span>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Final Video</span>\r\n        <div class="section__image">\r\n            <video src="/assets/projects/experimentalimagery/Final.mp4" class="image" controls></video>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--primary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Project Book</span>\r\n        <div class="section__image" data-bind="component: koComponents.images.book"></div>\r\n    </div>\r\n</section>';});
 
 define('experimentalImagery',["knockout", "utilities", "text!experimentalImageryTemplate"],
-    function(ko, utilities, template) {
+    function (ko, utilities, template) {
 
         const COMPONENT_NAME = utilities.componentNames.pages.experimentalImagery;
 
@@ -747,9 +733,55 @@ define('experimentalImagery',["knockout", "utilities", "text!experimentalImagery
                                             actionClicked: _showFinalBookSlideshow
                                         }
                                     }
+                                },
+                                colours: {
+                                    name: utilities.componentNames.image,
+                                    params: {
+                                        data: {
+                                            imageUrl: "/assets/projects/experimentalimagery/Colours.webp",
+                                        },
+                                        functions: {
+                                            actionClicked: _showColoursSlideshow
+                                        }
+                                    }
                                 }
                             }
                         }
+
+                        self.showHandsSlideshow = () => {
+                            _showHandsSlideshow()
+                        };
+
+                        self.showFinalSlideshow = () => {
+                            _showFinalSlideshow()
+                        };
+
+                        function _showHandsSlideshow() {
+                            params.functions.setSlideshowContent(
+                                ["/assets/projects/experimentalimagery/Hands_1.webp",
+                                    "/assets/projects/experimentalimagery/Hands_2.webp",
+                                    "/assets/projects/experimentalimagery/Hands_3.webp"
+                                ]
+                            );
+                        };
+
+                        function _showFinalSlideshow() {
+                            params.functions.setSlideshowContent(_generate());
+
+                            function _generate() {
+                                let items = [];
+
+                                for (let i = 1; i < 9; i++) {
+                                    items.push(`/assets/projects/experimentalimagery/Final_${i}.webp`)
+                                }
+
+                                return items;
+                            }
+                        };
+
+                        function _showColoursSlideshow() {
+                            params.functions.setSlideshowContent(["/assets/projects/experimentalimagery/Colours.webp"]);
+                        };
 
                         function _showFinalBookSlideshow() {
                             params.functions.setSlideshowContent(_generate(), "/assets/projects/experimentalimagery/Experimental Imagery Final.pdf");
@@ -757,20 +789,35 @@ define('experimentalImagery',["knockout", "utilities", "text!experimentalImagery
                             function _generate() {
                                 let items = [];
 
-                                for(let i = 0; i < 209; i++) {
+                                for (let i = 0; i < 209; i++) {
                                     items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
                                 }
 
                                 return items;
                             }
                         };
-        
+
                     }
                 });
             }
 
             utilities.preloadAssets.addAsset([
-                "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp"
+                "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp",
+                "/assets/projects/experimentalimagery/Hands_1.webp",
+                "/assets/projects/experimentalimagery/Hands_2.webp",
+                "/assets/projects/experimentalimagery/Hands_3.webp",
+                "/assets/projects/experimentalimagery/Colours.webp",
+                "/assets/projects/experimentalimagery/Motion_1.mp4",
+                "/assets/projects/experimentalimagery/Motion_2.mp4",
+                "/assets/projects/experimentalimagery/Final_1.webp",
+                "/assets/projects/experimentalimagery/Final_2.webp",
+                "/assets/projects/experimentalimagery/Final_3.webp",
+                "/assets/projects/experimentalimagery/Final_4.webp",
+                "/assets/projects/experimentalimagery/Final_5.webp",
+                "/assets/projects/experimentalimagery/Final_6.webp",
+                "/assets/projects/experimentalimagery/Final_7.webp",
+                "/assets/projects/experimentalimagery/Final_8.webp",
+                "/assets/projects/experimentalimagery/Final.mp4"
             ]);
         }
 
@@ -778,13 +825,13 @@ define('experimentalImagery',["knockout", "utilities", "text!experimentalImagery
             register: register
         };
 
-    }    
+    }
 );
 
-define('text!partsAndSectionsTemplate',[],function () { return '<header class="section section--primary section--centered">\r\n    <div class="content layout__column layout__column--ignoreMobile layout--small">\r\n        <div class="section__title">\r\n            <!-- <img src="/assets/projects/partsandsections/logo.svg" class="section__logo" width="200px" alt="partsAndSections"> -->\r\n            Parts and Sections\r\n        </div>\r\n        <h2 class="section__subtitle">A-Level Photography Component Two & Exam - Marked at Grade A</h2>\r\n        <p>‘Photographing part of an object, view or person can\r\n            be a way of creating abstract imagery or observing the\r\n            subject more closely. Sonya Noskowiak often recorded\r\n            very carefully selected portions of her subjects to\r\n            direct attention to their detail and textural qualities.\r\n            Judith Turner’s photographs of columns and leaves are\r\n            often severely cropped to emphasize the repeated shapes\r\n            and forms seen in close-up sections of her subjects. At\r\n            times Patrick Caulfield’s paintings show just part of\r\n            an interior, leaving the viewer to imagine what is left\r\n            outside the frame. Produce your own response, making\r\n            reference to appropriate work by others.’ <strong>(96 Marks)</strong></p>\r\n    </div>\r\n</header>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">My Role</span>\r\n        <p>\r\n            My Job title at Pinewood Technologies is “Software Development Placement”, which means that I am\r\n            treated mostly like a normal developer, with a few key differences; such as that I have a dedicated\r\n            mentor that I have access to any time I need help with anything. As well as this, during my\r\n            placement year, I have a three-week sprint in the User Experience team to build my skills in that\r\n            area, a presentation on a technical topic relevant to my position in the business, and a three-week\r\n            sprint with a group of other placements and graduates to build a solution to a business problem from\r\n            conception to completion – all of which are designed to further develop my skills outside of my\r\n            normal business role.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--primary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Project Book</span>\r\n        <div class="section__image" data-bind="component: koComponents.images.book"></div>\r\n    </div>\r\n</section>';});
+define('text!partsAndSectionsTemplate',[],function () { return '<header class="section section--primary section--centered">\r\n    <div class="content layout__column layout__column--ignoreMobile layout--small">\r\n        <div class="section__title">\r\n            <img src="/assets/projects/partsandsections/logo.svg" class="section__logo" width="200px" alt="partsAndSections">\r\n        </div>\r\n        <h2 class="section__subtitle">A-Level Photography Component Two & Exam - Marked at Grade A</h2>\r\n        <p>‘Photographing part of an object, view or person can\r\n            be a way of creating abstract imagery or observing the\r\n            subject more closely. Sonya Noskowiak often recorded\r\n            very carefully selected portions of her subjects to\r\n            direct attention to their detail and textural qualities.\r\n            Judith Turner’s photographs of columns and leaves are\r\n            often severely cropped to emphasize the repeated shapes\r\n            and forms seen in close-up sections of her subjects. At\r\n            times Patrick Caulfield’s paintings show just part of\r\n            an interior, leaving the viewer to imagine what is left\r\n            outside the frame. Produce your own response, making\r\n            reference to appropriate work by others.’ <strong>(96 Marks)</strong></p>\r\n    </div>\r\n</header>\r\n<section class="section section--secondary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Project Introduction</span>\r\n        <p>\r\n            Within this project I explored the theme through the use of colour, use of framing and the use of space.\r\n            During the first shoot of this project, I explored how much I could take away from a photo, but still have\r\n            the viewer draw a connection to the model – to do this, experimented with black and white photography, as\r\n            well as using a macro lens to get closer to the model than the viewer would normally experience. Moving\r\n            further into this, I experimented with how the image is displayed to the viewer, using a 1:1 ratio crop,\r\n            which is pretty unnatural in the world of photography.\r\n        </p>\r\n        <div class="layout layout__row layout__row--equal section__image" data-bind="click: showInitialSlideshow">\r\n            <img class="image" src="/assets/projects/partsandsections/Initial_1.webp">\r\n            <img class="image" src="/assets/projects/partsandsections/Initial_2.webp">\r\n            <img class="image" src="/assets/projects/partsandsections/Initial_3.webp">\r\n            <span class="image__action"></span>\r\n            <span class="image__action-text"></span>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary section--centered">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Polaroid Development</span>\r\n        <p>\r\n            From this crop – I decided to move back into the world of ‘natural’ photography, and was inspired by the\r\n            cropping of polaroid photos, and so I decided to take a look into how I could mix the world of digital and\r\n            analogue photography, whilst still giving the viewer an experience that they would never usually be able to\r\n            see – black and white polaroids.\r\n        </p>\r\n        <div class="layout layout__column layout--nogap layout--small section__image" data-bind="click: showPolDevelopmentSlideshow">\r\n            <div class="layout layout__row layout__row--equal">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_1.webp">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_2.webp">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_3.webp">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_4.webp">\r\n            </div>\r\n            <div class="layout layout__row layout__row--equal">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_5.webp">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_6.webp">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_7.webp">\r\n                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_8.webp">\r\n            </div>\r\n            <span class="image__action"></span>\r\n            <span class="image__action-text"></span>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary section--right">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Further Development</span>\r\n        <p>\r\n            During the course of this project, I began to explore more on how to make the viewer uncomfortable with what\r\n            they are seeing – again moving closer to the model so that the viewer couldn’t easily distinguish many\r\n            features of the person they were seeing, leaving them more in the dark about the photograph and its meaning\r\n            and intent. This then gave me the idea of mixing different people’s features into one ‘mashup’ person.\r\n        </p>\r\n        <div class="section__image" data-bind="click: showFaceMashSlideshow">\r\n            <img class="image no-shadow" src="/assets/projects/partsandsections/PolFaceMash.webp">\r\n            <span class="image__action"></span>\r\n            <span class="image__action-text"></span>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--tertiary">\r\n    <div class="content layout layout__column layout--small">\r\n        <span class="section__title">Final Development</span>\r\n        <p>\r\n            At first, I did this digitally, however, I felt that this technique would work better in a read 3D space, so\r\n            I created some ‘polaroids’ and used a model and held these photographs in front of the model’s face,\r\n            replacing their features with the facial features of someone else, which created a very unnatural and almost\r\n            concerning look for the viewer. In fact, it looked a little too unnatural, so I decided that it would be\r\n            best for me to take things out of the studio and into nature – again giving a contrast between natural and\r\n            unnatural.\r\n        </p>\r\n        <p>\r\n            Within these outcomes, I used colour to create more contrast between the deep and rich natural background\r\n            and the very unnatural polaroids, which I tried to remove colour from, but leaving enough so that it wasn’t\r\n            black and white.\r\n        </p>\r\n    </div>\r\n</section>\r\n<section class="section section--secondary section--right">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Final Outcomes</span>\r\n        <div class="layout layout__row layout__row--equal section__image" data-bind="click: showFinalSlideshow">\r\n            <img class="image" src="/assets/projects/partsandsections/Final_1.webp">\r\n            <img class="image" src="/assets/projects/partsandsections/Final_2.webp">\r\n            <img class="image" src="/assets/projects/partsandsections/Final_3.webp">\r\n            <span class="image__action"></span>\r\n            <span class="image__action-text"></span>\r\n        </div>\r\n    </div>\r\n</section>\r\n<section class="section section--primary section--centered">\r\n    <div class="content layout layout__column">\r\n        <span class="section__title">Project Book</span>\r\n        <div class="section__image" data-bind="component: koComponents.images.book"></div>\r\n    </div>\r\n</section>';});
 
 define('partsAndSections',["knockout", "utilities", "text!partsAndSectionsTemplate"],
-    function(ko, utilities, template) {
+    function (ko, utilities, template) {
 
         const COMPONENT_NAME = utilities.componentNames.pages.partsAndSections;
 
@@ -807,9 +854,55 @@ define('partsAndSections',["knockout", "utilities", "text!partsAndSectionsTempla
                                             actionClicked: _showFinalBookSlideshow
                                         }
                                     }
-                                }
+                                },
                             }
                         }
+
+                        self.showInitialSlideshow = () => {
+                            _showInitialSlideshow();
+                        };
+
+                        self.showFaceMashSlideshow = () => {
+                            _showFaceMashSlideshow();
+                        };
+
+                        self.showPolDevelopmentSlideshow = () => {
+                            _showPolDevelopmentSlideshow();
+                        };
+
+                        self.showFinalSlideshow = () => {
+                            _showFinalSlideshow();
+                        };
+
+                        function _showInitialSlideshow() {
+                            params.functions.setSlideshowContent(["/assets/projects/partsandsections/Initial_1.webp",
+                                "/assets/projects/partsandsections/Initial_2.webp",
+                                "/assets/projects/partsandsections/Initial_3.webp",
+                            ]);
+                        };
+
+                        function _showPolDevelopmentSlideshow() {
+                            params.functions.setSlideshowContent(["/assets/projects/partsandsections/Pol_1.webp",
+                                "/assets/projects/partsandsections/Pol_2.webp",
+                                "/assets/projects/partsandsections/Pol_3.webp",
+                                "/assets/projects/partsandsections/Pol_4.webp",
+                                "/assets/projects/partsandsections/Pol_5.webp",
+                                "/assets/projects/partsandsections/Pol_6.webp",
+                                "/assets/projects/partsandsections/Pol_7.webp",
+                                "/assets/projects/partsandsections/Pol_8.webp"
+                            ]);
+                        };
+
+                        function _showFinalSlideshow() {
+                            params.functions.setSlideshowContent(["/assets/projects/partsandsections/Final_1.webp",
+                                "/assets/projects/partsandsections/Final_2.webp",
+                                "/assets/projects/partsandsections/Final_3.webp"
+                            ]);
+                        };
+
+                        function _showFaceMashSlideshow() {
+                            params.functions.setSlideshowContent(["/assets/projects/partsandsections/PolFaceMash.webp"]);
+                        };
 
                         function _showFinalBookSlideshow() {
                             params.functions.setSlideshowContent(_generate(), "/assets/projects/partsandsections/Parts and Sections Final.pdf");
@@ -817,20 +910,35 @@ define('partsAndSections',["knockout", "utilities", "text!partsAndSectionsTempla
                             function _generate() {
                                 let items = [];
 
-                                for(let i = 0; i < 103; i++) {
+                                for (let i = 0; i < 103; i++) {
                                     items.push(`/assets/projects/partsandsections/book/Parts and Sections Final_${i}.webp`)
                                 }
 
                                 return items;
                             }
                         };
-        
+
                     }
                 });
             }
 
             utilities.preloadAssets.addAsset([
-                "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp"
+                "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp",
+                "/assets/projects/partsandsections/Initial_1.webp",
+                "/assets/projects/partsandsections/Initial_2.webp",
+                "/assets/projects/partsandsections/Initial_3.webp",
+                "/assets/projects/partsandsections/Pol_1.webp",
+                "/assets/projects/partsandsections/Pol_2.webp",
+                "/assets/projects/partsandsections/Pol_3.webp",
+                "/assets/projects/partsandsections/Pol_4.webp",
+                "/assets/projects/partsandsections/Pol_5.webp",
+                "/assets/projects/partsandsections/Pol_6.webp",
+                "/assets/projects/partsandsections/Pol_7.webp",
+                "/assets/projects/partsandsections/Pol_8.webp",
+                "/assets/projects/partsandsections/PolFaceMash.webp",
+                "/assets/projects/partsandsections/Final_1.webp",
+                "/assets/projects/partsandsections/Final_2.webp",
+                "/assets/projects/partsandsections/Final_3.webp"
             ]);
         }
 
@@ -838,13 +946,13 @@ define('partsAndSections',["knockout", "utilities", "text!partsAndSectionsTempla
             register: register
         };
 
-    }    
+    }
 );
 
 define('text!footerTemplate',[],function () { return '<footer class="footer">\r\n    <!-- ko if: showSeperator -->\r\n    <div class="seperator"></div>\r\n    <!-- /ko -->\r\n    <div class="logo logo--default"></div>\r\n    <div class="footer__contact">\r\n        <a href="mailto:howdy@kierannoble.dev">howdy@kierannoble.dev</a>\r\n    </div>\r\n    <div class="footer__contact-note">Feel free to drop me an email, I\'d ❤️ to hear from you!</div>\r\n    <div class="footer__socialLinks">\r\n        <a href="https://www.linkedin.com/in/kierannoble/" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/linkedin.svg" alt="LinkedIn">\r\n        </a>\r\n        <a href="https://twitter.com/aylokieran" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/twitter.svg" alt="Twitter">\r\n        </a>\r\n        <a href="https://t.me/aylokieran" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/telegram.svg" alt="Telegram">\r\n        </a>\r\n        <a href="mailto:howdy@kierannoble.dev" class="socialLink">\r\n            <img class="socialLink__image" src="/assets/social/email.svg" alt="Email">\r\n        </a>\r\n    </div>\r\n    <div class="footer__version" data-bind="text: version">\r\n    </div>\r\n</footer>';});
 
 
-define('text!version',[],function () { return '220726-1056';});
+define('text!version',[],function () { return '20220827-1916';});
 
 define('footer',["knockout", "utilities", "text!footerTemplate", "text!version"],
     function(ko, utilities, template, version) {
@@ -925,6 +1033,22 @@ define('slideshow',["knockout", "utilities", "text!slideshowTemplate"],
                         });
 
                         self.selectedImage = ko.pureComputed(function() {
+                            let _thumbnails = [];
+
+                            Array.from(document.getElementsByClassName("slideshow__thumbnails")[0].childNodes)
+                                .forEach((element) => {
+                                    if (element.className == "slideshow__thumbnail") {
+                                        _thumbnails.push(element)
+                                    }
+                                });
+
+                            _thumbnails[ko.unwrap(self.selectedIndex)]
+                                .scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "center",
+                                    inline: "center"
+                                });
+
                             return ko.unwrap(self.slideshowImages)[ko.unwrap(self.selectedIndex)];
                         });
                         
@@ -1048,8 +1172,6 @@ define('image',["knockout", "utilities", "text!imageTemplate", "slideshow"],
 
     }    
 );
-let _test;
-
 (function() {
 
     require(["main", "navigation", "intro", "home", "pinewood", "harmony", "experimentalImagery", "partsAndSections", "footer", "slideshow", "image"],

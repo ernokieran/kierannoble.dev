@@ -132,20 +132,6 @@
                         }, 100);
                     };
 
-                    _test = function() {
-                        _setSlideshowContent(_generate());
-
-                        function _generate() {
-                            let items = [];
-
-                            for(let i = 0; i < 209; i++) {
-                                items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
-                            }
-
-                            return items;
-                        }
-                    }
-
                     function _goHome() {
                         _updateSelectedContent(HOME_PAGE);
                     };

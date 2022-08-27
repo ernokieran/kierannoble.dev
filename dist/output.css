@@ -276,6 +276,7 @@ body {
   opacity: 0;
   margin-right: calc(var(--spacing--medium) * -1);
   margin-left: -25px;
+  user-select: none;
 }
 .navigation__back:hover {
   opacity: 1;

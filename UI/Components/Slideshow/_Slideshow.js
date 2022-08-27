@@ -44,6 +44,22 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         });
 
                         self.selectedImage = ko.pureComputed(function() {
+                            let _thumbnails = [];
+
+                            Array.from(document.getElementsByClassName("slideshow__thumbnails")[0].childNodes)
+                                .forEach((element) => {
+                                    if (element.className == "slideshow__thumbnail") {
+                                        _thumbnails.push(element)
+                                    }
+                                });
+
+                            _thumbnails[ko.unwrap(self.selectedIndex)]
+                                .scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "center",
+                                    inline: "center"
+                                });
+
                             return ko.unwrap(self.slideshowImages)[ko.unwrap(self.selectedIndex)];
                         });
                         

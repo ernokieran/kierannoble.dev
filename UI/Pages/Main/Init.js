@@ -1,5 +1,3 @@
-let _test;
-
 (function() {
 
     require(["main", "navigation", "intro", "home", "pinewood", "harmony", "experimentalImagery", "partsAndSections", "footer", "slideshow", "image"],
