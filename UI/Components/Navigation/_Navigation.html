@@ -3,5 +3,7 @@
         <div class="navigation__back" data-bind="css: { 'navigation__back--hidden': !hasSelectedContent() }"></div>
         <div class="logo"></div>
     </div>
-    <a class="navigation__action" data-bind="click: showCV">CV</a>
+    <a class="navigation__action" data-bind="click: showCVSlideshow">CV</a>
 </nav>
+
+<div data-bind="component: koComponents.slideshows.cv"></div>

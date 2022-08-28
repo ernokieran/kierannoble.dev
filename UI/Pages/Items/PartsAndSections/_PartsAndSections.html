@@ -1,7 +1,7 @@
 <header class="section section--primary section--centered">
     <div class="content layout__column layout__column--ignoreMobile layout--small">
         <div class="section__title">
-            <img src="/assets/projects/partsandsections/logo.svg" class="section__logo" width="200px" alt="partsAndSections">
+            <img src="/assets/projects/partsandsections/logo.svg" class="section__logo" width="200px" alt="partsAndSections" loading="lazy">
         </div>
         <h2 class="section__subtitle">A-Level Photography Component Two & Exam - Marked at Grade A</h2>
         <p>‘Photographing part of an object, view or person can
@@ -30,12 +30,13 @@
             which is pretty unnatural in the world of photography.
         </p>
         <div class="layout layout__row layout__row--equal section__image" data-bind="click: showInitialSlideshow">
-            <img class="image" src="/assets/projects/partsandsections/Initial_1.webp">
-            <img class="image" src="/assets/projects/partsandsections/Initial_2.webp">
-            <img class="image" src="/assets/projects/partsandsections/Initial_3.webp">
+            <img class="image" src="/assets/projects/partsandsections/Initial_1.webp" loading="lazy">
+            <img class="image" src="/assets/projects/partsandsections/Initial_2.webp" loading="lazy">
+            <img class="image" src="/assets/projects/partsandsections/Initial_3.webp" loading="lazy">
             <span class="image__action"></span>
             <span class="image__action-text"></span>
         </div>
+        <div data-bind="component: koComponents.slideshows.initial"></div>
     </div>
 </section>
 <section class="section section--tertiary section--centered">
@@ -49,20 +50,21 @@
         </p>
         <div class="layout layout__column layout--nogap layout--small section__image" data-bind="click: showPolDevelopmentSlideshow">
             <div class="layout layout__row layout__row--equal">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_1.webp">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_2.webp">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_3.webp">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_4.webp">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_1.webp" loading="lazy">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_2.webp" loading="lazy">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_3.webp" loading="lazy">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_4.webp" loading="lazy">
             </div>
             <div class="layout layout__row layout__row--equal">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_5.webp">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_6.webp">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_7.webp">
-                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_8.webp">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_5.webp" loading="lazy">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_6.webp" loading="lazy">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_7.webp" loading="lazy">
+                <img class="image no-shadow" src="/assets/projects/partsandsections/Pol_8.webp" loading="lazy">
             </div>
             <span class="image__action"></span>
             <span class="image__action-text"></span>
         </div>
+        <div data-bind="component: koComponents.slideshows.polDevelopment"></div>
     </div>
 </section>
 <section class="section section--secondary section--right">
@@ -75,10 +77,11 @@
             and intent. This then gave me the idea of mixing different people’s features into one ‘mashup’ person.
         </p>
         <div class="section__image" data-bind="click: showFaceMashSlideshow">
-            <img class="image no-shadow" src="/assets/projects/partsandsections/PolFaceMash.webp">
+            <img class="image no-shadow" src="/assets/projects/partsandsections/PolFaceMash.webp" loading="lazy">
             <span class="image__action"></span>
             <span class="image__action-text"></span>
         </div>
+        <div data-bind="component: koComponents.slideshows.faceMash"></div>
     </div>
 </section>
 <section class="section section--tertiary">
@@ -103,17 +106,23 @@
     <div class="content layout layout__column">
         <span class="section__title">Final Outcomes</span>
         <div class="layout layout__row layout__row--equal section__image" data-bind="click: showFinalSlideshow">
-            <img class="image" src="/assets/projects/partsandsections/Final_1.webp">
-            <img class="image" src="/assets/projects/partsandsections/Final_2.webp">
-            <img class="image" src="/assets/projects/partsandsections/Final_3.webp">
+            <img class="image" src="/assets/projects/partsandsections/Final_1.webp" loading="lazy">
+            <img class="image" src="/assets/projects/partsandsections/Final_2.webp" loading="lazy">
+            <img class="image" src="/assets/projects/partsandsections/Final_3.webp" loading="lazy">
             <span class="image__action"></span>
             <span class="image__action-text"></span>
         </div>
+        <div data-bind="component: koComponents.slideshows.final"></div>
     </div>
 </section>
 <section class="section section--primary section--centered">
     <div class="content layout layout__column">
         <span class="section__title">Project Book</span>
-        <div class="section__image" data-bind="component: koComponents.images.book"></div>
+        <div class="section__image" data-bind="click: showBookSlideshow">
+            <img class="image no-shadow" src="/assets/projects/partsandsections/book/Parts and Sections Final_0.webp" loading="lazy">
+            <span class="image__action"></span>
+            <span class="image__action-text"></span>
+        </div>
+        <div data-bind="component: koComponents.slideshows.book"></div>
     </div>
 </section>

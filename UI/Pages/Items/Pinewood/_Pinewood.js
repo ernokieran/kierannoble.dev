@@ -10,34 +10,23 @@ define(["knockout", "utilities", "text!pinewoodTemplate"],
                     viewModel: function (params) {
                         var self = this;
 
+                        self.outcomesSlideshowShown = ko.observable(false);
+
+                        self.showOutcomesSlideshow = function() {
+                            self.outcomesSlideshowShown(true);
+                        };
+
                         self.koComponents = {
-                            images: {
-                                outcome: {
-                                    name: utilities.componentNames.image,
+                            slideshows: {
+                                outcomes: {
+                                    name: utilities.componentNames.slideshow,
                                     params: {
-                                        data: {
-                                            imageUrl: "/assets/projects/pinewood/dashboard-1.webp", 
-                                        },
-                                        functions: {
-                                            actionClicked: _showOutcomeSlideshow
-                                        }
+                                        images: ["/assets/projects/pinewood/dashboard-1.webp", "/assets/projects/pinewood/dashboard-2.webp", "/assets/projects/pinewood/dashboard-3.webp", "/assets/projects/pinewood/dashboard-4.webp", "/assets/projects/pinewood/dashboard-5.webp"],
+                                        visible: self.outcomesSlideshowShown
                                     }
                                 }
                             }
                         };
-
-                        function _showOutcomeSlideshow() {
-                            params.functions.setSlideshowContent(
-                                [
-                                    "/assets/projects/pinewood/dashboard-1.webp", 
-                                    "/assets/projects/pinewood/dashboard-2.webp", 
-                                    "/assets/projects/pinewood/dashboard-3.webp", 
-                                    "/assets/projects/pinewood/dashboard-4.webp", 
-                                    "/assets/projects/pinewood/dashboard-5.webp"
-                                ]
-                            )
-                        };
-
                     }
                 });
             }

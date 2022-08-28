@@ -29,7 +29,7 @@ gulp.task('build:js', function() {
     });
 
     return gulp.src("dist/site.js")
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('./dist/'));
 });
 

@@ -10,82 +10,77 @@ define(["knockout", "utilities", "text!experimentalImageryTemplate"],
                     viewModel: function (params) {
                         var self = this;
 
+                        self.bookSlideshowShown = ko.observable(false);
+                        self.coloursSlideshowShown = ko.observable(false);
+                        self.handsSlideshowShown = ko.observable(false);
+                        self.finalSlideshowShown = ko.observable(false);
+
+                        self.showBookSlideshow = function() {
+                            self.bookSlideshowShown(true);
+                        };
+                        self.showColoursSlideshow = function() {
+                            self.coloursSlideshowShown(true);
+                        };
+                        self.showHandsSlideshow = function() {
+                            self.handsSlideshowShown(true);
+                        };
+                        self.showFinalSlideshow = function() {
+                            self.finalSlideshowShown(true);
+                        };
+
                         self.koComponents = {
-                            images: {
+                            slideshows: {
                                 book: {
-                                    name: utilities.componentNames.image,
+                                    name: utilities.componentNames.slideshow,
                                     params: {
-                                        data: {
-                                            imageUrl: "/assets/projects/experimentalimagery/book/Experimental Imagery Final_0.webp"
-                                        },
-                                        functions: {
-                                            actionClicked: _showFinalBookSlideshow
-                                        }
+                                        images: _generateBookSlideshowImages(),
+                                        downloadUrl: "/assets/projects/experimentalimagery/Experimental Imagery Final.pdf",
+                                        visible: self.bookSlideshowShown
+                                    }
+                                },
+                                hands: {
+                                    name: utilities.componentNames.slideshow,
+                                    params: {
+                                        images: ["/assets/projects/experimentalimagery/Hands_1.webp", "/assets/projects/experimentalimagery/Hands_2.webp", "/assets/projects/experimentalimagery/Hands_3.webp"],
+                                        visible: self.handsSlideshowShown
                                     }
                                 },
                                 colours: {
-                                    name: utilities.componentNames.image,
+                                    name: utilities.componentNames.slideshow,
                                     params: {
-                                        data: {
-                                            imageUrl: "/assets/projects/experimentalimagery/Colours.webp",
-                                        },
-                                        functions: {
-                                            actionClicked: _showColoursSlideshow
-                                        }
+                                        images: ["/assets/projects/experimentalimagery/Colours.webp"],
+                                        visible: self.coloursSlideshowShown
                                     }
-                                }
+                                },
+                                final: {
+                                    name: utilities.componentNames.slideshow,
+                                    params: {
+                                        images: _generateFinalSlideshowImages(),
+                                        visible: self.finalSlideshowShown
+                                    }
+                                },
                             }
                         }
 
-                        self.showHandsSlideshow = () => {
-                            _showHandsSlideshow()
-                        };
+                        function _generateBookSlideshowImages() {
+                            let items = [];
 
-                        self.showFinalSlideshow = () => {
-                            _showFinalSlideshow()
-                        };
-
-                        function _showHandsSlideshow() {
-                            params.functions.setSlideshowContent(
-                                ["/assets/projects/experimentalimagery/Hands_1.webp",
-                                    "/assets/projects/experimentalimagery/Hands_2.webp",
-                                    "/assets/projects/experimentalimagery/Hands_3.webp"
-                                ]
-                            );
-                        };
-
-                        function _showFinalSlideshow() {
-                            params.functions.setSlideshowContent(_generate());
-
-                            function _generate() {
-                                let items = [];
-
-                                for (let i = 1; i < 9; i++) {
-                                    items.push(`/assets/projects/experimentalimagery/Final_${i}.webp`)
-                                }
-
-                                return items;
+                            for (let i = 0; i < 209; i++) {
+                                items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
                             }
-                        };
 
-                        function _showColoursSlideshow() {
-                            params.functions.setSlideshowContent(["/assets/projects/experimentalimagery/Colours.webp"]);
-                        };
+                            return items;
+                        }
 
-                        function _showFinalBookSlideshow() {
-                            params.functions.setSlideshowContent(_generate(), "/assets/projects/experimentalimagery/Experimental Imagery Final.pdf");
+                        function _generateFinalSlideshowImages() {
+                            let items = [];
 
-                            function _generate() {
-                                let items = [];
-
-                                for (let i = 0; i < 209; i++) {
-                                    items.push(`/assets/projects/experimentalimagery/book/Experimental Imagery Final_${i}.webp`)
-                                }
-
-                                return items;
+                            for (let i = 1; i < 9; i++) {
+                                items.push(`/assets/projects/experimentalimagery/Final_${i}.webp`)
                             }
-                        };
 
+                            return items;
+                        }
                     }
                 });
             }

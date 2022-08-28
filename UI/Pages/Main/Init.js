@@ -1,7 +1,7 @@
 (function() {
 
-    require(["main", "navigation", "intro", "home", "pinewood", "harmony", "experimentalImagery", "partsAndSections", "footer", "slideshow", "image"],
-        function(main, intro, navigation, home, pinewood, harmony, experimentalImagery, partsAndSections, footer, slideshow, image) {
+    require(["main", "navigation", "intro", "home", "pinewood", "harmony", "experimentalImagery", "partsAndSections", "footer", "slideshow"],
+        function(main, intro, navigation, home, pinewood, harmony, experimentalImagery, partsAndSections, footer, slideshow) {
             navigation.register();
             intro.register();
             home.register();
@@ -14,7 +14,6 @@
             footer.register();
 
             slideshow.register();
-            image.register();
 
             main.mount();
         }

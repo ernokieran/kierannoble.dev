@@ -28,6 +28,7 @@
   --backgroundAlpha: 1;
   --textAlpha: 1;
   --image-max-width: 800px;
+  --logo-size: 195px;
 }
 
 .layout {
@@ -273,7 +274,8 @@ body {
   cursor: pointer;
 }
 .navigation__back--hidden {
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: none;
   margin-right: calc(var(--spacing--medium) * -1);
   margin-left: -25px;
   user-select: none;
@@ -415,6 +417,9 @@ body {
   text-transform: uppercase;
   box-shadow: var(--shadow--medium);
 }
+.portfolio-card__chip:before {
+  content: var(--theme-category);
+}
 .portfolio-card__action {
   position: absolute;
   background: url("/assets/arrow.svg") center center no-repeat;
@@ -452,6 +457,9 @@ body {
   margin: auto;
   margin-top: 70px;
   height: 50px;
+  width: var(--logo-size);
+  background: var(--theme-logo) center center no-repeat;
+  background-size: var(--logo-size);
 }
 .portfolio-card__title-description {
   opacity: 0.8;
@@ -464,6 +472,9 @@ body {
   margin-top: 10px;
   max-width: 300px;
   padding: 0 var(--spacing--medium);
+}
+.portfolio-card__title-description:before {
+  content: var(--theme-tagline);
 }
 .portfolio-card:hover {
   transform: scale(1.015);
@@ -515,6 +526,7 @@ body {
   left: 0;
   right: 0;
   display: none;
+  z-index: 10;
   background-color: rgba(51, 51, 51, 0.85);
   --theme-color: 185, 185, 185;
 }
@@ -730,6 +742,10 @@ html {
   box-shadow: none;
 }
 
+.hidden {
+  display: none;
+}
+
 strong {
   font-weight: bold !important;
 }
@@ -741,19 +757,33 @@ strong {
 .harmony {
   --theme-color: 74, 67, 181;
   --theme-background: url("/assets/projects/harmony/card.webp");
+  --theme-logo: url("/assets/projects/harmony/logo.svg");
+  --theme-tagline: "An E-Commerce platform for a modern music store";
+  --theme-category: "Backend";
 }
 
 .pinewood {
   --theme-color: 1, 43, 93;
   --theme-background: url("/assets/projects/pinewood/card.webp");
+  --theme-logo: url("/assets/projects/pinewood/logo.svg");
+  --theme-tagline: "Software Development Placement";
+  --theme-category: "Internship";
 }
 
 .experimentalImagery {
   --theme-color: 111, 70, 139;
   --theme-background: url("/assets/projects/experimentalimagery/card.webp");
+  --theme-logo: url("/assets/projects/experimentalimagery/logo.svg");
+  --theme-tagline: "A-Level Photography Component One";
+  --theme-category: "Photography";
+  --logo-size: 240px;
 }
 
 .partsAndSections {
   --theme-color: 26, 66, 49;
   --theme-background: url("/assets/projects/partsandsections/card.webp");
+  --theme-logo: url("/assets/projects/partsandsections/logo.svg");
+  --theme-tagline: "A-Level Photography Component Two";
+  --theme-category: "Photography";
+  --logo-size: 240px;
 }

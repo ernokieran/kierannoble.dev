@@ -1,7 +1,7 @@
 <header class="section section--primary section--centered">
     <div class="content layout__column layout__column--ignoreMobile layout--small">
         <div class="section__title">
-            <img src="/assets/projects/pinewood/logo.svg" class="section__logo" width="200px" alt="Pinewood Logo">
+            <img src="/assets/projects/pinewood/logo.svg" class="section__logo" width="200px" alt="Pinewood Logo" loading="lazy">
         </div>
         <h2 class="section__subtitle">Software Development Placement @ <a
                 href="https://www.pinewood.co.uk/">Pinewood Technologies</a></h2>
@@ -89,7 +89,12 @@
 <section class="section section--secondary section--centered">
     <div class="content content layout layout__column">
         <span class="section__title">UX Project Outcomes</span>
-        <div class="section__image" data-bind="component: koComponents.images.outcome">
+        <div class="section__image" data-bind="click: showOutcomesSlideshow">
+            <img class="image" src="/assets/projects/pinewood/dashboard-1.webp" loading="lazy">
+            <span class="image__action"></span>
+            <span class="image__action-text"></span>
+        </div>
+        <div data-bind="component: koComponents.slideshows.outcomes"></div>
     </div>
 </section>
 <section class="section section--primary">

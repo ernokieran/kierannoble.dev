@@ -43,7 +43,8 @@
         cursor: pointer;
 
         &--hidden {
-            opacity: 0;
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: none;
             margin-right: calc(var(--spacing--medium) * -1);
             margin-left: -25px;
             user-select: none;

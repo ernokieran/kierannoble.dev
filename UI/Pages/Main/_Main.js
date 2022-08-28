@@ -12,23 +12,8 @@
                     self.content = ko.pureComputed(function () {
                         return self.koComponents.pages[ko.unwrap(self.selectedContent)];
                     });
-
                     self.hasSelectedContent = ko.pureComputed(function () {
                         return self.selectedContent() != HOME_PAGE;
-                    });
-
-                    self.showIntro = ko.pureComputed(function () {
-                        return !self.hasSelectedContent();
-                    });
-
-                    self.slideshowImages = ko.observableArray([]);
-                    self.slideshowDownloadUrl = ko.observable(undefined);
-                    self.hasSlideshow = ko.pureComputed(function() {
-                        return ko.unwrap(self.slideshowImages).length > 0;
-                    })
-
-                    self.pageName = ko.pureComputed(function() {
-                        return ko.unwrap(self.hasSelectedContent) ? ko.unwrap(self.selectedContent) : "";
                     });
 
                     self.koComponents = {
@@ -40,8 +25,7 @@
                                         hasSelectedContent: self.hasSelectedContent
                                     },
                                     functions: {
-                                        goHome: _goHome,
-                                        showCV: _showCV
+                                        goHome: _goHome
                                     }
                                 }
                             },
@@ -67,69 +51,31 @@
                                 }
                             },
                             pinewood: {
-                                name: utilities.componentNames.pages.pinewood,
-                                params: {
-                                    functions: {
-                                        setSlideshowContent: _setSlideshowContent
-                                    }
-                                }
+                                name: utilities.componentNames.pages.pinewood
                             },
                             harmony: {
-                                name: utilities.componentNames.pages.harmony,
-                                params: {
-                                    functions: {
-                                        setSlideshowContent: _setSlideshowContent
-                                    }
-                                }
+                                name: utilities.componentNames.pages.harmony
                             },
                             experimentalImagery: {
-                                name: utilities.componentNames.pages.experimentalImagery,
-                                params: {
-                                    functions: {
-                                        setSlideshowContent: _setSlideshowContent
-                                    }
-                                }
+                                name: utilities.componentNames.pages.experimentalImagery
                             },
                             partsAndSections: {
-                                name: utilities.componentNames.pages.partsAndSections,
-                                params: {
-                                    functions: {
-                                        setSlideshowContent: _setSlideshowContent
-                                    }
-                                }
+                                name: utilities.componentNames.pages.partsAndSections
                             },
-                        },
-                        slideshow: {
-                            name: utilities.componentNames.slideshow,
-                            params: {
-                                data: {
-                                    slideshowImages: self.slideshowImages,
-                                    downloadUrl: self.slideshowDownloadUrl
-                                }
-                            }
-                        },
-                    };
-
-                    function _setSlideshowContent(slideshowImages, downloadUrl = undefined)
-                    {
-                        self.slideshowImages(slideshowImages);
-                        self.slideshowDownloadUrl(downloadUrl);
-                    }
-
-                    function _showCV() { 
-                        _setSlideshowContent(
-                            ["/assets/KieranNoble-CV-Aug22.webp"],
-                            "/assets/KieranNoble-CV-Aug22.pdf"
-                        );
+                        }
                     };
                     
                     function _updateSelectedContent(content) {
                         self.selectedContent(content);
-
                         utilities.rootElement.className = content;
                         setTimeout(() => {
-                            utilities.rootElement.scrollIntoView();
-                        }, 100);
+                            if ('scrollRestoration' in history) {
+                                history.scrollRestoration = 'manual';
+                            }
+                            window.scrollTo({
+                                top: 0
+                            });
+                        }, 150)
                     };
 
                     function _goHome() {

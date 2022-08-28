@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="portfolioCards" id="portfolio">
+<html lang="en" class="home" id="portfolio">
 
 <head>
     <meta charset="UTF-8">
@@ -16,17 +16,18 @@
     <link rel="preload" href="/assets/fonts/Lato-Regular.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 
-<body class="layout layout--portfolio" data-bind="css: { 'no-scroll': hasSlideshow() }">
+<body class="layout layout--portfolio">
 
     <div data-bind="component: koComponents.layout.navigation"></div>
-    <!-- ko if: showIntro -->
+    <!-- ko if: !hasSelectedContent() -->
     <div data-bind="component: koComponents.layout.intro"></div>
     <!-- /ko -->
-    <main class="layout" data-bind="component: content"></main>
+    <main class="layout" data-bind="component: koComponents.pages.home, css: { 'hidden': selectedContent() != 'home' }"></main>
+    <main class="layout" data-bind="component: koComponents.pages.harmony, css: { 'hidden': selectedContent() != 'harmony' }"></main>
+    <main class="layout" data-bind="component: koComponents.pages.pinewood, css: { 'hidden': selectedContent() != 'pinewood' }"></main>
+    <main class="layout" data-bind="component: koComponents.pages.experimentalImagery, css: { 'hidden': selectedContent() != 'experimentalImagery' }"></main>
+    <main class="layout" data-bind="component: koComponents.pages.partsAndSections, css: { 'hidden': selectedContent() != 'partsAndSections' }"></main>
     <div data-bind="component: koComponents.layout.footer"></div>
-
-    <div data-bind="component: koComponents.slideshow"></div>
-
 </body>
 
 </html>

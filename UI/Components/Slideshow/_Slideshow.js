@@ -1,7 +1,11 @@
 define(["knockout", "utilities", "text!slideshowTemplate"],
     function(ko, utilities, template) {
 
-        const COMPONENT_NAME = utilities.componentNames.slideshow;
+        const COMPONENT_NAME = utilities.componentNames.slideshow,
+            SCROLL_CONTAINER = utilities.rootElement.querySelector("body");
+            CSS = {
+                NO_SCROLL: "no-scroll"
+            };
 
         function register() {
             if (!ko.components.isRegistered(COMPONENT_NAME)) {
@@ -13,19 +17,14 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         var touchStart,
                             touchEnd;
 
-                        self.slideshowImages = params.data.slideshowImages;
-                        self.downloadUrl = params.data.downloadUrl;
+                        let _id = `slideshow-${Math.random().toString().replace(".", "")}`;
+
+                        self.id = ko.observable(_id);
+                        self.visible = params.visible;
+                        self.slideshowImages = params.images;
+                        self.downloadUrl = params.downloadUrl;
+
                         self.selectedIndex = ko.observable(0);
-
-                        self.showSlideshow = ko.pureComputed(function() {
-                            let length = 0;
-                            
-                            if (self.slideshowImages()) {
-                                length = self.slideshowImages().length;
-                            }
-
-                            return length != 0;
-                        });
 
                         self.showPrevious = ko.pureComputed(function() {
                             return ko.unwrap(self.selectedIndex) > 0;
@@ -43,22 +42,30 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                             return ko.unwrap(self.slideshowImages).length > 1;
                         });
 
+                        self.visible.subscribe(function(visible) {
+                            if (visible) {
+                                SCROLL_CONTAINER.classList.add(CSS.NO_SCROLL);
+                            } else {
+                                SCROLL_CONTAINER.classList.remove(CSS.NO_SCROLL);
+                            }
+                        }) 
+
                         self.selectedImage = ko.pureComputed(function() {
                             let _thumbnails = [];
 
-                            Array.from(document.getElementsByClassName("slideshow__thumbnails")[0].childNodes)
-                                .forEach((element) => {
-                                    if (element.className == "slideshow__thumbnail") {
-                                        _thumbnails.push(element)
-                                    }
-                                });
+                            // Array.from(document.getElementsByClassName("slideshow__thumbnails")[0].childNodes)
+                            //     .forEach((element) => {
+                            //         if (element.className == "slideshow__thumbnail") {
+                            //             _thumbnails.push(element)
+                            //         }
+                            //     });
 
-                            _thumbnails[ko.unwrap(self.selectedIndex)]
-                                .scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "center",
-                                    inline: "center"
-                                });
+                            // _thumbnails[ko.unwrap(self.selectedIndex)]
+                            //     .scrollIntoView({
+                            //         behavior: "smooth",
+                            //         block: "center",
+                            //         inline: "center"
+                            //     });
 
                             return ko.unwrap(self.slideshowImages)[ko.unwrap(self.selectedIndex)];
                         });
@@ -88,7 +95,7 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         }
 
                         function _close() {
-                            self.slideshowImages([]);
+                            self.visible(false);
                             self.selectedIndex(0);
                         }
 
@@ -121,17 +128,41 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         }
 
                         function _bindEvents() {
-                            document.addEventListener("click", (e) => { if (e.srcElement.classList.contains("slideshow__image")) { _close(); } })
-                            document.addEventListener("touchstart", _touchStart);
-                            document.addEventListener("touchend", _touchEnd);
+                            let _slideshow = document.getElementById(_id),
+                                _image = _slideshow.querySelector(".slideshow__image"),
+                                _thumbnails = _slideshow.querySelector(".slideshow__thumbnails");
+
+                                if (_thumbnails) {
+                                    _thumbnails.addEventListener("click", (e) => {
+                                        let _element = e.srcElement;
+
+                                        if (_element.tagName == "IMG") {
+                                            let _index = parseInt(_element.dataset.index);
+
+                                            self.selectedIndex(_index);
+                                        }
+                                    })
+                                }
+
+                            _image.addEventListener("click", (e) => {
+                                    let _element = e.srcElement;
+
+                                    if (_element.tagName != "IMG") {
+                                        _close();
+                                    }
+                            });
+
+                            _image.addEventListener("touchstart", _touchStart);
+                            _image.addEventListener("touchend", _touchEnd);
                             document.addEventListener("keydown", _keypress, true);
                         }
 
-                        function _init() {
-                            _bindEvents();
-                        }
+                        (function() {
+                            setTimeout(() => {
+                                _bindEvents();
+                            })
+                        })();
 
-                        _init()
                     }
                 });
             }

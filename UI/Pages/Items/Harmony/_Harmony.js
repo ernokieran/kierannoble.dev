@@ -1,5 +1,5 @@
 define(["knockout", "utilities", "text!harmonyTemplate"],
-    function(ko, utilities, template) {
+    function (ko, utilities, template) {
 
         const COMPONENT_NAME = utilities.componentNames.pages.harmony;
 
@@ -10,90 +10,52 @@ define(["knockout", "utilities", "text!harmonyTemplate"],
                     viewModel: function (params) {
                         var self = this;
 
+                        self.initialDesignsSlideshowShown = ko.observable(false);
+                        self.prototypeSlideshowShown = ko.observable(false);
+                        self.finalSlideshowShown = ko.observable(false);
+
+                        self.showInitialDesignsSlideshow = function () {
+                            self.initialDesignsSlideshowShown(true);
+                        };
+                        self.showPrototypeSlideshow = function () {
+                            self.prototypeSlideshowShown(true);
+                        };
+                        self.showFinalSlideshow = function () {
+                            self.finalSlideshowShown(true);
+                        };
 
                         self.koComponents = {
-                            images: {
-                                process: {
-                                    name: utilities.componentNames.image,
-                                    params: {
-                                        data: {
-                                            imageUrl: "/assets/projects/harmony/process.webp", 
-                                            clickable: false,
-                                            shadow: false,
-                                        },
-                                    }
-                                },
+                            slideshows: {
                                 initialDesigns: {
-                                    name: utilities.componentNames.image,
+                                    name: utilities.componentNames.slideshow,
                                     params: {
-                                        data: {
-                                            imageUrl: "/assets/projects/harmony/initial-designs.webp", 
-                                        },
-                                        functions: {
-                                            actionClicked: _showInitialDesignsSlideshow
-                                        }
+                                        images: ["/assets/projects/harmony/initial-designs.webp"],
+                                        visible: self.initialDesignsSlideshowShown
                                     }
                                 },
                                 prototype: {
-                                    name: utilities.componentNames.image,
+                                    name: utilities.componentNames.slideshow,
                                     params: {
-                                        data: {
-                                            imageUrl: "/assets/projects/harmony/prototype-ui.webp", 
-                                        },
-                                        functions: {
-                                            actionClicked: _showPrototypeSlideshow
-                                        }
+                                        images: ["/assets/projects/harmony/prototype-ui.webp"],
+                                        visible: self.prototypeSlideshowShown
                                     }
                                 },
                                 final: {
-                                    name: utilities.componentNames.image,
+                                    name: utilities.componentNames.slideshow,
                                     params: {
-                                        data: {
-                                            imageUrl: "/assets/projects/harmony/final-product-1.webp", 
-                                        },
-                                        functions: {
-                                            actionClicked: _showFinalSlideshow
-                                        }
+                                        images: ["/assets/projects/harmony/final-product-1.webp", "/assets/projects/harmony/final-product-2.webp", "/assets/projects/harmony/final-product-3.webp", "/assets/projects/harmony/final-product-4.webp", "/assets/projects/harmony/final-product-5.webp"],
+                                        visible: self.finalSlideshowShown
                                     }
                                 }
                             }
                         };
-
-                        function _showInitialDesignsSlideshow() {
-                            params.functions.setSlideshowContent(
-                                [
-                                    "/assets/projects/harmony/initial-designs.webp"
-                                ]
-                            )
-                        };
-
-                        function _showPrototypeSlideshow() {
-                            params.functions.setSlideshowContent(
-                                [
-                                    "/assets/projects/harmony/prototype-ui.webp"
-                                ]
-                            )
-                        };
-
-                        function _showFinalSlideshow() {
-                            params.functions.setSlideshowContent(
-                                [
-                                    "/assets/projects/harmony/final-product-1.webp",
-                                    "/assets/projects/harmony/final-product-2.webp",
-                                    "/assets/projects/harmony/final-product-3.webp",
-                                    "/assets/projects/harmony/final-product-4.webp",
-                                    "/assets/projects/harmony/final-product-5.webp"
-                                ]
-                            )
-                        };
-        
                     }
                 });
             }
 
             utilities.preloadAssets.addAsset([
                 "/assets/projects/harmony/process.webp",
-                "/assets/projects/harmony/initial-designs.webp", 
+                "/assets/projects/harmony/initial-designs.webp",
                 "/assets/projects/harmony/prototype-ui.webp",
                 "/assets/projects/harmony/final-product-1.webp"
             ]);
@@ -103,5 +65,5 @@ define(["knockout", "utilities", "text!harmonyTemplate"],
             register: register
         };
 
-    }    
+    }
 )

@@ -21,6 +21,10 @@
         letter-spacing: 3px;
         text-transform: uppercase;
         box-shadow: var(--shadow--medium);
+
+        &:before {
+            content: var(--theme-category);
+        }
     }
 
     &__action {
@@ -66,6 +70,9 @@
             margin: auto;
             margin-top: 70px;
             height: 50px;
+            width: var(--logo-size);
+            background: var(--theme-logo) center center no-repeat;
+            background-size: var(--logo-size);
         }
 
         &-description {
@@ -79,6 +86,10 @@
             margin-top: 10px;
             max-width: 300px;
             padding: 0 var(--spacing--medium);
+
+            &:before {
+                content: var(--theme-tagline);
+            }
         }
     }
 
