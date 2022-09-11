@@ -17,7 +17,10 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         var touchStart,
                             touchEnd;
 
-                        let _id = `slideshow-${Math.random().toString().replace(".", "")}`;
+                        let _id = `slideshow-${Math.random().toString().replace(".", "")}`,
+                            _slideshow,
+                            _image,
+                            _thumbnails;
 
                         self.id = ko.observable(_id);
                         self.visible = params.visible;
@@ -51,21 +54,23 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         }) 
 
                         self.selectedImage = ko.pureComputed(function() {
-                            let _thumbnails = [];
+                            let _actionableThumbnails = [];
 
-                            // Array.from(document.getElementsByClassName("slideshow__thumbnails")[0].childNodes)
-                            //     .forEach((element) => {
-                            //         if (element.className == "slideshow__thumbnail") {
-                            //             _thumbnails.push(element)
-                            //         }
-                            //     });
+                            if (_thumbnails) {
+                                Array.from(_thumbnails.childNodes)
+                                    .forEach((element) => {
+                                        if (element.className == "slideshow__thumbnail") {
+                                            _actionableThumbnails.push(element)
+                                        }
+                                    });
 
-                            // _thumbnails[ko.unwrap(self.selectedIndex)]
-                            //     .scrollIntoView({
-                            //         behavior: "smooth",
-                            //         block: "center",
-                            //         inline: "center"
-                            //     });
+                                _actionableThumbnails[ko.unwrap(self.selectedIndex)]
+                                    .scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "center",
+                                        inline: "center"
+                                    });
+                            }
 
                             return ko.unwrap(self.slideshowImages)[ko.unwrap(self.selectedIndex)];
                         });
@@ -99,50 +104,18 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                             self.selectedIndex(0);
                         }
 
-                        function _keypress(event) {
-                            let keyCode = event.keyCode;
-
-                            if (keyCode === 39) {
-                                _next();
-                            } else if (keyCode === 37) {
-                                _previous();
-                            } else if (keyCode === 27) {
-                                _close();
-                            }
-                        }
-
-                        function _touchStart(event) {
-                            touchStart = event.changedTouches[0].screenX;
-                        }
-                    
-                        function _touchEnd(event) {
-                            var threshold = 50;
-                    
-                            touchEnd = event.changedTouches[0].screenX;
-                    
-                            if (touchEnd < touchStart - threshold) {
-                               _next();
-                            } else if (touchEnd > touchStart + threshold) {
-                                _previous();
-                            }
-                        }
-
                         function _bindEvents() {
-                            let _slideshow = document.getElementById(_id),
-                                _image = _slideshow.querySelector(".slideshow__image"),
-                                _thumbnails = _slideshow.querySelector(".slideshow__thumbnails");
+                            if (_thumbnails) {
+                                _thumbnails.addEventListener("click", (e) => {
+                                    let _element = e.srcElement;
 
-                                if (_thumbnails) {
-                                    _thumbnails.addEventListener("click", (e) => {
-                                        let _element = e.srcElement;
+                                    if (_element.tagName == "IMG") {
+                                        let _index = parseInt(_element.dataset.index);
 
-                                        if (_element.tagName == "IMG") {
-                                            let _index = parseInt(_element.dataset.index);
-
-                                            self.selectedIndex(_index);
-                                        }
-                                    })
-                                }
+                                        self.selectedIndex(_index);
+                                    }
+                                })
+                            }
 
                             _image.addEventListener("click", (e) => {
                                     let _element = e.srcElement;
@@ -155,10 +128,45 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                             _image.addEventListener("touchstart", _touchStart);
                             _image.addEventListener("touchend", _touchEnd);
                             document.addEventListener("keydown", _keypress, true);
+
+                            function _touchStart(event) {
+                                touchStart = event.changedTouches[0].screenX;
+                            }
+                        
+                            function _touchEnd(event) {
+                                var threshold = 50;
+                        
+                                touchEnd = event.changedTouches[0].screenX;
+                        
+                                if (touchEnd < touchStart - threshold) {
+                                   _next();
+                                } else if (touchEnd > touchStart + threshold) {
+                                    _previous();
+                                }
+                            }
+
+                            function _keypress(event) {
+                                let keyCode = event.keyCode;
+    
+                                if (keyCode === 39) {
+                                    _next();
+                                } else if (keyCode === 37) {
+                                    _previous();
+                                } else if (keyCode === 27) {
+                                    _close();
+                                }
+                            }
                         }
+
+                        function _findElements() {
+                            _slideshow = document.getElementById(_id);
+                            _image = _slideshow.querySelector(".slideshow__image");
+                            _thumbnails = _slideshow.querySelector(".slideshow__thumbnails");
+                        };
 
                         (function() {
                             setTimeout(() => {
+                                _findElements();
                                 _bindEvents();
                             })
                         })();

@@ -12,13 +12,10 @@ define(["knockout", "utilities", "text!navigationTemplate"],
        
                         self.hasSelectedContent = params.data.hasSelectedContent;
                         self.goHome = params.functions.goHome;
-                        self.showCV = params.functions.showCV;
 
                         self.CVSlideshowShown = ko.observable(false);
 
-                        self.showCVSlideshow = function () {
-                            self.CVSlideshowShown(true);
-                        }
+                        self.showCVSlideshow = () => { self.CVSlideshowShown(true); }
 
                         self.koComponents = {
                             slideshows: {

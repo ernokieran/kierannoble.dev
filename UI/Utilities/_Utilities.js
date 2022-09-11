@@ -8,15 +8,15 @@ define(["utilsComponentNames", "utilsPreloadAssets"],
             }
 
             var _hash = "!";
-            var preventBack = function () {
+            var preventBack = () => {
                 global.location.href += "#";
 
-                global.setTimeout(function () {
+                global.setTimeout(() => {
                     global.location.href += "!";
                 }, 50);
             };
 
-            global.onhashchange = function () {
+            global.onhashchange = () => {
                 if (global.location.hash !== _hash) {
                     global.location.hash = _hash;
 

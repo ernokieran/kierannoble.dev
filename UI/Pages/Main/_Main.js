@@ -9,12 +9,8 @@
 
                     self.selectedContent = ko.observable(HOME_PAGE);
 
-                    self.content = ko.pureComputed(function () {
-                        return self.koComponents.pages[ko.unwrap(self.selectedContent)];
-                    });
-                    self.hasSelectedContent = ko.pureComputed(function () {
-                        return self.selectedContent() != HOME_PAGE;
-                    });
+                    self.content = ko.pureComputed(() => { return self.koComponents.pages[ko.unwrap(self.selectedContent)]; });
+                    self.hasSelectedContent = ko.pureComputed(() => { return self.selectedContent() != HOME_PAGE; });
 
                     self.koComponents = {
                         layout: {

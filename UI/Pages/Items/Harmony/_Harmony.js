@@ -14,15 +14,9 @@ define(["knockout", "utilities", "text!harmonyTemplate"],
                         self.prototypeSlideshowShown = ko.observable(false);
                         self.finalSlideshowShown = ko.observable(false);
 
-                        self.showInitialDesignsSlideshow = function () {
-                            self.initialDesignsSlideshowShown(true);
-                        };
-                        self.showPrototypeSlideshow = function () {
-                            self.prototypeSlideshowShown(true);
-                        };
-                        self.showFinalSlideshow = function () {
-                            self.finalSlideshowShown(true);
-                        };
+                        self.showInitialDesignsSlideshow = () => { self.initialDesignsSlideshowShown(true); };
+                        self.showPrototypeSlideshow = () => { self.prototypeSlideshowShown(true); };
+                        self.showFinalSlideshow = () => { self.finalSlideshowShown(true); };
 
                         self.koComponents = {
                             slideshows: {

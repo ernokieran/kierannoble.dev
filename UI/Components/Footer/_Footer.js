@@ -14,9 +14,7 @@ define(["knockout", "utilities", "text!footerTemplate", "text!version"],
         
                         self.hasSelectedContent = params.data.hasSelectedContent;
         
-                        self.showSeperator = ko.pureComputed(function () {
-                            return !self.hasSelectedContent();
-                        });
+                        self.showSeperator = ko.pureComputed(() => { return !self.hasSelectedContent(); });
                     }
                 });
             }
