@@ -33,6 +33,10 @@ define(["knockout", "utilities", "text!navigationTemplate"],
                     }
                 });
             }
+
+            utilities.preloadAssets.addAsset([
+                "/assets/KieranNoble-CV-Aug22.webp"
+            ]);
         }
 
         return {

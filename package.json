@@ -1,12 +1,12 @@
 {
-  "name": "newportfolio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "kierannoble.dev",
+  "version": "1.0.1",
+  "description": "Personal portfolio website for Kieran Noble (@AyloKieran)",
+  "main": "gulpfule.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "howdy@kierannoble.dev",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^4.0.2",

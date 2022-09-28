@@ -573,9 +573,10 @@ body {
   align-items: center;
 }
 .slideshow__image img {
+  --max-image-fill: 90%;
   width: auto;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: var(--max-image-fill);
+  max-height: var(--max-image-fill);
 }
 .slideshow__image--full {
   height: 100%;
