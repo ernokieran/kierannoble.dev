@@ -1,13 +1,13 @@
 <div class="slideshow" data-bind="css: { 'slideshow--shown': visible() }, attr: { id: id }">
 
     <div class="slideshow__image" data-bind="css: { 'slideshow__image--full': !showThumbnails() }">
-        <img data-bind="attr:{ src: selectedImage() }" loading="lazy">
+        <img data-bind="attr:{ src: selectedImage() }" loading="lazy" decoding="async">
     </div>
 
     <div class="slideshow__thumbnails-holder" data-bind="if: showThumbnails">
         <div class="slideshow__thumbnails" data-bind="foreach: slideshowImages">
             <div class="slideshow__thumbnail">
-                <img data-bind="attr: { src: $data, 'data-index': $index() }" width="120" height="60" loading="lazy">
+                <img data-bind="attr: { src: $data, 'data-index': $index() }" width="120" height="60" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
