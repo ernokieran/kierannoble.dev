@@ -1,10 +1,11 @@
 {
   "name": "kierannoble.dev",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Personal portfolio website for Kieran Noble (@AyloKieran)",
   "main": "gulpfule.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp build",
+    "watcj": "gulp watch"
   },
   "author": "howdy@kierannoble.dev",
   "license": "ISC",
