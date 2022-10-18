@@ -34,7 +34,6 @@ define(["knockout", "utilities", "text!experimentalImageryTemplate"],
                                     name: utilities.componentNames.slideshow,
                                     params: {
                                         images: _generateBookSlideshowImages(),
-                                        downloadUrl: "/assets/projects/experimentalimagery/Experimental Imagery Final.pdf",
                                         visible: self.bookSlideshowShown
                                     }
                                 },

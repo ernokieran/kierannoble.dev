@@ -66,7 +66,6 @@ define(["knockout", "utilities", "text!partsAndSectionsTemplate"],
                                     name: utilities.componentNames.slideshow,
                                     params: {
                                         images: _generateBookSlideshowImages(),
-                                        downloadUrl: "/assets/projects/partsandsections/Parts and Sections Final.pdf",
                                         visible: self.bookSlideshowShown
                                     }
                                 },
