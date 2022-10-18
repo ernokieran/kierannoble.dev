@@ -90,8 +90,6 @@ define(["knockout", "utilities", "text!experimentalImageryTemplate"],
                 "/assets/projects/experimentalimagery/Hands_2.webp",
                 "/assets/projects/experimentalimagery/Hands_3.webp",
                 "/assets/projects/experimentalimagery/Colours.webp",
-                "/assets/projects/experimentalimagery/Motion_1.mp4",
-                "/assets/projects/experimentalimagery/Motion_2.mp4",
                 "/assets/projects/experimentalimagery/Final_1.webp",
                 "/assets/projects/experimentalimagery/Final_2.webp",
                 "/assets/projects/experimentalimagery/Final_3.webp",
@@ -100,7 +98,6 @@ define(["knockout", "utilities", "text!experimentalImageryTemplate"],
                 "/assets/projects/experimentalimagery/Final_6.webp",
                 "/assets/projects/experimentalimagery/Final_7.webp",
                 "/assets/projects/experimentalimagery/Final_8.webp",
-                "/assets/projects/experimentalimagery/Final.mp4"
             ]);
         }
 
