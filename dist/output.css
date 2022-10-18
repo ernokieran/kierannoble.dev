@@ -149,6 +149,9 @@ body {
   width: fit-content;
   margin: auto;
 }
+.section__video {
+  position: relative;
+}
 .section--primary {
   background-color: rgba(var(--theme-color));
   color: rgba(255, 255, 255, 0.7);
@@ -618,6 +621,15 @@ body {
 }
 .socialLink__image:hover {
   opacity: 1;
+}
+
+.video {
+  margin: auto;
+  max-width: var(--image-max-width);
+  width: 100%;
+  border-radius: var(--rounded--large);
+  box-shadow: var(--shadow--medium);
+  aspect-ratio: 16/9;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

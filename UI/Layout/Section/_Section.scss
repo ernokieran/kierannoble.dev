@@ -30,6 +30,10 @@
         margin: auto;
     }
 
+    &__video {
+        position: relative;
+    }
+
     &--primary {
         background-color: rgba(var(--theme-color));
         color: rgba(255, 255, 255, 0.7);
