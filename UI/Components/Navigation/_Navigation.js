@@ -1,5 +1,5 @@
 define(["knockout", "utilities", "text!navigationTemplate"],
-    function(ko, utilities, template) {
+    function (ko, utilities, template) {
 
         const COMPONENT_NAME = utilities.componentNames.layout.navigation;
 
@@ -9,7 +9,7 @@ define(["knockout", "utilities", "text!navigationTemplate"],
                     template: template,
                     viewModel: function (params) {
                         var self = this;
-       
+
                         self.hasSelectedContent = params.data.hasSelectedContent;
                         self.goHome = params.functions.goHome;
 
@@ -22,8 +22,8 @@ define(["knockout", "utilities", "text!navigationTemplate"],
                                 cv: {
                                     name: utilities.componentNames.slideshow,
                                     params: {
-                                        images: ["/assets/KieranNoble-CV-Aug22.webp"],
-                                        downloadUrl: "/assets/KieranNoble-CV-Aug22.pdf",
+                                        images: ["/assets/KieranNoble-CV-Nov22.webp"],
+                                        downloadUrl: "/assets/KieranNoble-CV-Nov22.pdf",
                                         visible: self.CVSlideshowShown
                                     }
                                 }
@@ -35,7 +35,7 @@ define(["knockout", "utilities", "text!navigationTemplate"],
             }
 
             utilities.preloadAssets.addAsset([
-                "/assets/KieranNoble-CV-Aug22.webp"
+                "/assets/KieranNoble-CV-Nov22.webp"
             ]);
         }
 
@@ -43,5 +43,5 @@ define(["knockout", "utilities", "text!navigationTemplate"],
             register: register
         };
 
-    }    
+    }
 )
