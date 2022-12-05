@@ -7,7 +7,8 @@
     <div class="slideshow__thumbnails-holder" data-bind="if: showThumbnails">
         <div class="slideshow__thumbnails" data-bind="foreach: slideshowImages">
             <div class="slideshow__thumbnail">
-                <img data-bind="attr: { src: $data, 'data-index': $index() }" width="120" height="60" loading="lazy" decoding="async">
+                <img data-bind="attr: generateThumbnailUrl($data, $index())" width="120" height="60" loading="lazy"
+                    decoding="async">
             </div>
         </div>
     </div>

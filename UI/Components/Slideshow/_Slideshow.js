@@ -1,11 +1,11 @@
 define(["knockout", "utilities", "text!slideshowTemplate"],
-    function(ko, utilities, template) {
+    function (ko, utilities, template) {
 
         const COMPONENT_NAME = utilities.componentNames.slideshow,
             SCROLL_CONTAINER = utilities.rootElement.querySelector("body");
-            CSS = {
-                NO_SCROLL: "no-scroll"
-            };
+        CSS = {
+            NO_SCROLL: "no-scroll"
+        };
 
         function register() {
             if (!ko.components.isRegistered(COMPONENT_NAME)) {
@@ -13,7 +13,7 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                     template: template,
                     viewModel: function (params) {
                         var self = this;
-                        
+
                         var touchStart,
                             touchEnd;
 
@@ -29,31 +29,31 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
 
                         self.selectedIndex = ko.observable(0);
 
-                        self.showPrevious = ko.pureComputed(function() {
+                        self.showPrevious = ko.pureComputed(function () {
                             return ko.unwrap(self.selectedIndex) > 0;
                         });
 
-                        self.showNext = ko.pureComputed(function() {
+                        self.showNext = ko.pureComputed(function () {
                             return ko.unwrap(self.selectedIndex) < (ko.unwrap(self.slideshowImages).length - 1)
                         });
 
-                        self.showDownload = ko.pureComputed(function() {
+                        self.showDownload = ko.pureComputed(function () {
                             return ko.unwrap(self.downloadUrl) != undefined;
                         });
 
-                        self.showThumbnails = ko.pureComputed(function() {
+                        self.showThumbnails = ko.pureComputed(function () {
                             return ko.unwrap(self.slideshowImages).length > 1;
                         });
 
-                        self.visible.subscribe(function(visible) {
+                        self.visible.subscribe(function (visible) {
                             if (visible) {
                                 SCROLL_CONTAINER.classList.add(CSS.NO_SCROLL);
                             } else {
                                 SCROLL_CONTAINER.classList.remove(CSS.NO_SCROLL);
                             }
-                        }) 
+                        })
 
-                        self.selectedImage = ko.pureComputed(function() {
+                        self.selectedImage = ko.pureComputed(function () {
                             let _actionableThumbnails = [];
 
                             if (_thumbnails) {
@@ -74,19 +74,28 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
 
                             return ko.unwrap(self.slideshowImages)[ko.unwrap(self.selectedIndex)];
                         });
-                        
+
                         self.previous = () => { _previous() };
                         self.next = () => { _next() };
                         self.close = () => { _close(); }
+                        generateThumbnailUrl = function (url, index) {
+                            let _src = url.split(".")[0] + "-thumbnail" + "." + url.split(".")[1];
 
-                        selectImage = function(index) {
+                            return {
+                                'src': _src,
+                                'data-index': index
+                            };
+
+                        };
+
+                        selectImage = function (index) {
                             self.selectedIndex(index);
                         }
 
                         function _previous() {
                             if (ko.unwrap(self.showPrevious)) {
                                 let previousIndex = ko.unwrap(self.selectedIndex) - 1;
-    
+
                                 self.selectedIndex(previousIndex);
                             }
                         }
@@ -94,7 +103,7 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                         function _next() {
                             if (ko.unwrap(self.showNext)) {
                                 let nextIndex = ko.unwrap(self.selectedIndex) + 1;
-    
+
                                 self.selectedIndex(nextIndex);
                             }
                         }
@@ -118,11 +127,11 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                             }
 
                             _image.addEventListener("click", (e) => {
-                                    let _element = e.srcElement;
+                                let _element = e.srcElement;
 
-                                    if (_element.tagName != "IMG") {
-                                        _close();
-                                    }
+                                if (_element.tagName != "IMG") {
+                                    _close();
+                                }
                             });
 
                             _image.addEventListener("touchstart", _touchStart);
@@ -132,14 +141,14 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                             function _touchStart(event) {
                                 touchStart = event.changedTouches[0].screenX;
                             }
-                        
+
                             function _touchEnd(event) {
                                 var threshold = 50;
-                        
+
                                 touchEnd = event.changedTouches[0].screenX;
-                        
+
                                 if (touchEnd < touchStart - threshold) {
-                                   _next();
+                                    _next();
                                 } else if (touchEnd > touchStart + threshold) {
                                     _previous();
                                 }
@@ -147,7 +156,7 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
 
                             function _keypress(event) {
                                 let keyCode = event.keyCode;
-    
+
                                 if (keyCode === 39) {
                                     _next();
                                 } else if (keyCode === 37) {
@@ -164,7 +173,7 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
                             _thumbnails = _slideshow.querySelector(".slideshow__thumbnails");
                         };
 
-                        (function() {
+                        (function () {
                             setTimeout(() => {
                                 _findElements();
                                 _bindEvents();
@@ -180,5 +189,5 @@ define(["knockout", "utilities", "text!slideshowTemplate"],
             register: register
         };
 
-    }    
+    }
 )
