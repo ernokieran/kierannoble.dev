@@ -67,7 +67,7 @@
         max-width: var(--max-width);
         padding: 50px;
         font-family: var(--font-family--normal);
-        // margin: 0 auto;
+        margin: 0 auto;
 
         @include mobileSize((
             padding: 24px
@@ -77,5 +77,6 @@
 
 @import "Container/Container";
 @import "Content/Content";
+@import "Loader/Loader";
 @import "ScrollBar/ScrollBar";
 @import "Section/Section";

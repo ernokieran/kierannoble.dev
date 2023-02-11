@@ -22,8 +22,7 @@
       }
   }
 
-body { // TO DO: does this need to be on the container?
+body {
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-gutter: stable;
-  }
+}

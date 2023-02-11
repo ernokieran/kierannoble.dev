@@ -1,11 +1,18 @@
+import { useContext } from 'react';
+import { ProjectContext } from '../../Context';
 import linkedin from '../../assets/social/linkedin.svg';
+import twitter from '../../assets/social/twitter.svg';
+import telegram from '../../assets/social/telegram.svg';
 import email from '../../assets/social/email.svg';
-const version = 'v1.0.0';
 
 function Footer() {
+    const { project } = useContext(ProjectContext);
+
     return (
         <footer className="footer">
-            <div className="seperator"></div>
+            {
+                project != 'home' ? '' : <div className="seperator"></div>
+            }
             <div className="logo logo--default"></div>
             <div className="footer__contact">
                 <a href="mailto:howdy@kierannoble.dev">howdy@kierannoble.dev</a>
@@ -15,18 +22,17 @@ function Footer() {
                 <a href="https://www.linkedin.com/in/kierannoble/" className="socialLink">
                     <img className="socialLink__image" src={linkedin} alt="LinkedIn" loading="lazy" decoding="async" />
                 </a>
-                {/* <a href="https://twitter.com/aylokieran" className="socialLink">
-                    <img className="socialLink__image" src="/assets/social/twitter.svg" alt="Twitter" loading="lazy" decoding="async" />
+                <a href="https://twitter.com/aylokieran" className="socialLink">
+                    <img className="socialLink__image" src={twitter} alt="Twitter" loading="lazy" decoding="async" />
                 </a>
                 <a href="https://t.me/aylokieran" className="socialLink">
-                    <img className="socialLink__image" src="/assets/social/telegram.svg" alt="Telegram" loading="lazy" decoding="async" />
-                </a> */}
+                    <img className="socialLink__image" src={telegram} alt="Telegram" loading="lazy" decoding="async" />
+                </a>
                 <a href="mailto:howdy@kierannoble.dev" className="socialLink">
                     <img className="socialLink__image" src={email} alt="Email" loading="lazy" decoding="async" />
                 </a>
             </div>
-            <div className="footer__version">{version}</div>
-            {/* TO DO: dynamic version */}
+            <div className="footer__version">{__APP_VERSION__}</div>
         </footer>
     );
 }

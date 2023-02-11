@@ -1,6 +1,6 @@
 import { Suspense, useContext } from "react";
 import { Outlet } from 'react-router-dom';
-import { Header, Footer } from './Components/Layout';
+import { Header, Footer, Loader } from './Components/Layout';
 import { ProjectContext } from './Context';
 
 function BaseLayout() {
@@ -11,13 +11,13 @@ function BaseLayout() {
             <div className="layout layout--portfolio">
                 <Header />
                 <main>
-                    <Suspense>
+                    <Suspense fallback={<Loader />}>
                         <Outlet />
                     </Suspense>
                 </main>
                 <Footer />
             </div>
-        </div >
+        </div>
     )
 }
 

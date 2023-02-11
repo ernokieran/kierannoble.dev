@@ -31,16 +31,18 @@ ul {
     }
 }
 
+#root {
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
 .text--center {
     text-align: center;
 }
 
 main {
     flex-grow: 1;
-}
-
-html {
-
 }
 
 .no-scroll {

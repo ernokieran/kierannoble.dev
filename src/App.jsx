@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Harmony } from './Routes';
 import { ProjectContext } from './Context';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import AppLayout from './AppLayout';
+const Home = React.lazy(() => import('./Routes/Home'));
+const Harmony = React.lazy(() => import('./Routes/Harmony'));
 
 function App() {
   const [project, setProject] = useState('home');
@@ -19,6 +20,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      {/* TO DO: this needs an error page somewhere */}
     </ProjectContext.Provider>
   )
 }

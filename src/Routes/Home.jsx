@@ -15,20 +15,12 @@ function Home() {
             <Intro />
             <main className="layout">
                 <section className="layout__row">
-                    <div className="harmony layout__column--double">
-                        <ProjectTile route="/project/harmony" />
-                    </div>
-                    <div className="pinewood">
-                        <ProjectTile />
-                    </div>
+                    <ProjectTile route="/project/harmony" name="harmony" className="layout__column--double" />
+                    <ProjectTile name="pinewood" />
                 </section>
                 <section className="layout__row layout__row--equal">
-                    <div className="experimentalImagery">
-                        <ProjectTile />
-                    </div>
-                    <div className="partsAndSections">
-                        <ProjectTile />
-                    </div>
+                    <ProjectTile name="experimentalImagery" />
+                    <ProjectTile name="partsAndSections" />
                 </section>
             </main>
         </div>

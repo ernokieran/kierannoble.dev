@@ -7,14 +7,12 @@ function Header() {
 
     return (
         <nav className="navigation">
-            <div className="layout layout__row layout__row--ignoreMobile layout--nomargin">
-                <Link to="/">
-                    <div className={`navigation__back ${project != 'home' ? '' : 'navigation__back--hidden'}`}></div>
-                    <div className="logo"></div>
-                </Link>
-            </div>
+            <Link to="/" className="layout layout__row layout__row--ignoreMobile layout--nomargin">
+                <div className={`navigation__back ${project != 'home' ? '' : 'navigation__back--hidden'}`}></div>
+                <div className="logo"></div>
+            </Link>
             <a className="navigation__action">CV</a>
-        </nav >
+        </nav>
     );
 }
 
