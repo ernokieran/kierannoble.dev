@@ -1,0 +1,98 @@
+.portfolio-card {
+    position: relative;
+    height: var(--portfolio-card-size);
+    min-width: 250px;
+    border-radius: var(--rounded--medium);
+    box-shadow: var(--shadow--small);
+    transition: transform 0.3s ease;
+    background: var(--theme-background) bottom center no-repeat;
+    background-size: auto var(--portfolio-card-size);
+
+    &__chip {
+        position: absolute;
+        padding: 10px 20px;
+        color: white;
+        background-color: rgba(var(--theme-color));
+        bottom: 20px;
+        left: 20px;
+        font-size: var(--font-smaller);
+        border-radius: var(--rounded--extraLarge);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        box-shadow: var(--shadow--medium);
+
+        &:before {
+            content: var(--theme-category);
+        }
+    }
+
+    &__action {
+        position: absolute;
+        background: url("@/arrow.svg") center center no-repeat;
+        background-size: var(--action-icon-size);
+        width: 40px;
+        height: 40px;
+        background-color: rgba(var(--theme-color));
+        top: 20px;
+        right: 20px;
+        border-radius: 100%;
+        box-shadow: var(--shadow--medium);
+
+        &-text {
+            opacity: 0;
+            text-transform: uppercase;
+            color: white;
+            font-size: var(--font-extraSmall);
+            letter-spacing: 1px;
+            position: absolute;
+            top: 34px;
+            right: 65px;
+            transition: opacity 0.3s ease;
+
+            &:before {
+                content: "View Project";
+            }
+        }     
+        
+        &:hover {
+            & ~ .portfolio-card__action-text {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+
+        &-logo {
+            margin: auto;
+            margin-top: 70px;
+            height: 50px;
+            width: var(--logo-size);
+            background: var(--theme-logo) center center no-repeat;
+            background-size: var(--logo-size);
+        }
+
+        &-description {
+            opacity: 0.8;
+            font-family: var(--font-family--light);
+            letter-spacing: 1px;
+            color: white;
+            text-align: center;
+            margin: auto;
+            width: auto;
+            margin-top: 10px;
+            max-width: 300px;
+            padding: 0 var(--spacing--medium);
+
+            &:before {
+                content: var(--theme-tagline);
+            }
+        }
+    }
+
+    &:hover {
+        transform: scale(1.015);
+    }
+}

@@ -1,0 +1,29 @@
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+
+    &-track {
+        background-color: transparent;
+    }
+
+    &-thumb {
+        background-color: rgba(var(--theme-color), 0.35);
+        border-radius: 20px;
+        border: 4px solid transparent;
+        background-clip: content-box;
+
+        &:hover {
+            background-color: rgba(var(--theme-color), 0.75);
+        }
+        
+        &:active {
+            background-color: rgba(var(--theme-color), 1);
+        }
+      }
+  }
+
+body { // TO DO: does this need to be on the container?
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+  }

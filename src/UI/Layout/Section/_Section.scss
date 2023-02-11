@@ -1,0 +1,101 @@
+@import "../../Mixins";
+
+.section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    color: #666;
+
+    &__title {
+        font-size: var(--font-large);
+        font-family: var(--font-family--block);
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: 100;
+        letter-spacing: 1.5px;
+        color: #444;
+    }
+
+    &__subtitle {
+        font-family: var(--font-family--bold);
+        font-size: var(--font-medium);
+    }
+
+    &__image {
+        position: relative;
+        width: fit-content;
+        margin: auto;
+    }
+
+    &__video {
+        position: relative;
+    }
+
+    &--primary {
+        background-color: rgba(var(--theme-color));
+        color: rgba(255, 255, 255, 0.7);
+
+        & .section__title {
+            color: rgb(255, 255, 255);
+        }
+
+        & .section__subtitle {
+            color: rgba(255, 255, 255, 0.85)
+        }
+
+        & a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: underline;
+
+            &:hover {
+                color: rgba(255, 255, 255);
+            }
+        }
+    }
+
+    &--secondary {
+        --backgroundAlpha: 0.35;
+        --textAlpha: 0.85;
+        background-color: rgba(var(--theme-color), var(--backgroundAlpha));
+        color: rgba(var(--theme-color), var(--textAlpha));
+    
+
+        & .section__title {
+            color: rgba(var(--theme-color));
+        }
+    }
+
+    &--tertiary {
+        background-color: #ddd;
+        // color: black;
+
+        & .section__title {
+            color: #555;
+        }
+    }
+
+    &--centered {
+        text-align: center;
+        
+        & .section__title {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    &--right {
+        text-align: right;
+        
+        & .section__title {
+            width: 100%;
+            text-align: right;
+        }
+
+        @include mobileSize((
+            text-align: left
+        ));
+    }
+}

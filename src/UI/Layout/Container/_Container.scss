@@ -1,0 +1,10 @@
+.container {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
+
+    & > .layout {
+        flex-grow: 1;
+    }
+}

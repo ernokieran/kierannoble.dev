@@ -1,0 +1,44 @@
+.image {
+    margin: auto;
+    max-width: var(--image-max-width);
+    width: 100%;
+    border-radius: var(--rounded--large);
+    box-shadow: var(--shadow--medium);
+
+    &__action {
+        position: absolute;
+        background: url("@/arrow.svg") center center no-repeat;
+        background-size: var(--action-icon-size);
+        width: 32px;
+        height: 32px;
+        background-color: rgba(var(--theme-color), 0.8);
+        top: 16px;
+        right: 16px;
+        border-radius: 100%;
+        box-shadow: var(--shadow--medium);
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+
+        &-text {
+            opacity: 0;
+            text-transform: uppercase;
+            color: white;
+            font-size: var(--font-extraSmall);
+            letter-spacing: 1px;
+            position: absolute;
+            top: 28px;
+            right: 57px;
+            transition: opacity 0.3s ease;
+
+            &:before {
+                content: "View Media";
+            }
+        }     
+        
+        &:hover {
+            & ~ .image__action-text {
+                opacity: 0.8;
+            }
+        }
+    }
+}
