@@ -1,7 +1,7 @@
 function Section(props) {
     return (
         <div className={`section ${props.type ?? false ? `section--${props.type}` : ""} ${props.align ?? false ? `section--${props.align}` : ""}`}>
-            <div className="content layout__column layout--small">
+            <div className="content layout layout__column layout--small">
                 {props.children}
             </div>
         </div>

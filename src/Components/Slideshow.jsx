@@ -25,19 +25,19 @@ function Slideshow(props) {
     function next() { setShownIndex(shownIndex + 1); }
 
     return (
-        <div>
+        <span>
             <div onClick={open}>
                 {props.children}
             </div>
             <div className={`slideshow ${shown ? 'slideshow--shown' : ''}`}>
                 <div className={`slideshow__image ${!hasMultipleImages ? 'slideshow__image--full' : ''}`}>
-                    <SlideshowImage src={images[shownIndex]?.path ?? ""} />
+                    <SlideshowImage src={images[shownIndex ?? 0].path} />
                 </div>
                 {hasMultipleImages && (
                     <div className="slideshow__thumbnails-holder">
                         <div className="slideshow__thumbnails">
                             {images.map((image, index) => (
-                                <SlideshowThumbnail key={index} src={image?.path ?? ""} onClick={() => { setShownIndex(index) }} />
+                                <SlideshowThumbnail key={index} src={image.path} onClick={() => { setShownIndex(index) }} />
                             ))}
                         </div>
                     </div>
@@ -53,7 +53,7 @@ function Slideshow(props) {
                     <a className="slideshow__button slideshow__button--download" href={props.download} download></a>
                 )}
             </div>
-        </div>
+        </span>
     );
 }
 

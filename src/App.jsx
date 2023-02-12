@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import AppLayout from './AppLayout';
 const Home = React.lazy(() => import('./Routes/Home'));
 const Harmony = React.lazy(() => import('./Routes/Harmony'));
+const Pinewood = React.lazy(() => import('./Routes/Pinewood'));
+const PartsAndSections = React.lazy(() => import('./Routes/PartsAndSections'));
 
 function App() {
   const [project, setProject] = useState('home');
@@ -16,6 +18,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/project">
               <Route path="/project/harmony" element={<Harmony />} />
+              <Route path="/project/pinewood" element={<Pinewood />} />
+              <Route path="/project/parts-and-sections" element={<PartsAndSections />} />
             </Route>
           </Route>
         </Routes>

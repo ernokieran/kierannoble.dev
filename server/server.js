@@ -8,7 +8,7 @@ const INDEX = '/index.html'
 express()
     .use((req, res) => {
         req.originalUrl.startsWith("/assets")
-            ? res.sendFile(req.originalUrl.replace('/assets/', ''), { root: './dist/assets' })
+            ? res.sendFile(req.originalUrl.replace(/%20/g, " ").replace('/assets/', ''), { root: './dist/assets' })
             : req.originalUrl.split('.')[1] != undefined
                 ? res.sendFile(req.originalUrl, { root: './dist' })
                 : res.sendFile(INDEX, { root: './dist' })

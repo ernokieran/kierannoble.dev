@@ -16,11 +16,11 @@ function Home() {
             <main className="layout">
                 <section className="layout__row">
                     <ProjectTile route="/project/harmony" name="harmony" className="layout__column--double" />
-                    <ProjectTile name="pinewood" />
+                    <ProjectTile route="/project/pinewood" name="pinewood" />
                 </section>
                 <section className="layout__row layout__row--equal">
                     <ProjectTile name="experimentalImagery" />
-                    <ProjectTile name="partsAndSections" />
+                    <ProjectTile route="/project/parts-and-sections" name="partsAndSections" />
                 </section>
             </main>
         </div>
