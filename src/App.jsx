@@ -20,6 +20,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      {/* TO DO: this needs an error boundary */}
       {/* TO DO: this needs an error page somewhere */}
     </ProjectContext.Provider>
   )

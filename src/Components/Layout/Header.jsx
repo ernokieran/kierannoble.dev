@@ -11,7 +11,7 @@ function Header() {
                 <div className={`navigation__back ${project != 'home' ? '' : 'navigation__back--hidden'}`}></div>
                 <div className="logo"></div>
             </Link>
-            <a className="navigation__action">CV</a>
+            {/* <a className="navigation__action">CV</a> */}
         </nav>
     );
 }
