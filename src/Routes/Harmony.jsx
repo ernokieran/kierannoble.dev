@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { ProjectContext } from '../Context';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column } from '../Components/Layout';
+import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row, Column } from '../Components/Layout';
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import harmonyLogo from "../assets/projects/harmony/logo.svg"
 import processImage from "../assets/projects/harmony/process.webp"
@@ -42,7 +42,7 @@ function Harmony() {
         <main className="layout">
             <Section type="primary" align="centered">
                 <SectionTitle>
-                    <img src={harmonyLogo} className="section__logo" width="200px" alt="Harmony Logo" loading="lazy" decoding="async" />
+                    <SectionLogo src={harmonyLogo} />
                 </SectionTitle>
                 <SectionSubtitle>
                     An E-Commerce platform for the modern music industry

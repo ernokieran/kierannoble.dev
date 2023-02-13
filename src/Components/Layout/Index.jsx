@@ -6,5 +6,6 @@ export { default as Loader } from './Loader';
 export { default as Row } from './Row';
 export { default as Section } from './Section';
 export { default as SectionImage } from './SectionImage';
+export { default as SectionLogo } from './SectionLogo';
 export { default as SectionSubtitle } from './SectionSubtitle';
 export { default as SectionTitle } from './SectionTitle';

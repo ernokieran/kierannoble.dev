@@ -19,7 +19,7 @@ function Home() {
                     <ProjectTile route="/project/pinewood" name="pinewood" />
                 </section>
                 <section className="layout__row layout__row--equal">
-                    <ProjectTile name="experimentalImagery" />
+                    <ProjectTile route="/project/experimental-imagery" name="experimentalImagery" />
                     <ProjectTile route="/project/parts-and-sections" name="partsAndSections" />
                 </section>
             </main>

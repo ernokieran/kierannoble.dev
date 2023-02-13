@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { ProjectContext } from '../Context';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column } from '../Components/Layout';
+import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column, SectionLogo } from '../Components/Layout';
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import pinewoodLogo from "../assets/projects/pinewood/logo.svg"
 import dashboard from "../assets/projects/pinewood/slideshows/dashboard-1.webp"
@@ -31,7 +31,7 @@ function Pinewood() {
         <main className="layout">
             <Section type="primary" align="centered">
                 <SectionTitle>
-                    <img src={pinewoodLogo} className="section__logo" width="200px" alt="Harmony Logo" loading="lazy" decoding="async" />
+                    <SectionLogo src={pinewoodLogo} />
                 </SectionTitle>
                 <SectionSubtitle>
                     Software Development Placement @ <a href="https://www.pinewood.co.uk">Pinewood Technologies</a>

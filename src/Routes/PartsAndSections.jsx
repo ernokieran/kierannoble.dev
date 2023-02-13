@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { ProjectContext } from '../Context';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column } from '../Components/Layout';
+import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column, SectionLogo } from '../Components/Layout';
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import partsAndSectionsLogo from "../assets/projects/partsandsections/logo.svg"
 import development from "../assets/projects/partsandsections/Slideshows/PolFaceMash.webp"
@@ -68,7 +68,7 @@ function PartsAndSections() {
         <main className="layout">
             <Section type="primary" align="centered">
                 <SectionTitle>
-                    <img src={partsAndSectionsLogo} className="section__logo" width="200px" alt="Harmony Logo" loading="lazy" decoding="async" />
+                    <SectionLogo src={partsAndSectionsLogo} />
                 </SectionTitle>
                 <SectionSubtitle>
                     A-Level Photography Component Two & Exam - Marked at Grade A
