@@ -1,6 +1,27 @@
+import { useState, useEffect } from "react";
+
 function SlideshowImage(props) {
+    const [loaded, setLoaded] = useState(false);
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        if (props.src != image) {
+            setImage(props.src);
+            setLoaded(false);
+        }
+    }, [props.src]);
+
+    function imageLoaded() {
+        setLoaded(true);
+    }
+
     return (
-        <img src={props.src} />
+        <div className="slideshow__image-holder">
+            {loaded ? <img src={props.src} /> : (
+                <div class="loader">
+                    <img src={props.src} onLoad={imageLoaded} style={{ display: "none" }} /></div>
+            )}
+        </div>
     );
 }
 
