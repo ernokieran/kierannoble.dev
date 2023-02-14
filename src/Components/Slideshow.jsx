@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
+import { useBindKeyPress, useKeyPress } from '../Hooks';
 import { SlideshowImage, SlideshowThumbnail, SlideshowButton } from './';
 
 function Slideshow(props) {
-    const [shownIndex, setShownIndex] = useState(props.shownIndex ?? null);
     const [images] = useState(props.images ?? []);
+    const [shownIndex, setShownIndex] = useState(props.shownIndex ?? null);
+    const [hasNext, setHasNext] = useState(false);
+    const [hasPrevious, setHasPrevious] = useState(false);
 
     let shown = shownIndex != null,
         hasMultipleImages = (images.length ?? 0) > 1,
-        hasPrevious = shownIndex > 0,
-        hasNext = shownIndex < (images.length ?? 0) - 1,
         hasDownload = props.download ?? null != null;
 
+    useBindKeyPress(useKeyPress("Escape"), close, [shown]);
+    useBindKeyPress(useKeyPress("ArrowLeft"), previous, [shown, hasPrevious]);
+    useBindKeyPress(useKeyPress("ArrowRight"), next, [shown, hasNext]);
+
     useEffect(() => {
-        // if (shown) {
-        //     console.log("mount");
-        // } else {
-        //     console.log("unmount");
-        // }
-    }, [shown]);
+        setHasPrevious(shownIndex > 0);
+        setHasNext(shownIndex < (images.length ?? 0) - 1);
+    }, [shownIndex]);
 
     function open() { setShownIndex(0); }
     function close() { setShownIndex(null); }
@@ -31,13 +33,13 @@ function Slideshow(props) {
             </div>
             <div className={`slideshow ${shown ? 'slideshow--shown' : ''}`}>
                 <div className={`slideshow__image ${!hasMultipleImages ? 'slideshow__image--full' : ''}`}>
-                    <SlideshowImage src={images[shownIndex ?? 0].path} />
+                    <SlideshowImage src={images[shownIndex ?? 0]?.path ?? ""} />
                 </div>
                 {hasMultipleImages && (
                     <div className="slideshow__thumbnails-holder">
                         <div className="slideshow__thumbnails">
                             {images.map((image, index) => (
-                                <SlideshowThumbnail key={index} src={image.path} onClick={() => { setShownIndex(index) }} />
+                                <SlideshowThumbnail key={index} srcset={image} onClick={() => { setShownIndex(index) }} />
                             ))}
                         </div>
                     </div>

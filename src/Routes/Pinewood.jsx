@@ -1,13 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { ProjectContext } from '../Context';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column, SectionLogo } from '../Components/Layout';
+import { useGenerateSlideshowContent } from '../Hooks';
+import { Section, SectionSubtitle, SectionTitle, Column, SectionLogo } from '../Components/Layout';
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import pinewoodLogo from "../assets/projects/pinewood/logo.svg"
 import dashboard from "../assets/projects/pinewood/slideshows/dashboard-1.webp"
-import processImage from "../assets/projects/harmony/process.webp"
-import finalProduct from "../assets/projects/harmony/slideshows/final-product-1.webp"
-import initialDesigns from "../assets/projects/harmony/slideshows/initial-designs.webp"
-import uiUxPrototype from "../assets/projects/harmony/slideshows/prototype-ui.webp"
 
 function Pinewood() {
     const { setProject } = useContext(ProjectContext);
@@ -16,16 +13,7 @@ function Pinewood() {
         setProject('pinewood');
     }, []);
 
-    let dashboardItems = [];
-    Object.values(import.meta.globEager('@/projects/pinewood/slideshows/dashboard-*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            dashboardItems.push(data);
-        }
-    );
+    let dashboardItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/pinewood/slideshows/dashboard-*.webp'), import.meta.globEager('@/projects/pinewood/slideshows/thumbnails/dashboard-*.webp'));
 
     return (
         <main className="layout">
