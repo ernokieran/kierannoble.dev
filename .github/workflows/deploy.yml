@@ -2,10 +2,10 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - v2.0-react
+      - master
   pull_request:
     branches:
-      - v2.0-react
+      - master
 jobs:
   build:
     runs-on: windows-latest
