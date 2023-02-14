@@ -7,7 +7,6 @@
     display: none;
     z-index: 10;
     background-color: rgba(51, 51, 51, 0.85);
-
     --theme-color: 185, 185, 185;
 
     &__button {
@@ -56,15 +55,26 @@
     &__image {
         height: calc(100% - 90px);
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        position: relative;
 
-        & img {
-            --max-image-fill: 90%;
-            
-            width: auto;
-            max-width: var(--max-image-fill);
-            max-height: var(--max-image-fill);
+        &-holder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & img {
+                --max-image-fill: 90%;
+                
+                width: auto;
+                max-width: var(--max-image-fill);
+                max-height: var(--max-image-fill);
+            }
         }
 
         &--full {
@@ -88,11 +98,18 @@
             gap: 6px;
 
             &-holder {
-                width: 100%;
+                --spacing: 0px;
+
+                @include mobileSize((
+                    --spacing: var(--slideshow-spacing)
+                ));
+
+                width: calc(100% - calc(var(--spacing) * 2));
                 bottom: 8px;
                 position: fixed;
                 display: flex;
                 justify-content: center;
+                margin: 0 var(--spacing);
             }
         }
 
