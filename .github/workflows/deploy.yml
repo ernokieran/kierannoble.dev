@@ -3,8 +3,11 @@ on:
   push:
     branches:
       - v2.0-react
+  pull_request:
+    branches:
+      - v2.0-react
 jobs:
-  build-and-deploy:
+  build:
     runs-on: windows-latest
     concurrency: ci-${{ github.ref }}
     permissions:
@@ -24,6 +27,7 @@ jobs:
         run: |
           npm run build
       - name: Deploy 🚀
+        if: ${{ github.event_name != 'pull_request' }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
