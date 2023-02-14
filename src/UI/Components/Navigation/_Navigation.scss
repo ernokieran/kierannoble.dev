@@ -1,0 +1,63 @@
+@import "../../Mixins";
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    &__action {
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: rgba(var(--theme-color));
+        font-size: var(--font-small);
+        font-family: var(--font-family--block);
+        opacity: 0.65;
+        transition: opacity 0.25s ease, color 0.5s ease-in-out;
+        margin-top: auto;
+        cursor: pointer;
+
+        @include mobileSize((
+            margin-bottom: auto
+        ));
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__back {
+        background: url("@/arrow.svg") center center no-repeat;
+        background-size: var(--action-icon-size);
+        width: 25px;
+        height: 25px;
+        background-color: rgba(var(--theme-color));
+        transform: rotate(180deg);
+        border-radius: 100%;
+        box-shadow: var(--shadow--medium);
+        margin-top: -3px;
+        margin-right: -14px;
+        opacity: 0.6;
+        transition: opacity 0.25s ease, all 0.5s ease-in-out;
+        cursor: pointer;
+
+        &--hidden {
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: none;
+            margin-right: calc(var(--spacing--medium) * -1);
+            margin-left: -25px;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+    
+    & .logo {
+        cursor: pointer;
+        transition: color 0.5s ease-in-out;
+    }
+}

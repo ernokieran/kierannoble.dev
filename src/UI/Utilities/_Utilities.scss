@@ -1,0 +1,64 @@
+@import "ThirdParty/ThirdParty";
+@import "Fonts/Fonts";
+
+a {
+    text-decoration: none;
+}
+
+ol {
+    list-style: none;
+    counter-reset: item;
+
+    & li {
+        counter-increment: item;
+        margin-bottom: 5px;
+
+        &:before {
+            margin-right: 5px;
+            content: counter(item) '.';
+            font-weight: 700;
+        }
+    }
+}
+
+ul {
+    & li {
+        &:before {
+            content: '•';
+            margin-right: 5px;
+            font-weight: 700;
+        }
+    }
+}
+
+#root {
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.text--center {
+    text-align: center;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.no-shadow {
+    box-shadow: none;
+}
+
+.hidden {
+    display: none;
+}
+
+strong {
+    font-weight: bold !important;
+}

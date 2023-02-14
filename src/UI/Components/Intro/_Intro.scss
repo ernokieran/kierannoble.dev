@@ -1,0 +1,47 @@
+@import "../../Mixins";
+
+$avatarSize: 135px;
+
+.intro {
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: var(--font-family--block);
+    @include mobileSize((
+        flex-direction: column,
+        text-align: center
+    ));
+
+    &__text-container {
+       flex-grow: 1; 
+    }
+
+    &__name {
+        font-size: var(--font-extraLarge);
+        letter-spacing: 1px;
+        color: rgba(var(--theme-color));
+        margin-bottom: 8px;
+        @include mobileSize((
+            margin-top: 12px
+        ));
+    }
+
+    &__title {
+        text-transform: uppercase;
+        color: rgba(var(--theme-color), 0.6);
+        font-size: var(--font-medium);
+        letter-spacing: 2px;
+    }
+
+    &__description {
+        line-height: 26px;
+        font-family: var(--font-family--normal);
+        color: #777;
+    }
+
+    &__avatar {
+        border-radius: 100%;
+        height: $avatarSize;
+        width: $avatarSize;
+        margin: auto;
+    }
+}

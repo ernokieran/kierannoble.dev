@@ -1,0 +1,17 @@
+@import "Themes/InternalThemeVariables";
+
+@mixin mobileSize($styles: ()) {
+    @media screen and (max-width: $mobileSize) {
+        @each $property, $value in $styles {
+            #{$property}: $value;
+        }
+    }
+}
+
+@mixin padded() {
+    padding: 50px;
+
+    @include mobileSize((
+        padding: 24px
+    ));
+}
