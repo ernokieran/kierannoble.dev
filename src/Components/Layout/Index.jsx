@@ -1,4 +1,5 @@
 export { default as Column } from './Column';
+export { default as Error } from './Error';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Intro } from './Intro';

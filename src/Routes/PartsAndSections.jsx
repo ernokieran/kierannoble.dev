@@ -19,7 +19,7 @@ function PartsAndSections() {
         ({ default: path }) => {
             const pathUrl = new URL(path, import.meta.url);
             let data = {
-                path: pathUrl.pathname,
+                path: pathUrl.pathname
             }
             bookItems.push(data);
         }
