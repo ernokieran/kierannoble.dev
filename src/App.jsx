@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { ProjectContext } from './Context';
 import React, { useState } from 'react';
 import AppLayout from './AppLayout';
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <ProjectContext.Provider value={{ project, setProject }}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/" element={<Home />} />
@@ -27,7 +27,7 @@ function App() {
             <Route path="*" element={<Error title="404" subtitle="That page could not be found" />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ProjectContext.Provider>
   )
 }
