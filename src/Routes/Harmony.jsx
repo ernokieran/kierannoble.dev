@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { ProjectContext } from '../Context';
+import { useGenerateSlideshowContent } from '../Hooks';
 import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row, Column } from '../Components/Layout';
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import harmonyLogo from "../assets/projects/harmony/logo.svg"
@@ -15,28 +16,9 @@ function Harmony() {
         setProject('harmony');
     }, []);
 
-    let finalProductItems = [];
-    Object.values(import.meta.globEager('@/projects/harmony/slideshows/final-product-*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            finalProductItems.push(data);
-        }
-    );
-
-    let initialDesignsItems = [
-        {
-            path: initialDesigns,
-        }
-    ];
-
-    let uiUxPrototypeItems = [
-        {
-            path: uiUxPrototype,
-        }
-    ];
+    let initialDesignsItems = useGenerateSlideshowContent(initialDesigns);
+    let uiUxPrototypeItems = useGenerateSlideshowContent(uiUxPrototype);
+    let finalProductItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/harmony/slideshows/final-product-*.webp'), import.meta.globEager('@/projects/harmony/slideshows/thumbnails/final-product-*.webp'));
 
     return (
         <main className="layout">

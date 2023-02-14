@@ -1,10 +1,11 @@
 import { useContext, useEffect } from 'react';
 import { ProjectContext } from '../Context';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column, SectionLogo } from '../Components/Layout';
+import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '../Components/Layout';
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import partsAndSectionsLogo from "../assets/projects/partsandsections/logo.svg"
 import development from "../assets/projects/partsandsections/Slideshows/PolFaceMash.webp"
 import book from "../assets/projects/partsandsections/Slideshows/Parts and Sections Final_0.webp"
+import { useGenerateSlideshowContent } from '../Hooks';
 
 function PartsAndSections() {
     const { setProject } = useContext(ProjectContext);
@@ -13,56 +14,11 @@ function PartsAndSections() {
         setProject('partsAndSections');
     }, []);
 
-    let bookItems = [];
-    // TO DO: This has an issue where some files are loading in an incorrect order
-    Object.values(import.meta.globEager('@/projects/partsandsections/slideshows/Parts and Sections Final*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname
-            }
-            bookItems.push(data);
-        }
-    );
-
-    let initialItems = [];
-    Object.values(import.meta.globEager('@/projects/partsandsections/slideshows/Initial*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            initialItems.push(data);
-        }
-    );
-
-    let finalItems = [];
-    Object.values(import.meta.globEager('@/projects/partsandsections/slideshows/OFinal*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            finalItems.push(data);
-        }
-    );
-
-    let polItems = [];
-    Object.values(import.meta.globEager('@/projects/partsandsections/slideshows/Pol_*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            polItems.push(data);
-        }
-    );
-
-    let developmentItems = [
-        {
-            path: development,
-        }
-    ];
+    let initialItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/Initial*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/Initial*.webp'));
+    let polItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/Pol_*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/Pol_*.webp'));
+    let developmentItems = useGenerateSlideshowContent(development);
+    let finalItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/OFinal*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/OFinal*.webp'));
+    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/Parts and Sections Final*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/Parts and Sections Final*.webp'));
 
     return (
         <main className="layout">

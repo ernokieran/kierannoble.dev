@@ -1,12 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { ProjectContext } from '../Context';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, Row, Column, SectionLogo } from '../Components/Layout';
+import { useGenerateSlideshowContent } from '../Hooks';
+import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '../Components/Layout';
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import experimentalImageryLogo from "../assets/projects/experimentalimagery/logo.svg"
 import furtherDevelopment from "../assets/projects/experimentalimagery/Colours.webp"
-import glitch1 from "../assets/projects/experimentalimagery/Glitch Development One.mp4"
-import glitch2 from "../assets/projects/experimentalimagery/Glitch Development Two.mp4"
-import final from "../assets/projects/experimentalimagery/Photography Experimental Imagery Final Outcome.mp4"
 import book from "../assets/projects/experimentalimagery/Slideshows/Experimental Imagery Final_0.webp"
 
 function ExperimentalImagery() {
@@ -15,46 +13,10 @@ function ExperimentalImagery() {
         setProject('experimentalImagery');
     }, []);
 
-    let bookItems = [];
-    // TO DO: This has an issue where some files are loading in an incorrect order
-    Object.values(import.meta.globEager('@/projects/experimentalimagery/slideshows/Experimental Imagery Final*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            bookItems.push(data);
-        }
-    );
-
-    let initialItems = [];
-    Object.values(import.meta.globEager('@/projects/experimentalimagery/slideshows/Hands_*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            initialItems.push(data);
-        }
-    );
-
-
-    let finalItems = [];
-    Object.values(import.meta.globEager('@/projects/experimentalimagery/slideshows/Final_*.webp')).forEach(
-        ({ default: path }) => {
-            const pathUrl = new URL(path, import.meta.url);
-            let data = {
-                path: pathUrl.pathname,
-            }
-            finalItems.push(data);
-        }
-    );
-
-    let furtherDevelopmentItems = [
-        {
-            path: furtherDevelopment,
-        }
-    ];
+    let initialItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/experimentalimagery/slideshows/Hands_*.webp'), import.meta.globEager('@/projects/experimentalimagery/slideshows/thumbnails/Hands_*.webp'));
+    let furtherDevelopmentItems = useGenerateSlideshowContent(furtherDevelopment);
+    let finalItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/experimentalimagery/slideshows/Final_*.webp'), import.meta.globEager('@/projects/experimentalimagery/slideshows/thumbnails/Final_*.webp'));
+    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/experimentalimagery/slideshows/Experimental Imagery Final*.webp'), import.meta.globEager('@/projects/experimentalimagery/slideshows/thumbnails/Experimental Imagery Final*.webp'));
 
     return (
         <main className="layout">
@@ -114,8 +76,8 @@ function ExperimentalImagery() {
                 <p>This method of motion in a single still photo was inspired by Mura Masa ‘s music video ‘What If I Go?’, which used a digital form of a style of 3D photography, popularised by the Nimslo 3D film camera from the 1980s, where I used the same moment in time but with multiple shots from slightly differing angles, to give a ‘frozen in time’ sense to the viewer, were they can see more than they should be able to. I then used these frames to create a looping gif, such as the ones below:</p>
                 <div className="section__video">
                     <Row equal="true">
-                        <video src={glitch1} className="video" controls />
-                        <video src={glitch2} className="video" controls />
+                        <iframe src="https://www.youtube.com/embed/auwmewK0ggg" class="video" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/47dHuFWVQFE" class="video" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                     </Row>
                 </div>
             </Section>
@@ -150,8 +112,8 @@ function ExperimentalImagery() {
                 <SectionTitle>
                     Final Video
                 </SectionTitle>
-                <div className="section__video">
-                    <video src={final} className="video" controls />
+                <div class="section__video">
+                    <iframe src="https://www.youtube.com/embed/Q9vkUjmVsRc" class="video" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                 </div>
             </Section>
             <Section type="primary" align="centered">
