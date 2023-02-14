@@ -8,6 +8,7 @@ let _time = `${_now.getHours().toString().padStart(2, '0')}${_now.getMinutes().t
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/",
   define: {
     '__APP_VERSION__': JSON.stringify(`v${process.env.npm_package_version}-${_date}-${_time}`),
   },
