@@ -13,9 +13,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "serve": "node server/server.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "serve": "node server/server.js"
   },
   "dependencies": {
     "react": "^18.2.0",
