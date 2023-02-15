@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 import { useBindKeyPress, useKeyPress } from '../Hooks';
 import { SlideshowImage, SlideshowThumbnail, SlideshowButton } from './';
 
@@ -8,7 +8,8 @@ function Slideshow(props) {
     const [hasNext, setHasNext] = useState(false);
     const [hasPrevious, setHasPrevious] = useState(false);
 
-    let shown = shownIndex != null,
+    let id = useId(),
+        shown = shownIndex != null,
         hasMultipleImages = (images.length ?? 0) > 1,
         hasDownload = props.download ?? null != null;
 
@@ -19,12 +20,24 @@ function Slideshow(props) {
     useEffect(() => {
         setHasPrevious(shownIndex > 0);
         setHasNext(shownIndex < (images.length ?? 0) - 1);
-    }, [shownIndex]);
+
+        let element = null;
+
+        if (shown) {
+            element = document.querySelector(`[data-thumbnail-identifier="${generateThumbnailId(shownIndex)}"]`);
+        }
+
+        element?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    }, [shown, shownIndex]);
 
     function open() { setShownIndex(0); }
     function close() { setShownIndex(null); }
     function previous() { setShownIndex(shownIndex - 1); }
     function next() { setShownIndex(shownIndex + 1); }
+
+    function generateThumbnailId(index) {
+        return `${id}-thumbnail-${index}`;
+    }
 
     return (
         <span>
@@ -39,7 +52,7 @@ function Slideshow(props) {
                     <div className="slideshow__thumbnails-holder">
                         <div className="slideshow__thumbnails">
                             {images.map((image, index) => (
-                                <SlideshowThumbnail key={index} srcset={image} onClick={() => { setShownIndex(index) }} />
+                                <SlideshowThumbnail key={index} srcset={image} onClick={() => { setShownIndex(index) }} identifier={generateThumbnailId(index)} />
                             ))}
                         </div>
                     </div>

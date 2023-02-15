@@ -10,7 +10,7 @@ let _time = `${_now.getHours().toString().padStart(2, '0')}${_now.getMinutes().t
 export default defineConfig({
   base: "/",
   build: {
-    assetsInlineLimit: 1024,
+    assetsInlineLimit: 4096, // 4kb
   },
   define: {
     '__APP_VERSION__': JSON.stringify(`v${process.env.npm_package_version}-${_date}-${_time}`),

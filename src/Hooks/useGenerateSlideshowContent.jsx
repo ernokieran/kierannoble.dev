@@ -1,7 +1,12 @@
 function useGenerateSlideshowContent(images, thumbnails = null) {
     function formatUrl(url) {
         let pathURL = new URL(url, import.meta.url);
-        return pathURL.pathname;
+        let path = pathURL.pathname;
+
+        if (path.includes("base64")) {
+            path = `data:${path}`;
+        }
+        return path;
     }
 
     if (typeof (images) === "string") {

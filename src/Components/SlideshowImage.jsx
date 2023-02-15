@@ -18,7 +18,7 @@ function SlideshowImage(props) {
     return (
         <div className="slideshow__image-holder">
             {loaded ? <img src={props.src} /> : (
-                <div class="loader">
+                <div className="loader">
                     <img src={props.src} onLoad={imageLoaded} style={{ display: "none" }} /></div>
             )}
         </div>
