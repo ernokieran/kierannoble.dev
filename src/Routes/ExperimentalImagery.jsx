@@ -5,7 +5,7 @@ import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import experimentalImageryLogo from "../assets/projects/experimentalimagery/logo.svg"
 import furtherDevelopment from "../assets/projects/experimentalimagery/Colours.webp"
-import book from "../assets/projects/experimentalimagery/Slideshows/Experimental Imagery Final_0.webp"
+import book from "../assets/projects/experimentalimagery/Slideshows/Experimental Imagery Final_000.webp"
 
 function ExperimentalImagery() {
     const { setProject } = useContext(ProjectContext);
@@ -76,8 +76,8 @@ function ExperimentalImagery() {
                 <p>This method of motion in a single still photo was inspired by Mura Masa ‘s music video ‘What If I Go?’, which used a digital form of a style of 3D photography, popularised by the Nimslo 3D film camera from the 1980s, where I used the same moment in time but with multiple shots from slightly differing angles, to give a ‘frozen in time’ sense to the viewer, were they can see more than they should be able to. I then used these frames to create a looping gif, such as the ones below:</p>
                 <div className="section__video">
                     <Row equal="true">
-                        <iframe src="https://www.youtube.com/embed/auwmewK0ggg" class="video" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/47dHuFWVQFE" class="video" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/auwmewK0ggg" className="video" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/47dHuFWVQFE" className="video" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
                     </Row>
                 </div>
             </Section>
@@ -112,8 +112,8 @@ function ExperimentalImagery() {
                 <SectionTitle>
                     Final Video
                 </SectionTitle>
-                <div class="section__video">
-                    <iframe src="https://www.youtube.com/embed/Q9vkUjmVsRc" class="video" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                <div className="section__video">
+                    <iframe src="https://www.youtube.com/embed/Q9vkUjmVsRc" className="video" title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
                 </div>
             </Section>
             <Section type="primary" align="centered">

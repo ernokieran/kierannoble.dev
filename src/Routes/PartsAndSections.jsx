@@ -4,7 +4,7 @@ import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from
 import { Slideshow, SlideshowThumbnailButton } from '../Components';
 import partsAndSectionsLogo from "../assets/projects/partsandsections/logo.svg"
 import development from "../assets/projects/partsandsections/Slideshows/PolFaceMash.webp"
-import book from "../assets/projects/partsandsections/Slideshows/Parts and Sections Final_0.webp"
+import book from "../assets/projects/partsandsections/Slideshows/Parts and Sections Final_000.webp"
 import { useGenerateSlideshowContent } from '../Hooks';
 
 function PartsAndSections() {
@@ -18,7 +18,7 @@ function PartsAndSections() {
     let polItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/Pol_*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/Pol_*.webp'));
     let developmentItems = useGenerateSlideshowContent(development);
     let finalItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/OFinal*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/OFinal*.webp'));
-    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/Parts and Sections Final*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/Parts and Sections Final*.webp'));
+    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/partsandsections/slideshows/Parts and Sections Final*.webp'), import.meta.globEager('@/projects/partsandsections/slideshows/thumbnails/Parts and Sections Final*.thumbnail.webp'));
 
     return (
         <main className="layout">
