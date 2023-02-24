@@ -5,8 +5,9 @@
     gap: 1rem;
     margin: auto 0;
 
-    &__title, &__subtitle {
+    &__title, &__subtitle, &__description {
         font-family: var(--font-family--block);
+        text-align: center;
         
     }
 
