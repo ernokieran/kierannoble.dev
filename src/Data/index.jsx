@@ -1,0 +1,1 @@
+export { default as Redirections } from './Redirections';

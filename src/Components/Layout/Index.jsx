@@ -4,6 +4,7 @@ export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Intro } from './Intro';
 export { default as Loader } from './Loader';
+export { default as Redirection } from './Redirection';
 export { default as Row } from './Row';
 export { default as Section } from './Section';
 export { default as SectionImage } from './SectionImage';
