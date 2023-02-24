@@ -5,7 +5,7 @@ import { Slideshow } from "../../Components";
 import cv from "../../assets/KieranNoble-CV-Nov22.webp"
 import cvPDF from "../../assets/KieranNoble-CV-Nov22.pdf"
 
-function Header() {
+function Header(props) {
     const { project } = useContext(ProjectContext);
 
     let cvItems = [
@@ -20,9 +20,11 @@ function Header() {
                 <div className={`navigation__back ${project != 'home' ? '' : 'navigation__back--hidden'}`}></div>
                 <div className="logo"></div>
             </Link>
-            <Slideshow images={cvItems} download={cvPDF}>
-                <div className="navigation__action">CV</div>
-            </Slideshow>
+            {props.includeCV && (
+                <Slideshow images={cvItems} download={cvPDF}>
+                    <div className="navigation__action">CV</div>
+                </Slideshow>
+            )}
         </nav>
     );
 }
