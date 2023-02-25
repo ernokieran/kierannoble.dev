@@ -9,12 +9,9 @@ const Harmony = React.lazy(() => import('./Routes/Harmony'));
 const Pinewood = React.lazy(() => import('./Routes/Pinewood'));
 const ExperimentalImagery = React.lazy(() => import('./Routes/ExperimentalImagery'));
 const PartsAndSections = React.lazy(() => import('./Routes/PartsAndSections'));
+const DecisionMaker = React.lazy(() => import('./Routes/Apps/DecisionMaker'));
 
 function Router() {
-    const redirections = Redirections().map((redirection, index) => (
-        <Route path={redirection.from} element={<Redirection name={redirection.name} url={redirection.to} key={index} />} />
-    ));
-
     return (
         <BrowserRouter>
             <Routes>
@@ -28,7 +25,14 @@ function Router() {
                     </Route>
                 </Route>
                 <Route element={<BasicLayout />}>
-                    {redirections}
+                    {
+                        Redirections().map((redirection, index) => (
+                            <Route path={redirection.from} element={<Redirection name={redirection.name} url={redirection.to} key={index} />} />
+                        ))
+                    }
+                    <Route path="/apps">
+                        <Route path="/apps/decision-maker" element={<DecisionMaker />} />
+                    </Route>
                     <Route path="*" element={<Error title="404" subtitle="That page could not be found" />} />
                 </Route>
             </Routes>

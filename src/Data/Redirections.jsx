@@ -28,12 +28,12 @@ function Redirections() {
         {
             name: 'Decision Maker',
             from: 'decisionmaker',
-            to: 'https://aylo.net/decisionmaker',
+            to: '/apps/decision-maker',
         },
         {
             name: 'Decision Maker',
             from: 'dm',
-            to: 'https://aylo.net/decisionmaker',
+            to: '/apps/decision-maker',
         },
         {
             name: 'LastFM',
