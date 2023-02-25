@@ -1,11 +1,11 @@
 import { useContext, useEffect } from 'react';
-import { ProjectContext } from '../Context';
-import { useGenerateSlideshowContent } from '../Hooks';
-import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '../Components/Layout';
-import { Slideshow, SlideshowThumbnailButton } from '../Components';
-import experimentalImageryLogo from "../assets/projects/experimentalimagery/logo.svg"
-import furtherDevelopment from "../assets/projects/experimentalimagery/Colours.webp"
-import book from "../assets/projects/experimentalimagery/Slideshows/Experimental Imagery Final_000.webp"
+import { ProjectContext } from '~/Context';
+import { useGenerateSlideshowContent } from '~/Hooks';
+import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '~/Components/Layout';
+import { Slideshow, SlideshowThumbnailButton } from '~/Components';
+import experimentalImageryLogo from "@/projects/experimentalimagery/logo.svg"
+import furtherDevelopment from "@/projects/experimentalimagery/Colours.webp"
+import book from "@/projects/experimentalimagery/Slideshows/Experimental Imagery Final_000.webp"
 
 function ExperimentalImagery() {
     const { setProject } = useContext(ProjectContext);

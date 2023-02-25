@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProjectContext } from "../../Context";
-import { Slideshow } from "../../Components";
-import cv from "../../assets/KieranNoble-CV-Nov22.webp"
-import cvPDF from "../../assets/KieranNoble-CV-Nov22.pdf"
+import { ProjectContext } from "~/Context";
+import { Slideshow } from "~/Components";
+import cv from "@/KieranNoble-CV-Nov22.webp"
+import cvPDF from "@/KieranNoble-CV-Nov22.pdf"
 
 function Header(props) {
     const { project } = useContext(ProjectContext);

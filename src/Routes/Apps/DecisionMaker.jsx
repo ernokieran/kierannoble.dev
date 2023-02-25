@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function DecisionMaker() {
+    const { listId } = useParams();
+
     const [options, setOptions] = useState([""]);
     const [usableOptions, setUsableOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState("");
 
-    // useEffect(() => {
-    // get options from api
-    // setOptions(options);
-    // }, []);
+    useEffect(() => {
+        if (listId) {
+            console.log("This app is not yet connected to an API, so it can't load a list from an ID.", `List ID: ${listId}`);
+
+            // get list from api
+            // setOptions(list);
+        }
+    }, []);
 
     useEffect(() => {
         if (options[options.length - 1] !== "") {
@@ -32,6 +39,12 @@ function DecisionMaker() {
                         ))}
                     </ul>
                     <button onClick={() => setSelectedOption("")}>Reset</button>
+                    <button onClick={() => {
+                        const randomIndex = Math.floor(Math.random() * usableOptions.length);
+                        setSelectedOption(usableOptions[randomIndex]);
+                    }
+                    }>Select Again</button>
+
                 </div>
             )}
             {!selectedOption && (

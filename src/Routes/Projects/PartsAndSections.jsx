@@ -1,11 +1,11 @@
 import { useContext, useEffect } from 'react';
-import { ProjectContext } from '../Context';
-import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '../Components/Layout';
-import { Slideshow, SlideshowThumbnailButton } from '../Components';
-import partsAndSectionsLogo from "../assets/projects/partsandsections/logo.svg"
-import development from "../assets/projects/partsandsections/Slideshows/PolFaceMash.webp"
-import book from "../assets/projects/partsandsections/Slideshows/Parts and Sections Final_000.webp"
-import { useGenerateSlideshowContent } from '../Hooks';
+import { ProjectContext } from '~/Context';
+import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '~/Components/Layout';
+import { Slideshow, SlideshowThumbnailButton } from '~/Components';
+import partsAndSectionsLogo from "@/projects/partsandsections/logo.svg"
+import development from "@/projects/partsandsections/Slideshows/PolFaceMash.webp"
+import book from "@/projects/partsandsections/Slideshows/Parts and Sections Final_000.webp"
+import { useGenerateSlideshowContent } from '~/Hooks';
 
 function PartsAndSections() {
     const { setProject } = useContext(ProjectContext);

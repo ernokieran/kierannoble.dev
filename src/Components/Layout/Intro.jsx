@@ -1,4 +1,4 @@
-import avatar from '../../assets/me.webp';
+import avatar from '@/me.webp';
 
 function Intro() {
     return (

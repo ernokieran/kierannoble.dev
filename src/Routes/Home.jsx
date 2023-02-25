@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
-import { ProjectTile } from '../Components';
-import { Intro } from '../Components/Layout';
-import { ProjectContext } from '../Context';
+import { ProjectTile } from '~/Components';
+import { Intro } from '~/Components/Layout';
+import { ProjectContext } from '~/Context';
 
 function Home() {
     const { setProject } = useContext(ProjectContext);

@@ -1,15 +1,15 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { PortfolioLayout, BasicLayout } from "./Layouts";
-import { Redirection, Error } from "./Components/Layout";
-import { Redirections } from "./Data";
+import { PortfolioLayout, BasicLayout } from "~/Layouts";
+import { Redirection, Error } from "~/Components/Layout";
+import { Redirections } from "~/Data";
 
-const Home = React.lazy(() => import('./Routes/Home'));
-const Harmony = React.lazy(() => import('./Routes/Harmony'));
-const Pinewood = React.lazy(() => import('./Routes/Pinewood'));
-const ExperimentalImagery = React.lazy(() => import('./Routes/ExperimentalImagery'));
-const PartsAndSections = React.lazy(() => import('./Routes/PartsAndSections'));
-const DecisionMaker = React.lazy(() => import('./Routes/Apps/DecisionMaker'));
+const Home = React.lazy(() => import('~/Routes/Home'));
+const Harmony = React.lazy(() => import('~/Routes/Projects/Harmony'));
+const Pinewood = React.lazy(() => import('~/Routes/Projects/Pinewood'));
+const ExperimentalImagery = React.lazy(() => import('~/Routes/Projects/ExperimentalImagery'));
+const PartsAndSections = React.lazy(() => import('~/Routes/Projects/PartsAndSections'));
+const DecisionMaker = React.lazy(() => import('~/Routes/Apps/DecisionMaker'));
 
 function Router() {
     return (
@@ -31,7 +31,7 @@ function Router() {
                         ))
                     }
                     <Route path="/apps">
-                        <Route path="/apps/decision-maker" element={<DecisionMaker />} />
+                        <Route path="/apps/decision-maker/:listId?" element={<DecisionMaker />} />
                     </Route>
                     <Route path="*" element={<Error title="404" subtitle="That page could not be found" />} />
                 </Route>

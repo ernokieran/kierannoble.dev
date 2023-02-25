@@ -1,13 +1,13 @@
 import { useContext, useEffect } from 'react';
-import { ProjectContext } from '../Context';
-import { useGenerateSlideshowContent } from '../Hooks';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row, Column } from '../Components/Layout';
-import { Slideshow, SlideshowThumbnailButton } from '../Components';
-import harmonyLogo from "../assets/projects/harmony/logo.svg"
-import processImage from "../assets/projects/harmony/process.webp"
-import finalProduct from "../assets/projects/harmony/slideshows/final-product-1.webp"
-import initialDesigns from "../assets/projects/harmony/slideshows/initial-designs.webp"
-import uiUxPrototype from "../assets/projects/harmony/slideshows/prototype-ui.webp"
+import { ProjectContext } from '~/Context';
+import { useGenerateSlideshowContent } from '~/Hooks';
+import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row, Column } from '~/Components/Layout';
+import { Slideshow, SlideshowThumbnailButton } from '~/Components';
+import harmonyLogo from "@/projects/harmony/logo.svg"
+import processImage from "@/projects/harmony/process.webp"
+import finalProduct from "@/projects/harmony/slideshows/final-product-1.webp"
+import initialDesigns from "@/projects/harmony/slideshows/initial-designs.webp"
+import uiUxPrototype from "@/projects/harmony/slideshows/prototype-ui.webp"
 
 function Harmony() {
     const { setProject } = useContext(ProjectContext);
