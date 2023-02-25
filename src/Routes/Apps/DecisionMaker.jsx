@@ -25,6 +25,11 @@ function DecisionMaker() {
         setUsableOptions(options.slice(0, -1));
     }, [options]);
 
+    function generateRandomlySelectedOption() {
+        const randomIndex = Math.floor(Math.random() * usableOptions.length);
+        setSelectedOption(usableOptions[randomIndex]);
+    }
+
     // TO DO: styling and layout for this app
 
     return (
@@ -39,11 +44,7 @@ function DecisionMaker() {
                         ))}
                     </ul>
                     <button onClick={() => setSelectedOption("")}>Reset</button>
-                    <button onClick={() => {
-                        const randomIndex = Math.floor(Math.random() * usableOptions.length);
-                        setSelectedOption(usableOptions[randomIndex]);
-                    }
-                    }>Select Again</button>
+                    <button onClick={() => generateRandomlySelectedOption()}>Select Again</button>
 
                 </div>
             )}
@@ -71,11 +72,7 @@ function DecisionMaker() {
                 </>
             )}
             {!selectedOption && options.length > 2 && (
-                <button onClick={() => {
-                    const randomIndex = Math.floor(Math.random() * usableOptions.length);
-                    setSelectedOption(usableOptions[randomIndex]);
-                }
-                }>Randomly select</button>
+                <button onClick={() => generateRandomlySelectedOption()}>Randomly select</button>
             )}
         </div>
     );
