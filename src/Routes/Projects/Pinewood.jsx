@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
-import { ProjectContext } from '../Context';
-import { useGenerateSlideshowContent } from '../Hooks';
-import { Section, SectionSubtitle, SectionTitle, Column, SectionLogo } from '../Components/Layout';
-import { Slideshow, SlideshowThumbnailButton } from '../Components';
-import pinewoodLogo from "../assets/projects/pinewood/logo.svg"
-import dashboard from "../assets/projects/pinewood/slideshows/dashboard-1.webp"
+import { ProjectContext } from '~/Context';
+import { useGenerateSlideshowContent } from '~/Hooks';
+import { Section, SectionSubtitle, SectionTitle, Column, SectionLogo } from '~/Components/Layout';
+import { Slideshow, SlideshowThumbnailButton } from '~/Components';
+import pinewoodLogo from "@/projects/pinewood/logo.svg"
+import dashboard from "@/projects/pinewood/slideshows/dashboard-1.webp"
 
 function Pinewood() {
     const { setProject } = useContext(ProjectContext);

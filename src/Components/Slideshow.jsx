@@ -1,5 +1,5 @@
 import { useEffect, useState, useId } from 'react';
-import { useBindKeyPress, useKeyPress } from '../Hooks';
+import { useBindKeyPress, useKeyPress } from '~/Hooks';
 import { SlideshowImage, SlideshowThumbnail, SlideshowButton } from './';
 
 function Slideshow(props) {

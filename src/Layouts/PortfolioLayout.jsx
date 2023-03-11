@@ -1,8 +1,8 @@
 import { Suspense, useContext } from "react";
 import { Outlet } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Header, Footer, Loader, Error } from '../Components/Layout';
-import { ProjectContext } from '../Context';
+import { Header, Footer, Loader, Error } from '~/Components/Layout';
+import { ProjectContext } from '~/Context';
 
 function PortfolioLayout() {
     const { project } = useContext(ProjectContext);

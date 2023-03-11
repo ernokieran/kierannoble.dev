@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { ProjectContext } from '../../Context';
-import linkedin from '../../assets/social/linkedin.svg';
-import twitter from '../../assets/social/twitter.svg';
-import telegram from '../../assets/social/telegram.svg';
-import email from '../../assets/social/email.svg';
+import { ProjectContext } from '~/Context';
+import linkedin from '@/social/linkedin.svg';
+import twitter from '@/social/twitter.svg';
+import telegram from '@/social/telegram.svg';
+import email from '@/social/email.svg';
 
 function Footer() {
     const { project } = useContext(ProjectContext);
