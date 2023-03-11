@@ -28,12 +28,12 @@ function Redirections() {
         {
             name: 'Decision Maker',
             from: 'decisionmaker',
-            to: '/apps/decision-maker',
+            to: '/apps/decisionmaker',
         },
         {
             name: 'Decision Maker',
             from: 'dm',
-            to: '/apps/decision-maker',
+            to: '/apps/decisionmaker',
         },
         {
             name: 'LastFM',

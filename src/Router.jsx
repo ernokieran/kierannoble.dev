@@ -31,7 +31,7 @@ function Router() {
                         ))
                     }
                     <Route path="/apps">
-                        <Route path="/apps/decision-maker/:listId?" element={<DecisionMaker />} />
+                        <Route path="/apps/decisionmaker/:listId?" element={<DecisionMaker />} />
                     </Route>
                     <Route path="*" element={<Error title="404" subtitle="That page could not be found" />} />
                 </Route>

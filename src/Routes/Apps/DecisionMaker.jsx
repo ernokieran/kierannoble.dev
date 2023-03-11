@@ -30,10 +30,27 @@ function DecisionMaker() {
         setSelectedOption(usableOptions[randomIndex]);
     }
 
+    function removeItemAtIndex(index) {
+        const newOptions = [...options];
+        newOptions.splice(index, 1);
+        setOptions(newOptions);
+    }
+
+    function itemUpdated(e, index) {
+        const newOptions = [...options];
+        newOptions[index] = e.target.value;
+        setOptions(newOptions);
+    }
+
     // TO DO: styling and layout for this app
 
     return (
-        <div>
+        <div className="">
+            <hr />
+            <p>This is currently a work in progess - A better looking version will be available soon!</p>
+            <p>I am currently working on some architectural advances within this application.</p>
+            <hr />
+            <br />
             {selectedOption && (
                 <div>
                     <h1>{selectedOption}</h1>
@@ -43,8 +60,8 @@ function DecisionMaker() {
                             <li key={index}>{option}</li>
                         ))}
                     </ul>
-                    <button onClick={() => setSelectedOption("")}>Reset</button>
-                    <button onClick={() => generateRandomlySelectedOption()}>Select Again</button>
+                    <button className="control control__button control__button--danger" onClick={() => setSelectedOption("")}>Reset</button>
+                    <button className="control control__button control__button--primary" onClick={generateRandomlySelectedOption}>Select Again</button>
 
                 </div>
             )}
@@ -52,29 +69,22 @@ function DecisionMaker() {
                 <>
                     {
                         options.map((option, index) => (
-                            <div key={index}>
-                                <input type="text" value={option} onChange={(e) => {
-                                    const newOptions = [...options];
-                                    newOptions[index] = e.target.value;
-                                    setOptions(newOptions);
-                                }
-                                } />
-                                <button onClick={() => {
-                                    const newOptions = [...options];
-                                    newOptions.splice(index, 1);
-                                    setOptions(newOptions);
-                                }
-                                }>🗑️</button>
+                            <div className="control control__group" key={index}>
+                                <input className="control control__input" type="text" value={option} onChange={(e) => itemUpdated(e, index)} tabIndex="0" />
+                                <button className="control control__button" onClick={() => removeItemAtIndex(index)} tabIndex="-1">🗑️</button>
                             </div>
                         ))
                     }
-                    <button onClick={() => setOptions([""])}>Reset</button>
+                    <button className="control control__button control__button--danger" onClick={() => setOptions([""])}>Reset</button>
                 </>
-            )}
-            {!selectedOption && options.length > 2 && (
-                <button onClick={() => generateRandomlySelectedOption()}>Randomly select</button>
-            )}
-        </div>
+            )
+            }
+            {
+                !selectedOption && options.length > 2 && (
+                    <button className="control control__button control__button--primary" onClick={generateRandomlySelectedOption}>Randomly select</button>
+                )
+            }
+        </div >
     );
 }
 
