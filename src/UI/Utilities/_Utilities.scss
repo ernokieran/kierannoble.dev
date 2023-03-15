@@ -35,6 +35,8 @@ ul {
     max-height: 100vh;
     max-width: 100vw;
     overflow: hidden;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
 }
 
 .text--center {

@@ -1,14 +1,14 @@
-import { ProjectContext } from './Context';
-import React, { useState } from 'react';
+import { ProjectContextProvider, ViewportContextProvider } from './Context';
 import Router from './Router';
 
 function App() {
-  const [project, setProject] = useState('home');
 
   return (
-    <ProjectContext.Provider value={{ project, setProject }}>
-      <Router />
-    </ProjectContext.Provider>
+    <ViewportContextProvider>
+      <ProjectContextProvider>
+        <Router />
+      </ProjectContextProvider>
+    </ViewportContextProvider>
   )
 }
 

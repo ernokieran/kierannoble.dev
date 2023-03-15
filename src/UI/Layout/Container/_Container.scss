@@ -1,6 +1,6 @@
 .container {
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: var(--vh);
+    max-height: var(--vh);
     scroll-behavior: smooth;
     display: flex;
     justify-content: center;

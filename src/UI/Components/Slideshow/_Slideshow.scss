@@ -52,6 +52,10 @@
         }
     }
 
+    &__image, &__thumbnail {
+        user-select: none;
+    }
+
     &__image {
         height: calc(100% - 90px);
         display: flex;
@@ -112,8 +116,6 @@
                 margin: 0 var(--spacing);
             }
         }
-
-
     }
 
     &--shown {
