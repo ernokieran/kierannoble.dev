@@ -1,4 +1,4 @@
-import { ProjectContextProvider, ViewportContextProvider } from './Context';
+import { ProjectContextProvider, ViewportContextProvider } from '~/Context';
 import Router from './Router';
 
 function App() {
