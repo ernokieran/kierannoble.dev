@@ -10,6 +10,7 @@ const Pinewood = lazy(() => import('~/Routes/Projects/Pinewood'));
 const ExperimentalImagery = lazy(() => import('~/Routes/Projects/ExperimentalImagery'));
 const PartsAndSections = lazy(() => import('~/Routes/Projects/PartsAndSections'));
 const DecisionMaker = lazy(() => import('~/Routes/Apps/DecisionMaker'));
+const LoadAssets = lazy(() => import('~/Routes/Admin/LoadAssets'));
 
 function Router() {
     return (
@@ -32,6 +33,9 @@ function Router() {
                     }
                     <Route path="/apps">
                         <Route path="/apps/decisionmaker/:listId?" element={<DecisionMaker />} />
+                    </Route>
+                    <Route path="/admin">
+                        <Route path="/admin/loadassets" element={<LoadAssets />} />
                     </Route>
                     <Route path="*" element={<Error title="404" subtitle="That page could not be found" />} />
                 </Route>
