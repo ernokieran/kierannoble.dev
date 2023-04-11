@@ -11,6 +11,13 @@ export default defineConfig({
   base: "/",
   build: {
     assetsInlineLimit: 4096, // 4kb
+    rollupOptions: {
+      output: {
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`
+      }
+    },
   },
   define: {
     '__APP_VERSION__': JSON.stringify(`v${process.env.npm_package_version}-${_date}-${_time}`),
