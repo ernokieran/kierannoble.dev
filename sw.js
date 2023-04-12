@@ -1,7 +1,6 @@
 const VERSION = new URL(location).searchParams.get('v'),
     CACHE_NAME = 'kndev-' + VERSION,
-    CACHE_URLS = [
-        '/favicon.png',
+    ASSET_CACHE_URLS = [
         '/assets/Lato-Light.ttf',
         '/assets/Lato-Regular.ttf',
         '/assets/Lato-Bold.ttf',
@@ -10,22 +9,32 @@ const VERSION = new URL(location).searchParams.get('v'),
         '/assets/arrow.svg',
         '/assets/download.svg',
         '/assets/me.webp',
+        '/assets/KieranNoble-CV-Nov22.webp',
         '/assets/linkedin.svg',
         '/assets/twitter.svg',
         '/assets/telegram.svg',
         '/assets/email.svg',
+        '/assets/card.webp',
+        '/assets/card2.webp',
+        '/assets/card3.webp',
+        '/assets/card4.webp',
+        '/assets/logo.svg',
+        '/assets/logo2.svg',
+        '/assets/logo3.svg',
+        '/assets/logo4.svg',
     ];
 
 self.addEventListener("install", event => {
     this.skipWaiting();
-    // console.log("installing cache: " + CACHE_NAME);
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                // Cache busting
-                _urls = CACHE_URLS.map(url => {
+                let _urls = ASSET_CACHE_URLS.map(url => {
+                    url = url.split('/');
+                    url.splice(url.length - 1, 0, VERSION);
+                    url = url.join('/');
+
                     let _url = new URL(url, location.origin);
-                    _url.searchParams.append('v', VERSION);
                     return _url.href;
                 });
 
@@ -37,7 +46,6 @@ self.addEventListener("install", event => {
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
-            // console.log("activating cache: " + CACHE_NAME);
             return Promise.all(
                 cacheNames
                     .filter(cacheName => (cacheName.startsWith('kndev-')))
@@ -53,10 +61,8 @@ self.addEventListener("fetch", event => {
         caches.match(event.request)
             .then(response => {
                 if (response) {
-                    console.log("Cache hit: " + event.request.url);
                     return response;
                 }
-                console.log("Cache miss: " + event.request.url);
                 return fetch(event.request);
             })
     )
