@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { Fragment, lazy } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { PortfolioLayout, BasicLayout } from "~/Layouts";
 import { Redirection, Error } from "~/Components/Layout";
@@ -27,9 +27,13 @@ function Router() {
                 </Route>
                 <Route element={<BasicLayout />}>
                     {
-                        Redirections().map((redirection, index) => (
-                            <Route path={redirection.from} element={<Redirection name={redirection.name} url={redirection.to} key={index} />} />
-                        ))
+                        Redirections().map((redirection, index) =>
+                            <Fragment key={index}>
+                                <Route path={redirection.from} element={
+                                    <Redirection name={redirection.name} url={redirection.to} />
+                                } />
+                            </Fragment>
+                        )
                     }
                     <Route path="/apps">
                         <Route path="/apps/decisionmaker/:listId?" element={<DecisionMaker />} />
@@ -37,7 +41,9 @@ function Router() {
                     <Route path="/admin">
                         <Route path="/admin/loadassets" element={<LoadAssets />} />
                     </Route>
-                    <Route path="*" element={<Error title="404" subtitle="That page could not be found" />} />
+                    <Route path="*" element={
+                        <Error title="404" subtitle="That page could not be found" />
+                    } />
                 </Route>
             </Routes>
         </BrowserRouter>
