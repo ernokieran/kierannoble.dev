@@ -29,12 +29,13 @@
     &__socialLinks {
         display: flex;
         justify-content: center;
+        gap: 5px;
     }
 
     &__version {
         font-size: var(--font-extraSmall);
         color: #ccc;
-        margin-top: 6px;
+        margin-top: 8px;
         margin-bottom: 36px;
     }
 

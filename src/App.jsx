@@ -1,14 +1,16 @@
-import { ProjectContextProvider, ViewportContextProvider } from '~/Context';
+import { ViewportProvider, NotificationProvider, ProjectProvider } from '~/Context';
 import Router from './Router';
 
 function App() {
 
   return (
-    <ViewportContextProvider>
-      <ProjectContextProvider>
-        <Router />
-      </ProjectContextProvider>
-    </ViewportContextProvider>
+    <ViewportProvider>
+      <NotificationProvider>
+        <ProjectProvider>
+          <Router />
+        </ProjectProvider>
+      </NotificationProvider>
+    </ViewportProvider>
   )
 }
 

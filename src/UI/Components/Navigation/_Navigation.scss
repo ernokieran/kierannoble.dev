@@ -28,12 +28,9 @@
     }
 
     &__back {
-        background: url("@/arrow.svg") center center no-repeat;
-        background-size: var(--action-icon-size);
         width: 25px;
         height: 25px;
         background-color: rgba(var(--theme-color));
-        transform: rotate(180deg);
         border-radius: 100%;
         box-shadow: var(--shadow--medium);
         margin-top: -3px;
@@ -41,6 +38,10 @@
         opacity: 0.6;
         transition: opacity 0.25s ease, all 0.5s ease-in-out;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
 
         &--hidden {
             background-color: rgba(0, 0, 0, 0);
