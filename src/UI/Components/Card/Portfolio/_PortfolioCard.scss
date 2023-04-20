@@ -28,8 +28,6 @@
 
     &__action {
         position: absolute;
-        background: url("@/arrow.svg") center center no-repeat;
-        background-size: var(--action-icon-size);
         width: 40px;
         height: 40px;
         background-color: rgba(var(--theme-color));
@@ -37,6 +35,10 @@
         right: 20px;
         border-radius: 100%;
         box-shadow: var(--shadow--medium);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
 
         &-text {
             opacity: 0;

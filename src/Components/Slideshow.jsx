@@ -1,6 +1,8 @@
 import { useEffect, useState, useId } from 'react';
 import { useBindKeyPress, useKeyPress } from '~/Hooks';
 import { SlideshowImage, SlideshowThumbnail, SlideshowButton } from './';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 function Slideshow(props) {
     const [images] = useState(props.images ?? []);
@@ -65,7 +67,10 @@ function Slideshow(props) {
                     <SlideshowButton type="next" onClick={next} />
                 )}
                 {hasDownload && (
-                    <a className="slideshow__button slideshow__button--download" href={props.download} download></a>
+                    // TO DO: Do this with JS so that SlideshowButton can be used and this does not need to know about FontAwesomeIcon
+                    <a className="slideshow__button slideshow__button--download" href={props.download} download>
+                        <FontAwesomeIcon icon={faDownload} />
+                    </a>
                 )}
             </div>
         </span>

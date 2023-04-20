@@ -16,8 +16,12 @@
         cursor: pointer;
         border-radius: var(--rounded--extraLarge);
         box-shadow: var(--shadow--medium);
-        background: url("@/arrow.svg") center center no-repeat, #333;
         opacity: 0.9;
+        background-color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
 
         &--next, &--previous {
             top: 50%;
@@ -31,20 +35,16 @@
 
         &--previous {
             left: var(--slideshow-spacing);
-            transform: rotate(180deg);
         }
 
         &--close {
             top: var(--slideshow-spacing);
             right: var(--slideshow-spacing);
-            background: url("@/close.svg") center center no-repeat, #333;
         }
 
         &--download {
             top: var(--slideshow-spacing);
             right: calc((var(--slideshow-spacing) * 4) + calc(var(--slideshow-spacing) - 4px));
-            background: url("@/download.svg") center center no-repeat, #333;
-            background-size: var(--action-icon-size);
         }
 
         &:hover {

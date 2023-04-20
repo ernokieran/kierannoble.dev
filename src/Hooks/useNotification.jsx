@@ -9,12 +9,20 @@ function useNotification() {
             setNotifications([
                 ...notifications,
                 {
+                    id: Math.random().toString(36).substr(2, 9),
                     type: type,
                     title: title,
                     message: message,
                     action: action
                 }
             ]);
+        },
+        removeNotification: (id) => {
+            let notification = notifications.find(notification => notification.id === id);
+
+            const newNotifications = [...notifications];
+            newNotifications.splice(notifications.indexOf(notification), 1);
+            setNotifications(newNotifications);
         }
     }
 }

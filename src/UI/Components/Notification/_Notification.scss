@@ -1,0 +1,95 @@
+@import "../../Mixins";
+
+.notification {
+    --icon-colour: #999; // TO DO: Use a variable
+
+    display: flex;
+    background: #f5f5f5; // TO DO: Use a variable
+    border-radius: var(--rounded--medium);
+    align-items: center;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.3); // TO DO: Use a variable
+    padding: .75rem; // TO DO: Use a variable
+    position: relative;
+    min-width: 20em;  // TO DO: Use a variable
+    max-width: 20em;  // TO DO: Use a variable
+    gap: 1rem; // TO DO: Use a variable
+    pointer-events: auto;
+    cursor: pointer;
+
+    @include mobileSize((
+        max-width: unset
+    ));
+
+    &__icon {  
+        height: 40px;  // TO DO: Use a variable
+        aspect-ratio: 1/1;
+        position: relative;
+        margin-bottom: auto;
+        background-color: var(--icon-colour);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    &__content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: .25rem; // TO DO: Use a variable
+    }
+
+    &__title {
+        font-family: var(--font-family--bold);
+        color: #333;  // TO DO: Use a variable
+    }
+
+    &__message {
+        font-family: var(--font-family--normal);
+        color: #666;  // TO DO: Use a variable
+        font-size: var(--font-small);
+    }
+
+    &--info {
+        --icon-colour: rgba(var(--color--info), 0.5);
+        --icon: url("@/info.svg");
+    }
+
+    &--success {
+        --icon-colour: rgba(var(--color--success), 0.5);
+        --icon: url("@/success.svg");
+    }
+
+    &--warning {
+        --icon-colour: rgba(var(--color--warning), 0.5);
+        --icon: url("@/warning.svg");
+    }
+
+    &--error {
+        --icon-colour: rgba(var(--color--danger), 0.5);
+        --icon: url("@/error.svg");
+    }
+
+    &s {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;  // TO DO: Use a variable
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.75rem;  // TO DO: Use a variable
+        pointer-events: none;
+
+        &__holder {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: .5rem;  // TO DO: Use a variable
+            @include mobileSize((
+                width: 100%
+            ));
+        }  
+    }
+}

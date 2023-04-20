@@ -7,8 +7,6 @@
 
     &__action {
         position: absolute;
-        background: url("@/arrow.svg") center center no-repeat;
-        background-size: var(--action-icon-size);
         width: 32px;
         height: 32px;
         background-color: rgba(var(--theme-color), 0.8);
@@ -16,8 +14,11 @@
         right: 16px;
         border-radius: 100%;
         box-shadow: var(--shadow--medium);
-        // transition: all 0.5s ease-in-out;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
 
         &-text {
             opacity: 0;
