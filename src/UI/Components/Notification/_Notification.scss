@@ -53,22 +53,18 @@
 
     &--info {
         --icon-colour: rgba(var(--color--info), 0.5);
-        --icon: url("@/info.svg");
     }
 
     &--success {
         --icon-colour: rgba(var(--color--success), 0.5);
-        --icon: url("@/success.svg");
     }
 
     &--warning {
         --icon-colour: rgba(var(--color--warning), 0.5);
-        --icon: url("@/warning.svg");
     }
 
     &--error {
         --icon-colour: rgba(var(--color--danger), 0.5);
-        --icon: url("@/error.svg");
     }
 
     &s {
