@@ -11,7 +11,7 @@ let _version = `v${process.env.npm_package_version}-${_date}-${_time}`;
 export default defineConfig({
   base: "/",
   build: {
-    assetsInlineLimit: 4096, // 4kb
+    assetsInlineLimit: 1024 * 20, // 20kb
     rollupOptions: {
       output: {
         entryFileNames: `assets/${_version}/[name].js`,

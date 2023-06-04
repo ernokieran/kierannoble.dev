@@ -17,10 +17,10 @@ if (import.meta.env.MODE == 'production') {
 
       navigator.serviceWorker.register(url.href).then(
         function (registration) {
-          console.log('Service worker registration successful', registration);
+          // console.log('Service worker registration successful', registration);
         },
         function (err) {
-          console.log('Service worker registration failed', err);
+          console.error('Service worker registration failed', err);
         });
     })
   }

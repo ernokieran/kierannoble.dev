@@ -4,7 +4,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function ProjectTile(props) {
     return (
-        <div className={`${props.name} ${props.className}`}>
+        <div className={`${props.name} ${props?.className ?? ''}`}>
             <Link to={props.route}>
                 <article className="portfolio-card">
                     <div className="portfolio-card__title">
