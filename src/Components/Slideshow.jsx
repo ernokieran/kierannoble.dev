@@ -42,9 +42,10 @@ function Slideshow(props) {
         return `${id}-thumbnail-${index}`;
     }
 
-    useEffect(() => {
-        slideshowRef.current.addEventListener('click', close);
-    }, [slideshowRef]);
+    // TO DO: allow closing of the slideshow, without closing when clicking on the main image
+    // useEffect(() => {
+    //     slideshowRef.current.addEventListener('click', close);
+    // }, [slideshowRef]);
 
     return (
         <span>

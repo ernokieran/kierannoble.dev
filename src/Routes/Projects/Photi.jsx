@@ -5,6 +5,7 @@ import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row,
 import { Slideshow, SlideshowThumbnailButton, WebFrame } from '~/Components';
 import initialDesigns from "@/projects/photi/slideshows/Designs-03.webp";
 import projectDocumentation from "@/projects/photi/slideshows/FYP-R-C-001.webp";
+import projectReport from "@/projects/photi/FYP-Report-Combined-20230510.pdf";
 
 function Photi() {
     const { setProject } = useContext(ProjectContext);
@@ -14,15 +15,14 @@ function Photi() {
     }, []);
 
     // Update to actually use thumbnails  
-    let initialDesignsItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/photi/slideshows/Designs-*.webp'));
-    let projectDocumentationItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/photi/slideshows/FYP-R-C-*.webp'));
+    let initialDesignsItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/photi/slideshows/Designs-*.webp'), import.meta.globEager('@/projects/photi/slideshows/thumbnails/Designs-*.webp'));
+    let projectDocumentationItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/photi/slideshows/FYP-R-C-*.webp'), import.meta.globEager('@/projects/photi/slideshows/thumbnails/FYP-R-C-*.webp'));
 
     return (
         <main className="layout">
             <Section type="primary" align="centered">
                 <SectionTitle>
                     {/* <SectionLogo src={harmonyLogo} /> */}
-                    photi.studio
                 </SectionTitle>
                 <SectionSubtitle>
                     AI Driven photo sharing social media image sharing platform
@@ -67,7 +67,7 @@ function Photi() {
                 <SectionSubtitle>
                     Throughout the project, I created a variety of different documents to help with the development of the project. These documents and the main report document are available to read below.
                 </SectionSubtitle>
-                <Slideshow images={projectDocumentationItems}>
+                <Slideshow images={projectDocumentationItems} download={projectReport}>
                     <SlideshowThumbnailButton>
                         <img className="image" src={projectDocumentation} loading="lazy" decoding="async" />
                     </SlideshowThumbnailButton>
