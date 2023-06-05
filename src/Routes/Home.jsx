@@ -1,6 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { ProjectTile } from '~/Components';
-import { Intro, Section, SectionTitle, SectionSubtitle } from '~/Components/Layout';
+import { Intro } from '~/Components/Layout';
 import { ProjectContext } from '~/Context';
 
 function Home() {
@@ -23,11 +23,6 @@ function Home() {
                     <ProjectTile route="/project/parts-and-sections" name="partsAndSections" />
                     <ProjectTile route="/project/pinewood" name="pinewood" />
                 </section>
-                {/* <Section type="primary" align="centered">
-                    <SectionTitle>
-                        Contact Me
-                    </SectionTitle>
-                </Section> */}
             </main>
         </div>
     );

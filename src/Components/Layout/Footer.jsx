@@ -1,17 +1,10 @@
-import { useContext } from 'react';
-import { ProjectContext } from '~/Context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
-    const { project } = useContext(ProjectContext);
-
     return (
         <footer className="footer">
-            {
-                project != 'home' ? '' : <div className="seperator"></div>
-            }
             <div className="logo logo--default"></div>
             <div className="footer__contact">
                 <a href="mailto:howdy@kierannoble.dev">howdy@kierannoble.dev</a>

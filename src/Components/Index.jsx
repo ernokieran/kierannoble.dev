@@ -1,3 +1,4 @@
+export { default as ContactForm } from './ContactForm';
 export { default as Notification } from './Notification';
 export { default as ProjectTile } from './ProjectTile';
 export { default as Slideshow } from './Slideshow';
