@@ -1,6 +1,9 @@
 const VERSION = new URL(location).searchParams.get('v'),
     CACHE_NAME = 'kndev-' + VERSION,
     ASSET_CACHE_URLS = [
+        '/assets/index.css',
+        '/assets/index.js',
+        '/assets/Home.js',
         '/assets/Lato-Light.ttf',
         '/assets/Lato-Regular.ttf',
         '/assets/Lato-Bold.ttf',

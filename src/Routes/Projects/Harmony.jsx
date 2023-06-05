@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { ProjectContext } from '~/Context';
 import { useGenerateSlideshowContent } from '~/Hooks';
 import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row, Column } from '~/Components/Layout';
-import { Slideshow, SlideshowThumbnailButton } from '~/Components';
+import { Slideshow, SlideshowThumbnailButton, WebFrame } from '~/Components';
 import harmonyLogo from "@/projects/harmony/logo.svg"
 import processImage from "@/projects/harmony/process.webp"
 import finalProduct from "@/projects/harmony/slideshows/final-product-1.webp"
@@ -106,17 +106,7 @@ function Harmony() {
                     <SectionTitle>
                         Final Product
                     </SectionTitle>
-                    <a href="https://harmony.aylo.net">
-                        <SectionSubtitle>
-                            View Here
-                        </SectionSubtitle>
-                    </a>
-
-                    <Slideshow images={finalProductItems}>
-                        <SlideshowThumbnailButton>
-                            <img className="image" src={finalProduct} loading="lazy" decoding="async" />
-                        </SlideshowThumbnailButton>
-                    </Slideshow>
+                    <WebFrame src="https://harmony.aylo.net/" />
                     <p>Ultimately, this project received a grade of 96% (1st), which is accredible in no small part to the great team that we had - our attitudes to succeed and the love and passion that we all had for the project was noted by the client who congratulated us on creating a project that functions the way that it does so quickly and professionally.</p>
                     <p>The team for this project were:</p>
                     <ul>

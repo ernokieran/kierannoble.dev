@@ -55,12 +55,6 @@
                 content: "View Project";
             }
         }     
-        
-        &:hover {
-            & ~ .portfolio-card__action-text {
-                opacity: 0.8;
-            }
-        }
     }
 
     &__title {
@@ -96,5 +90,9 @@
 
     &:hover {
         transform: scale(1.015);
+
+        & .portfolio-card__action-text {
+            opacity: 0.8;
+        }
     }
 }

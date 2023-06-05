@@ -1,10 +1,11 @@
-import { useEffect, useState, useId } from 'react';
+import { useEffect, useState, useId, useRef } from 'react';
 import { useBindKeyPress, useKeyPress } from '~/Hooks';
 import { SlideshowImage, SlideshowThumbnail, SlideshowButton } from './';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 function Slideshow(props) {
+    const slideshowRef = useRef();
     const [images] = useState(props.images ?? []);
     const [shownIndex, setShownIndex] = useState(props.shownIndex ?? null);
     const [hasNext, setHasNext] = useState(false);
@@ -41,12 +42,17 @@ function Slideshow(props) {
         return `${id}-thumbnail-${index}`;
     }
 
+    // TO DO: allow closing of the slideshow, without closing when clicking on the main image
+    // useEffect(() => {
+    //     slideshowRef.current.addEventListener('click', close);
+    // }, [slideshowRef]);
+
     return (
         <span>
             <div onClick={open}>
                 {props.children}
             </div>
-            <div className={`slideshow ${shown ? 'slideshow--shown' : ''}`}>
+            <div ref={slideshowRef} className={`slideshow ${shown ? 'slideshow--shown' : ''}`}>
                 <div className={`slideshow__image ${!hasMultipleImages ? 'slideshow__image--full' : ''}`}>
                     <SlideshowImage src={images[shownIndex ?? 0]?.path ?? ""} />
                 </div>

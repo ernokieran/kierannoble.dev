@@ -1,0 +1,48 @@
+.frame {
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: var(--rounded--large);
+    box-shadow: var(--shadow--medium);
+
+    &__action {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background-color: rgba(var(--theme-color), 0.8);
+        bottom: 16px;
+        right: 22px;
+        border-radius: 100%;
+        box-shadow: var(--shadow--medium);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+
+        &-text {
+            opacity: 0;
+            text-transform: uppercase;
+            color: white;
+            font-size: var(--font-extraSmall);
+            letter-spacing: 1px;
+            position: absolute;
+            bottom: 27px;
+            right: 59px;
+            transition: opacity 0.3s ease;
+
+            &:before {
+                content: "View Website";
+            }
+        }     
+        
+        &:hover {
+            & ~ .frame__action-text {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    & iframe {
+        zoom: 0.75;
+    }
+}
