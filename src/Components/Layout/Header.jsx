@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ProjectContext } from "~/Context";
 import { Slideshow } from "~/Components";
-import cv from "@/KieranNoble-CV-Nov22.webp"
-import cvPDF from "@/KieranNoble-CV-Nov22.pdf"
+import cv from "@/KieranNoble-CV-Jul23.webp"
+import cvPDF from "@/KieranNoble-CV-Jul23.pdf"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 

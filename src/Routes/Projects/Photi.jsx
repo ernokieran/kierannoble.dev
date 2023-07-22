@@ -3,7 +3,7 @@ import { ProjectContext } from '~/Context';
 import { useGenerateSlideshowContent } from '~/Hooks';
 import { Section, SectionSubtitle, SectionTitle, SectionLogo, Row, Column } from '~/Components/Layout';
 import { Slideshow, SlideshowThumbnailButton, WebFrame } from '~/Components';
-import photiLogo from "@/projects/photi/logo.webp";
+import photiLogo from "@/projects/photi/logo.svg";
 import initialDesigns from "@/projects/photi/slideshows/Designs-03.webp";
 import projectDocumentation from "@/projects/photi/slideshows/FYP-R-C-001.webp";
 import projectReport from "@/projects/photi/FYP-Report-Combined-20230510.pdf";
