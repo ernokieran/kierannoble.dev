@@ -1,1 +1,0 @@
-import{a as r,j as a,b as s,c}from"./index.js";function n(e){return r("div",{className:"section__frame",children:[a("iframe",{src:e.src,className:"frame"}),a("a",{className:"frame__action",href:e.src,target:"_blank",children:a(s,{icon:c})}),a("span",{className:"frame__action-text"})]})}export{n as W};
