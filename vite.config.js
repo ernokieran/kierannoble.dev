@@ -11,7 +11,7 @@ let _version = `v${process.env.npm_package_version}-${_date}-${_time}`;
 export default defineConfig({
   base: "/",
   build: {
-    assetsInlineLimit: 1024 * 20, // 20kb
+    assetsInlineLimit: 1024 * 10, // 10kb
     rollupOptions: {
       output: {
         entryFileNames: `assets/${_version}/[name].js`,
@@ -25,8 +25,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '~': resolve(__dirname, './src'),
-      '@': resolve(__dirname, './src/assets'),
+      '~': resolve(__dirname, 'src'),
+      '@': resolve(__dirname, 'src/assets'),
     },
   },
   plugins: [react()],
