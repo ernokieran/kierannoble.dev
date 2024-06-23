@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { NotificationContext } from '~/Context';
-import { Notification } from '~/Components';
+import { NotificationContext } from '@/Context';
+import { Notification } from '@/Components';
 
 function NotificationContextProvider(props) {
     const [notifications, setNotifications] = useState([

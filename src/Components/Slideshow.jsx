@@ -1,5 +1,5 @@
 import { useEffect, useState, useId, useRef } from 'react';
-import { useBindKeyPress, useKeyPress } from '~/Hooks';
+import { useBindKeyPress, useKeyPress } from '@/Hooks';
 import { SlideshowImage, SlideshowThumbnail, SlideshowButton } from './';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';

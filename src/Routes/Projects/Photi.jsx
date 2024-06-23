@@ -1,12 +1,12 @@
 import { useContext, useEffect } from 'react';
-import { ProjectContext } from '~/Context';
-import { useGenerateSlideshowContent } from '~/Hooks';
-import { Section, SectionSubtitle, SectionTitle, SectionLogo, Row, Column } from '~/Components/Layout';
-import { Slideshow, SlideshowThumbnailButton, WebFrame } from '~/Components';
-import photiLogo from "@/projects/photi/logo.svg";
-import initialDesigns from "@/projects/photi/slideshows/Designs-03.webp";
-import projectDocumentation from "@/projects/photi/slideshows/FYP-R-C-001.webp";
-import projectReport from "@/projects/photi/FYP-Report-Combined-20230510.pdf";
+import { ProjectContext } from '@/Context';
+import { useGenerateSlideshowContent } from '@/Hooks';
+import { Section, SectionSubtitle, SectionTitle, SectionLogo, Row, Column } from '@/Components/Layout';
+import { Slideshow, SlideshowThumbnailButton, WebFrame } from '@/Components';
+import photiLogo from "@/assets/projects/photi/logo.svg";
+import initialDesigns from "@/assets/projects/photi/slideshows/Designs-03.webp";
+import projectDocumentation from "@/assets/projects/photi/slideshows/FYP-R-C-001.webp";
+import projectReport from "@/assets/projects/photi/FYP-Report-Combined-20230510.pdf";
 
 function Photi() {
     const { setProject } = useContext(ProjectContext);
@@ -16,8 +16,8 @@ function Photi() {
     }, []);
 
     // Update to actually use thumbnails  
-    let initialDesignsItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/photi/slideshows/Designs-*.webp'), import.meta.globEager('@/projects/photi/slideshows/thumbnails/Designs-*.webp'));
-    let projectDocumentationItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/photi/slideshows/FYP-R-C-*.webp'), import.meta.globEager('@/projects/photi/slideshows/thumbnails/FYP-R-C-*.webp'));
+    let initialDesignsItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/photi/slideshows/Designs-*.webp'), import.meta.globEager('@/assets/projects/photi/slideshows/thumbnails/Designs-*.webp'));
+    let projectDocumentationItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/photi/slideshows/FYP-R-C-*.webp'), import.meta.globEager('@/assets/projects/photi/slideshows/thumbnails/FYP-R-C-*.webp'));
 
     return (
         <main className="layout">

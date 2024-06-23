@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Header, Footer, Loader, Error } from '~/Components/Layout';
+import { Header, Footer, Loader, Error } from '@/Components/Layout';
 
 
 function BasicLayout() {

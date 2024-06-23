@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ProjectContext } from '~/Context';
+import { ProjectContext } from '@/Context';
 
 function ProjectContextProvider(props) {
     const [project, setProject] = useState('home');

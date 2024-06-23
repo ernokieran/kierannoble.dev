@@ -1,5 +1,5 @@
 function LoadAssets() {
-    let assets = import.meta.globEager('@/**/*.*'),
+    let assets = import.meta.globEager('@/assets/**/*.*'),
         images = [];
 
     Object.keys(assets).forEach((key) => {

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faExclamation, faInfo } from '@fortawesome/free-solid-svg-icons';
-import { useNotification } from '~/Hooks';
+import { useNotification } from '@/Hooks';
 
 function Notification(props) {
     const NotificationManager = useNotification();

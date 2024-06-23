@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { NotificationContext } from '~/Context';
+import { NotificationContext } from '@/Context';
 
 function useNotification() {
     const { notifications, setNotifications } = useContext(NotificationContext);

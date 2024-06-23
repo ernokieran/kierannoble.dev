@@ -1,4 +1,4 @@
-import { ViewportProvider, NotificationProvider, ProjectProvider } from '~/Context';
+import { ViewportProvider, NotificationProvider, ProjectProvider } from '@/Context';
 import Router from './Router';
 
 function App() {

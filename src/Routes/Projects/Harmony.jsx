@@ -1,13 +1,13 @@
 import { useContext, useEffect } from 'react';
-import { ProjectContext } from '~/Context';
-import { useGenerateSlideshowContent } from '~/Hooks';
-import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row, Column } from '~/Components/Layout';
-import { Slideshow, SlideshowThumbnailButton, WebFrame } from '~/Components';
-import harmonyLogo from "@/projects/harmony/logo.svg"
-import processImage from "@/projects/harmony/process.webp"
-import finalProduct from "@/projects/harmony/slideshows/final-product-1.webp"
-import initialDesigns from "@/projects/harmony/slideshows/initial-designs.webp"
-import uiUxPrototype from "@/projects/harmony/slideshows/prototype-ui.webp"
+import { ProjectContext } from '@/Context';
+import { useGenerateSlideshowContent } from '@/Hooks';
+import { Section, SectionSubtitle, SectionTitle, SectionImage, SectionLogo, Row, Column } from '@/Components/Layout';
+import { Slideshow, SlideshowThumbnailButton, WebFrame } from '@/Components';
+import harmonyLogo from "@/assets/projects/harmony/logo.svg"
+import processImage from "@/assets/projects/harmony/process.webp"
+import finalProduct from "@/assets/projects/harmony/slideshows/final-product-1.webp"
+import initialDesigns from "@/assets/projects/harmony/slideshows/initial-designs.webp"
+import uiUxPrototype from "@/assets/projects/harmony/slideshows/prototype-ui.webp"
 
 function Harmony() {
     const { setProject } = useContext(ProjectContext);
@@ -18,7 +18,7 @@ function Harmony() {
 
     let initialDesignsItems = useGenerateSlideshowContent(initialDesigns);
     let uiUxPrototypeItems = useGenerateSlideshowContent(uiUxPrototype);
-    let finalProductItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/harmony/slideshows/final-product-*.webp'), import.meta.globEager('@/projects/harmony/slideshows/thumbnails/final-product-*.webp'));
+    let finalProductItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/harmony/slideshows/final-product-*.webp'), import.meta.globEager('@/assets/projects/harmony/slideshows/thumbnails/final-product-*.webp'));
 
     return (
         <main className="layout">

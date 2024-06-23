@@ -1,17 +1,17 @@
 import { Fragment, lazy } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { PortfolioLayout, BasicLayout } from "~/Layouts";
-import { Redirection, Error } from "~/Components/Layout";
-import { Redirections } from "~/Data";
+import { PortfolioLayout, BasicLayout } from "@/Layouts";
+import { Redirection, Error } from "@/Components/Layout";
+import { Redirections } from "@/Data";
 
-const Home = lazy(() => import('~/Routes/Home'));
-const Photi = lazy(() => import('~/Routes/Projects/Photi'));
-const Harmony = lazy(() => import('~/Routes/Projects/Harmony'));
-const Pinewood = lazy(() => import('~/Routes/Projects/Pinewood'));
-const ExperimentalImagery = lazy(() => import('~/Routes/Projects/ExperimentalImagery'));
-const PartsAndSections = lazy(() => import('~/Routes/Projects/PartsAndSections'));
-const DecisionMaker = lazy(() => import('~/Routes/Apps/DecisionMaker'));
-const LoadAssets = lazy(() => import('~/Routes/Admin/LoadAssets'));
+const Home = lazy(() => import('@/Routes/Home'));
+const Photi = lazy(() => import('@/Routes/Projects/Photi'));
+const Harmony = lazy(() => import('@/Routes/Projects/Harmony'));
+const Pinewood = lazy(() => import('@/Routes/Projects/Pinewood'));
+const ExperimentalImagery = lazy(() => import('@/Routes/Projects/ExperimentalImagery'));
+const PartsAndSections = lazy(() => import('@/Routes/Projects/PartsAndSections'));
+const DecisionMaker = lazy(() => import('@/Routes/Apps/DecisionMaker'));
+const LoadAssets = lazy(() => import('@/Routes/Admin/LoadAssets'));
 
 function Router() {
     return (

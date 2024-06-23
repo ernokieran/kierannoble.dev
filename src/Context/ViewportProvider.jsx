@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ViewportContext } from "~/Context";
+import { ViewportContext } from "@/Context";
 
 function ViewportContextProvider(props) {
     const [viewportHeight, setViewportHeight] = useState('100vh');

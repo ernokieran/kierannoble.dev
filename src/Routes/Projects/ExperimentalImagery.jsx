@@ -1,11 +1,11 @@
 import { useContext, useEffect } from 'react';
-import { ProjectContext } from '~/Context';
-import { useGenerateSlideshowContent } from '~/Hooks';
-import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '~/Components/Layout';
-import { Slideshow, SlideshowThumbnailButton } from '~/Components';
-import experimentalImageryLogo from "@/projects/experimentalimagery/logo.svg"
-import furtherDevelopment from "@/projects/experimentalimagery/Colours.webp"
-import book from "@/projects/experimentalimagery/Slideshows/Experimental Imagery Final_000.webp"
+import { ProjectContext } from '@/Context';
+import { useGenerateSlideshowContent } from '@/Hooks';
+import { Section, SectionSubtitle, SectionTitle, Row, Column, SectionLogo } from '@/Components/Layout';
+import { Slideshow, SlideshowThumbnailButton } from '@/Components';
+import experimentalImageryLogo from "@/assets/projects/experimentalimagery/logo.svg"
+import furtherDevelopment from "@/assets/projects/experimentalimagery/Colours.webp"
+import book from "@/assets/projects/experimentalimagery/Slideshows/Experimental Imagery Final_000.webp"
 
 function ExperimentalImagery() {
     const { setProject } = useContext(ProjectContext);
@@ -13,10 +13,10 @@ function ExperimentalImagery() {
         setProject('experimentalImagery');
     }, []);
 
-    let initialItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/experimentalimagery/slideshows/Hands_*.webp'), import.meta.globEager('@/projects/experimentalimagery/slideshows/thumbnails/Hands_*.webp'));
+    let initialItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/Hands_*.webp'), import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/thumbnails/Hands_*.webp'));
     let furtherDevelopmentItems = useGenerateSlideshowContent(furtherDevelopment);
-    let finalItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/experimentalimagery/slideshows/Final_*.webp'), import.meta.globEager('@/projects/experimentalimagery/slideshows/thumbnails/Final_*.webp'));
-    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/projects/experimentalimagery/slideshows/Experimental Imagery Final*.webp'), import.meta.globEager('@/projects/experimentalimagery/slideshows/thumbnails/Experimental Imagery Final*.webp'));
+    let finalItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/Final_*.webp'), import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/thumbnails/Final_*.webp'));
+    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/Experimental Imagery Final*.webp'), import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/thumbnails/Experimental Imagery Final*.webp'));
 
     return (
         <main className="layout">
