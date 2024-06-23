@@ -137,7 +137,7 @@ function Photi() {
                 <p>
                     The source code for this project is available at <a href="https://github.com/AyloKieran/photi.studio">github.com/AyloKieran/photi.studio</a>.
                 </p>
-                <WebFrame src="https://photi.studio/" />
+                {/* <WebFrame src="https://photi.studio/" /> */}
             </Section>
         </main>
     );

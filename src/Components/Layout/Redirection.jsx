@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 function Redirection(props) {
-    const REDIRECTION_TIMEOUT = 250;
+    const REDIRECTION_TIMEOUT = 0;
 
     useEffect(() => {
         setTimeout(() => {

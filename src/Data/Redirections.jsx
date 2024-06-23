@@ -3,7 +3,7 @@ function Redirections() {
         {
             name: 'GitHub',
             from: 'github',
-            to: 'https://github.com/AyloKieran',
+            to: 'https://github.com/ernokieran',
         },
         {
             name: 'LinkedIn',
@@ -13,12 +13,12 @@ function Redirections() {
         {
             name: 'Twitter',
             from: 'twitter',
-            to: 'https://twitter.com/AyloKieran',
+            to: 'https://x.com/ernokieran',
         },
         {
             name: 'Instagram',
             from: 'instagram',
-            to: 'https://www.instagram.com/aylokieran/',
+            to: 'https://www.instagram.com/ernokieran/',
         },
         {
             name: 'Plex',
@@ -38,7 +38,7 @@ function Redirections() {
         {
             name: 'LastFM',
             from: 'lastfm',
-            to: 'https://www.last.fm/user/AyloKieran',
+            to: 'https://www.last.fm/user/ernokieran',
         }
     ];
 }

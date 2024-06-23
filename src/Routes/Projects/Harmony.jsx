@@ -106,7 +106,7 @@ function Harmony() {
                     <SectionTitle>
                         Final Product
                     </SectionTitle>
-                    <WebFrame src="https://harmony.aylo.net/" />
+                    {/* <WebFrame src="https://harmony.aylo.net/" /> */}
                     <p>Ultimately, this project received a grade of 96% (1st), which is accredible in no small part to the great team that we had - our attitudes to succeed and the love and passion that we all had for the project was noted by the client who congratulated us on creating a project that functions the way that it does so quickly and professionally.</p>
                     <p>The team for this project were:</p>
                     <ul>
