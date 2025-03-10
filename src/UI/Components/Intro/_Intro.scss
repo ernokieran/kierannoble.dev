@@ -1,4 +1,4 @@
-@import "../../Mixins";
+@use "../../Mixins";
 
 $avatarSize: 135px;
 
@@ -6,7 +6,7 @@ $avatarSize: 135px;
     display: flex;
     flex-direction: row-reverse;
     font-family: var(--font-family--block);
-    @include mobileSize((
+    @include Mixins.mobileSize((
         flex-direction: column,
         text-align: center
     ));
@@ -20,7 +20,7 @@ $avatarSize: 135px;
         letter-spacing: 1px;
         color: rgba(var(--theme-color));
         margin-bottom: 8px;
-        @include mobileSize((
+        @include Mixins.mobileSize((
             margin-top: 12px
         ));
     }

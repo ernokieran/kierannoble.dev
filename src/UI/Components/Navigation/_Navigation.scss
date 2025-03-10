@@ -1,4 +1,4 @@
-@import "../../Mixins";
+@use "../../Mixins";
 
 .navigation {
     display: flex;
@@ -18,7 +18,7 @@
         margin-top: auto;
         cursor: pointer;
 
-        @include mobileSize((
+        @include Mixins.mobileSize((
             margin-bottom: auto
         ));
 

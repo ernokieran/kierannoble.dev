@@ -16,8 +16,8 @@ function Photi() {
     }, []);
 
     // Update to actually use thumbnails  
-    let initialDesignsItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/photi/slideshows/Designs-*.webp'), import.meta.globEager('@/assets/projects/photi/slideshows/thumbnails/Designs-*.webp'));
-    let projectDocumentationItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/photi/slideshows/FYP-R-C-*.webp'), import.meta.globEager('@/assets/projects/photi/slideshows/thumbnails/FYP-R-C-*.webp'));
+    let initialDesignsItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/photi/slideshows/Designs-*.webp', { eager: true }), import.meta.glob('@/assets/projects/photi/slideshows/thumbnails/Designs-*.webp', { eager: true }));
+    let projectDocumentationItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/photi/slideshows/FYP-R-C-*.webp', { eager: true }), import.meta.glob('@/assets/projects/photi/slideshows/thumbnails/FYP-R-C-*.webp', { eager: true }));
 
     return (
         <main className="layout">

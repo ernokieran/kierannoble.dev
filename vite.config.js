@@ -29,4 +29,5 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  quietDeps: true
 })

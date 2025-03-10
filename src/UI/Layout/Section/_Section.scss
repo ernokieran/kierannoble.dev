@@ -1,4 +1,4 @@
-@import "../../Mixins";
+@use "../../Mixins";
 
 .section {
     width: 100vw;
@@ -99,7 +99,7 @@
             text-align: right;
         }
 
-        @include mobileSize((
+        @include Mixins.mobileSize((
             text-align: left
         ));
     }

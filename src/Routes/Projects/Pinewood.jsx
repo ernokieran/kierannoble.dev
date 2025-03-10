@@ -13,7 +13,7 @@ function Pinewood() {
         setProject('pinewood');
     }, []);
 
-    let dashboardItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/pinewood/slideshows/dashboard-*.webp'), import.meta.globEager('@/assets/projects/pinewood/slideshows/thumbnails/dashboard-*.webp'));
+    let dashboardItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/pinewood/slideshows/dashboard-*.webp', { eager: true }), import.meta.glob('@/assets/projects/pinewood/slideshows/thumbnails/dashboard-*.webp', { eager: true }));
 
     return (
         <main className="layout">

@@ -1,9 +1,11 @@
-@import "Themes/InternalThemeVariables";
+@use "Themes/InternalThemeVariables";
 
 @mixin mobileSize($styles: ()) {
-    @media screen and (max-width: $mobileSize) {
+    @media screen and (max-width: InternalThemeVariables.$mobileSize) {
         @each $property, $value in $styles {
-            #{$property}: $value;
+            & {
+                #{$property}: $value;
+            }
         }
     }
 }

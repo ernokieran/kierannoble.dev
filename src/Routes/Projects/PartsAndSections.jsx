@@ -14,11 +14,11 @@ function PartsAndSections() {
         setProject('partsAndSections');
     }, []);
 
-    let initialItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/partsandsections/slideshows/Initial*.webp'), import.meta.globEager('@/assets/projects/partsandsections/slideshows/thumbnails/Initial*.webp'));
-    let polItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/partsandsections/slideshows/Pol_*.webp'), import.meta.globEager('@/assets/projects/partsandsections/slideshows/thumbnails/Pol_*.webp'));
+    let initialItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/partsandsections/slideshows/Initial*.webp', { eager: true }), import.meta.glob('@/assets/projects/partsandsections/slideshows/thumbnails/Initial*.webp', { eager: true }));
+    let polItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/partsandsections/slideshows/Pol_*.webp', { eager: true }), import.meta.glob('@/assets/projects/partsandsections/slideshows/thumbnails/Pol_*.webp', { eager: true }));
     let developmentItems = useGenerateSlideshowContent(development);
-    let finalItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/partsandsections/slideshows/OFinal*.webp'), import.meta.globEager('@/assets/projects/partsandsections/slideshows/thumbnails/OFinal*.webp'));
-    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/partsandsections/slideshows/Parts and Sections Final*.webp'), import.meta.globEager('@/assets/projects/partsandsections/slideshows/thumbnails/Parts and Sections Final*.thumbnail.webp'));
+    let finalItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/partsandsections/slideshows/OFinal*.webp', { eager: true }), import.meta.glob('@/assets/projects/partsandsections/slideshows/thumbnails/OFinal*.webp', { eager: true }));
+    let bookItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/partsandsections/slideshows/Parts and Sections Final*.webp', { eager: true }), import.meta.glob('@/assets/projects/partsandsections/slideshows/thumbnails/Parts and Sections Final*.thumbnail.webp', { eager: true }));
 
     return (
         <main className="layout">

@@ -1,4 +1,4 @@
-@import "../../Mixins";
+@use "../../Mixins";
 
 
 .seperator {
@@ -8,7 +8,7 @@
     &--small {
         width: 50px;
         margin: 20px 0;
-        @include mobileSize((
+        @include Mixins.mobileSize((
             margin: 20px auto
         ));
     }

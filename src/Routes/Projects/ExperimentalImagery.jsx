@@ -13,10 +13,10 @@ function ExperimentalImagery() {
         setProject('experimentalImagery');
     }, []);
 
-    let initialItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/Hands_*.webp'), import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/thumbnails/Hands_*.webp'));
+    let initialItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/experimentalimagery/slideshows/Hands_*.webp', { eager: true }), import.meta.glob('@/assets/projects/experimentalimagery/slideshows/thumbnails/Hands_*.webp', { eager: true }));
     let furtherDevelopmentItems = useGenerateSlideshowContent(furtherDevelopment);
-    let finalItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/Final_*.webp'), import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/thumbnails/Final_*.webp'));
-    let bookItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/Experimental Imagery Final*.webp'), import.meta.globEager('@/assets/projects/experimentalimagery/slideshows/thumbnails/Experimental Imagery Final*.webp'));
+    let finalItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/experimentalimagery/slideshows/Final_*.webp', { eager: true }), import.meta.glob('@/assets/projects/experimentalimagery/slideshows/thumbnails/Final_*.webp', { eager: true }));
+    let bookItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/experimentalimagery/slideshows/Experimental Imagery Final*.webp', { eager: true }), import.meta.glob('@/assets/projects/experimentalimagery/slideshows/thumbnails/Experimental Imagery Final*.webp', { eager: true }));
 
     return (
         <main className="layout">

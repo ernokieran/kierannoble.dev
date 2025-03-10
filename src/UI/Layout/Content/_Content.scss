@@ -1,11 +1,11 @@
-@import "../../Mixins";
+@use "../../Mixins";
 
 .content {
     max-width: var(--max-width);
     margin: auto;
     padding: 24px 50px;
 
-    @include mobileSize((
+    @include Mixins.mobileSize((
         padding: 24px 24px
     ));
 }

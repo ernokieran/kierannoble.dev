@@ -1,4 +1,4 @@
-@import "../../Mixins";
+@use "../../Mixins";
 
 .notification {
     --icon-colour: #999; // TO DO: Use a variable
@@ -16,7 +16,7 @@
     pointer-events: auto;
     cursor: pointer;
 
-    @include mobileSize((
+    @include Mixins.mobileSize((
         max-width: unset
     ));
 
@@ -83,7 +83,7 @@
             display: flex;
             flex-direction: column-reverse;
             gap: .5rem;  // TO DO: Use a variable
-            @include mobileSize((
+            @include Mixins.mobileSize((
                 width: 100%
             ));
         }  

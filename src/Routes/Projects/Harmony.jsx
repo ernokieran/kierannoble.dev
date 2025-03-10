@@ -18,7 +18,7 @@ function Harmony() {
 
     let initialDesignsItems = useGenerateSlideshowContent(initialDesigns);
     let uiUxPrototypeItems = useGenerateSlideshowContent(uiUxPrototype);
-    let finalProductItems = useGenerateSlideshowContent(import.meta.globEager('@/assets/projects/harmony/slideshows/final-product-*.webp'), import.meta.globEager('@/assets/projects/harmony/slideshows/thumbnails/final-product-*.webp'));
+    let finalProductItems = useGenerateSlideshowContent(import.meta.glob('@/assets/projects/harmony/slideshows/final-product-*.webp', { eager: true }), import.meta.glob('@/assets/projects/harmony/slideshows/thumbnails/final-product-*.webp', { eager: true }));
 
     return (
         <main className="layout">

@@ -21,7 +21,7 @@ function Home() {
                 <section className="layout__row layout__row--equal">
                     <ProjectTile route="/project/experimental-imagery" name="experimentalImagery" />
                     <ProjectTile route="/project/parts-and-sections" name="partsAndSections" />
-                    <ProjectTile route="/project/pinewood" name="pinewood" />
+                    {/* <ProjectTile route="/project/pinewood" name="pinewood" /> */}
                 </section>
             </main>
         </div>

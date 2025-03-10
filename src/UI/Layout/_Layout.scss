@@ -1,4 +1,5 @@
-@import "../Mixins";
+@use "sass:meta";
+@use "../Mixins";
 
 .layout {
     display: flex;
@@ -10,7 +11,7 @@
         margin-bottom: var(--spacing--medium);
         flex-wrap: wrap;
         flex-direction: row;
-        @include mobileSize((
+        @include Mixins.mobileSize((
             flex-direction: column
         ));
 
@@ -24,14 +25,14 @@
             grid-auto-flow: column;
             grid-auto-columns: 1fr;
 
-            @include mobileSize((
+            @include Mixins.mobileSize((
                 display: flex,
                 flex-direction: column
             ))
         }
 
         &--ignoreMobile {
-            @include mobileSize((
+            @include Mixins.mobileSize((
                 flex-direction: row
             ));
         }
@@ -69,14 +70,14 @@
         font-family: var(--font-family--normal);
         margin: 0 auto;
 
-        @include mobileSize((
+        @include Mixins.mobileSize((
             padding: 24px
         ));
     }
 }
 
-@import "Container/Container";
-@import "Content/Content";
-@import "Loader/Loader";
-@import "ScrollBar/ScrollBar";
-@import "Section/Section";
+@include meta.load-css("Container/Container");
+@include meta.load-css("Content/Content");
+@include meta.load-css("Loader/Loader");
+@include meta.load-css("ScrollBar/ScrollBar");
+@include meta.load-css("Section/Section");
