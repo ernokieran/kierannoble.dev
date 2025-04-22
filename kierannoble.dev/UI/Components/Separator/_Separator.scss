@@ -1,0 +1,24 @@
+@use "../../Theme/Theme";
+
+.separator {
+  width: 100%;
+  margin: 30px auto;
+
+  &--small {
+    width: 50px;
+    margin: 20px 0;
+    @include Theme.mobileSize((
+            margin: 20px auto
+    ));
+  }
+
+  &--centered {
+    margin: 20px auto;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid #ccc;
+  }
+}

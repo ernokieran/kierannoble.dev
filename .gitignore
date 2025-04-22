@@ -1,0 +1,5 @@
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/**
+site.min.css
+site.min.js

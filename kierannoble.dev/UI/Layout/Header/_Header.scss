@@ -1,0 +1,20 @@
+@use "../../Theme/Theme";
+
+header {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 30px; //TODOK
+  
+  @include Theme.mobileSize((
+    flex-direction: column,
+    text-align: center,
+    gap: 12px
+  ));
+  
+  & .avatar {
+    border-radius: 100%;
+    margin: 0 auto;
+    width: 135px; //TODOK
+    height: 135px; //TODOK
+  }
+}

@@ -1,0 +1,119 @@
+@use "Footer/Footer";
+@use "Header/Header";
+@use "Loader/Loader";
+@use "Navigation/Navigation";
+@use "Scrollbar/Scrollbar";
+@use "Section/Section";
+@use "Slideshow/Slideshow";
+@use "../Theme/Theme";
+
+html {
+  line-height: 1;
+}
+
+body {
+  min-height: calc(100dvh - (2 * 50px)); //TODOK: replace 50px with padding spacing var
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px; //TODOK
+  margin: 0 auto;
+  max-width: 1200px; //TODOK
+  font-family: var(--font-family--regular);
+  
+  @include Theme.mobileSize((
+    padding: 24px //TODOK
+  ));
+
+  & main {
+    flex-grow: 1;
+  }
+  
+  &:has(.introduction) {
+    & nav {
+      --theme-color: 0, 0, 0;
+    }
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; //TODOK
+  
+  &__row {
+    display: flex;
+    gap: 24px; //TODOK
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+    @include Theme.mobileSize((
+      flex-direction: column
+    ));
+
+    & * {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+
+    &--equal {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+
+      @include Theme.mobileSize((
+          display: flex,
+          flex-direction: column
+      ))
+    }
+  }
+
+  &--small {
+    gap: 12px; //TODOK;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+i {
+  text-align: center;
+}
+
+ol {
+  list-style: none;
+  counter-reset: item;
+  
+  & li {
+    counter-increment: item;
+    margin-bottom: 5px;
+    
+    &:before {
+      margin-right: 5px;
+      content: counter(item) ".";
+      font-weight: 700;
+    }
+  }
+}
+
+a[target="_blank"] {
+  &:after {
+    content: '';
+    font-size: 8px;
+    font-family: "Font Awesome 6 Free";
+    margin-left: 3px;
+  }
+}
+
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
