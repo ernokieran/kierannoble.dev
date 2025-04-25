@@ -13,5 +13,7 @@ public class Column : TagHelperBase
         output.Attributes.SetAttribute("class", ClassName);
     }
 
-    private static string ClassName => "layout__column";
+    private string ClassName => Small ? "layout__column layout__column--small" : "layout__column";
+    
+    public bool Small { get; set; }
 }

@@ -48,6 +48,13 @@ body {
     display: flex;
     gap: 24px;
     flex-direction: column;
+    
+    &--small {
+      & * {
+        flex-grow: 0 !important;
+        flex-shrink: 1 !important;
+      }
+    }
   }
   
   &__row {
@@ -101,6 +108,16 @@ ol {
     &:before {
       margin-right: 5px;
       content: counter(item) ".";
+      font-weight: 700;
+    }
+  }
+}
+
+ul {
+  & li {
+    &:before {
+      content: '•';
+      margin-right: 5px;
       font-weight: 700;
     }
   }

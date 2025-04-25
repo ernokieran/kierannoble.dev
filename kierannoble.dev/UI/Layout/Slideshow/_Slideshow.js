@@ -88,7 +88,6 @@
             });
             
             window.addEventListener("resize", () => {
-                console.log("resize");
                if (isOpen) {
                    //TODOK: debounce;
                    _renderThumbnails();
@@ -154,10 +153,10 @@
                 let holderElement = document.createElement("div"),
                     imageElement = document.createElement("img");
 
-                let height = window.getComputedStyle(slideshow).getPropertyValue('--thumbnail-height').replace("px", ""), //TODOK get from css
+                let height = window.getComputedStyle(slideshow).getPropertyValue('--thumbnail-height').replace("px", ""),
                     width = Math.round(height * currentImage.Ratio);
 
-                imageElement.src = `/api/image/resize/height=${height}${currentImage.URL}`; //TODOK
+                imageElement.src = `/api/image/resize/height=${height}${currentImage.URL}`;
 
                 imageElement.height = height;
                 imageElement.width = width;

@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Razor.TagHelpers;
-
 namespace kierannoble.dev.Controls.Layout.Section;
 
 [HtmlTargetElement(TAG_NAME)]
@@ -19,6 +17,11 @@ public class Section : TagHelperBase
         if (!string.IsNullOrWhiteSpace(Title))
         {
            output.Content.AppendHtml($"""<h1 class="section__title">{Title}</h1>"""); 
+        }
+
+        if (!string.IsNullOrWhiteSpace(LogoURL))
+        {
+            output.Content.AppendHtml($"""<img class="section__logo" src="{LogoURL}" alt="{Title}" width="300" height="50" loading="lazy" decoding="async" />""");
         }
         
         if (!string.IsNullOrWhiteSpace(SubTitle))
@@ -53,5 +56,6 @@ public class Section : TagHelperBase
     public SectionAlignment Alignment { get; set; } = SectionAlignment.Left;
     public SectionType Type { get; set; } = SectionType.None;
     public string Title { get; set; }
+    public string LogoURL { get; set; }
     public string SubTitle { get; set; }
 }

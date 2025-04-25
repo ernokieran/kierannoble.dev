@@ -1,9 +1,9 @@
-namespace kierannoble.dev.Controls.Layout.Card;
+namespace kierannoble.dev.Controls.Card;
 
 [HtmlTargetElement(TAG_NAME)]
 public class CardProject : TagHelperBase
 {
-    internal const string TAG_NAME = "card:project";
+    private const string TAG_NAME = "card:project";
 
     public CardProject(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) { }
 
@@ -16,20 +16,20 @@ public class CardProject : TagHelperBase
         output.Attributes.SetAttribute("data-project", Project);
         
         output.Content.AppendHtml($"""
-                                           <article data-background-image="{BackgroundImageURL}">
-                                               <h1 class="project__title">
-                                                   <img class="project__title-image" src="{LogoImageURL}" alt="{DescriptionText}" height="50" width="300" />
-                                                   <p class="project__title-description">{DescriptionText}</p>
-                                               </h1>
-                                               <span class="project__chip">{ChipText}</span>
-                                               <div class="project__navigation">
-                                                   <p class="project__navigation-tooltip">View Project</p>
-                                                   <div class="project__navigation-button">
-                                                       <i class="fa fa-arrow-right"></i>
-                                                   </div>
-                                               </div>
-                                           </article>
-                                       """);
+               <article >
+                   <h1 class="project__title">
+                       <img class="project__title-image" src="{LogoImageURL}" alt="{DescriptionText}" height="50" width="300" loading="lazy" decoding="async" />
+                       <p class="project__title-description">{DescriptionText}</p>
+                   </h1>
+                   <span class="project__chip">{ChipText}</span>
+                   <div class="project__navigation">
+                       <p class="project__navigation-tooltip">View Project</p>
+                       <div class="project__navigation-button">
+                           <i class="fa fa-arrow-right"></i>
+                       </div>
+                   </div>
+               </article>
+           """);
     }
     
     public bool Featured { get; set; }
@@ -38,5 +38,4 @@ public class CardProject : TagHelperBase
     public string ChipText { get; set; }
     public string DescriptionText { get; set; }
     public string LogoImageURL { get; set; }
-    public string BackgroundImageURL { get; set; }
 }

@@ -1,0 +1,56 @@
+﻿@{
+    string _Title = string.IsNullOrWhiteSpace((string?)ViewData["title"]) ? "Kieran Noble" : $"{(string)ViewData["title"]!} - Kieran Noble"; //TODOK
+    string _Project = (string?)ViewData["project"] ?? string.Empty;
+}
+
+<!DOCTYPE html>
+<html lang="en" data-project="@_Project">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preload" as="style" href="/css/site.min.css" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/fa-solid-900.woff2" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/Lato-Bold.ttf" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/Lato-Light.ttf" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/Lato-Regular.ttf" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/HalisR-Black.otf" crossorigin="anonymous" />
+        
+        <meta name="description" content="TODOK" />
+        
+        <link rel="stylesheet" href="/css/site.min.css" />
+        
+        <title>@_Title</title>
+    </head>
+<body>
+@RenderBody()
+<div class="slideshow" id="slideshow">
+    <div class="slideshow__image">
+        <div class="slideshow__image-holder" id="slideshow-image-holder">
+            <div class="loader"></div>
+        </div>
+    </div>
+    <div class="slideshow__thumbnails">
+        <div class="slideshow__thumbnails-holder" id="slideshow-thumbnails-holder"></div>
+    </div>
+    <div class="slideshow__button slideshow__button--close" id="slideshow-close">
+        <i class="fa fa-xmark"></i>
+        <span class="sr-only">Close</span>
+    </div>
+    <div class="slideshow__button slideshow__button--previous" id="slideshow-previous">
+        <i class="fa fa-chevron-left"></i>
+        <span class="sr-only">Previous</span>
+    </div>
+    <div class="slideshow__button slideshow__button--next" id="slideshow-next">
+        <i class="fa fa-chevron-right"></i>
+        <span class="sr-only">Next</span>
+    </div>
+    <a href="" class="slideshow__button slideshow__button--download" id="slideshow-download" download>
+        <i class="fa fa-download"></i>
+        <span class="sr-only">Download</span>
+    </a>
+</div>
+</body>
+
+<script src="/js/site.min.js"></script>
+</html>

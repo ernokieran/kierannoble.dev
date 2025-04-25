@@ -29,7 +29,7 @@ public abstract class BaseTemplate : TagHelperBase
     
     private const string ACTIONS_MARKUP = """
                                           <div class="actions">
-                                                  <a href="/cv" class="action">CV</a>
+                                                  <div class="action" data-slideshow="{&quot;Images&quot;:[{&quot;URL&quot;:&quot;/img/KieranNoble-CV-Jul23.webp&quot;,&quot;Ratio&quot;:0.7069555302166476624857468643}],&quot;DownloadURL&quot;:&quot;/img/KieranNoble-CV-Jul23.pdf&quot;}" >CV</div>
                                               </div>
                                           </nav>
                                           """;

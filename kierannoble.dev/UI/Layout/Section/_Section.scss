@@ -19,6 +19,10 @@
     ));
   }
 
+  &__logo {
+    margin: auto;
+  }
+  
   &__title {
     font-size: var(--font-size--large);
     font-family: var(--font-family--block);
