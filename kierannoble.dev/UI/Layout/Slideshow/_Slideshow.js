@@ -27,6 +27,11 @@
         images = [],
         isOpen = false;
     
+    let
+        screenWidth,
+        touchStartX,
+        touchEndX;
+    
     let currentImageElement;
     
     function _init() {
@@ -46,6 +51,23 @@
             slideshowClose.addEventListener("click", () => _close());
             slideshowNext.addEventListener("click", () => _next());
             slideshowPrevious.addEventListener("click", () => _previous());
+
+            slideshowImageHolder.addEventListener("touchstart", (event) => {
+                touchStartX = event.changedTouches[0].screenX;
+            });
+            
+            slideshowImageHolder.addEventListener("touchend", (event) => {
+                touchEndX = event.changedTouches[0].screenX;
+                
+                let swipeThreshold = screenWidth * 0.1;
+                
+                if ((touchStartX - touchEndX) > swipeThreshold) {
+                    _next();
+                }
+                else if ((touchEndX - touchStartX) > swipeThreshold) {
+                    _previous();
+                }
+            });
             
             document.addEventListener("keydown", (event) => {
                 if (!isOpen) {
@@ -63,7 +85,16 @@
                 if (event.key === "Escape") {
                     _close();
                 }
-            })
+            });
+            
+            window.addEventListener("resize", () => {
+                console.log("resize");
+               if (isOpen) {
+                   //TODOK: debounce;
+                   _renderThumbnails();
+                   _selectImageByIndex(currentIndex);
+               }
+            });
         }
     }
     
@@ -89,7 +120,7 @@
         
         if (downloadURL) {
             slideshowDownload.href = downloadURL;
-            slideshowDownload.style.visibility = 'visible'; //TODOK
+            slideshowDownload.style.visibility = 'visible';
         }
         else {
             slideshowDownload.style.visibility = 'hidden';
@@ -101,7 +132,18 @@
         
         slideshow.classList.add(CSS_SLIDESHOW_SHOWN);
         
+        _renderThumbnails();
+
+        _selectImageByIndex(0);
+        isOpen = true;
+    }
+    
+    function _renderThumbnails() {
+        screenWidth = window.innerWidth; //TODOK: move this;
+        
         if (imageCount !== 1) {
+            slideshowThumbnailsHolder.innerHTML = '';
+            
             slideshowThumbnailsHolder.scrollTo(0, 0);
 
             let thumbnailsFragment = document.createDocumentFragment();
@@ -112,10 +154,10 @@
                 let holderElement = document.createElement("div"),
                     imageElement = document.createElement("img");
 
-                let height = 60, //TODOK get from css
+                let height = window.getComputedStyle(slideshow).getPropertyValue('--thumbnail-height').replace("px", ""), //TODOK get from css
                     width = Math.round(height * currentImage.Ratio);
-                
-                imageElement.src = `/api/image/resize/height=${height},quality=50${currentImage.URL}`; //TODOK
+
+                imageElement.src = `/api/image/resize/height=${height}${currentImage.URL}`; //TODOK
 
                 imageElement.height = height;
                 imageElement.width = width;
@@ -131,11 +173,8 @@
                 thumbnailsFragment.appendChild(holderElement);
             }
 
-            slideshowThumbnailsHolder.appendChild(thumbnailsFragment);   
+            slideshowThumbnailsHolder.appendChild(thumbnailsFragment);
         }
-
-        _selectImageByIndex(0);
-        isOpen = true;
     }
     
     function _selectImageByIndex(index) {
@@ -164,10 +203,8 @@
         if (imageCount !== 1) {
             currentThumbnailElement = thumbnailElement;
             thumbnailElement.classList.add(CSS_SLIDESHOW_THUMBNAIL_SELECTED);
-
-            // setTimeout(() => {
-                thumbnailElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-            // }, 0);   
+            
+            thumbnailElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
         }
     }
     

@@ -9,11 +9,16 @@
   right: 0;
   display: none;
   z-index: 10;
+  pointer-events: auto;
   background-color: rgba(51, 51, 51, 0.85); //TODOK
   --theme-color: 185, 185, 185;
+  --thumbnail-height: 60px;
+  @include Theme.mobileSize((
+    --thumbnail-height: 90px
+  ));
   
   &__image {
-    height: calc(100% - 90px);
+    height: calc(100% - 30px - var(--thumbnail-height));
     display: flex;
     flex-direction: column;
     position: relative;
@@ -29,7 +34,7 @@
       align-items: center;
 
       & img {
-        --max-image-fill: 90%;
+        --max-image-fill: 95%;
 
         width: auto;
         position: absolute;
@@ -37,6 +42,11 @@
         max-height: var(--max-image-fill);
         border-radius: var(--rounded--medium);
         background: rgba(51, 51, 51, 0.25); //TODOK
+        box-shadow: var(--shadow--medium);
+        
+        @include Theme.mobileSize((
+          --max-image-fill: 97%
+        ));
       }
     }
   }
@@ -47,7 +57,7 @@
     
     & img {
       width: auto;
-      height: 60px;
+      height: var(--thumbnail-height);
       cursor: pointer;
       border-radius: 3px; //TODOK
       background: rgba(51, 51, 51, 0.75);
@@ -64,7 +74,7 @@
       margin: 0 var(--spacing);
 
       @include Theme.mobileSize((
-        --spacing: 16px
+        --spacing: 10px
       ));
 
       &-holder {
@@ -73,6 +83,10 @@
         overflow-x: auto;
         gap: 3px; //TODOK;
         border-radius: 3px; //TODOK
+        
+        @include Theme.mobileSize((
+            scrollbar-width: none
+        ));
       }
     }
     
@@ -146,4 +160,5 @@
 
 body:has(.slideshow--shown) {
   overflow-y: hidden;
+  pointer-events: none;
 }

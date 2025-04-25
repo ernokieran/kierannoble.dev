@@ -1,27 +1,22 @@
-using kierannoble.dev.Controls.Media;
-using Image = SixLabors.ImageSharp.Image;
-
 namespace kierannoble.dev.Managers.Media;
 
 public class SlideshowMediaManager : ISlideshowMediaManager
 {
-    private readonly IWebHostEnvironment __WebHostEnvironment;
-    public SlideshowMediaManager(IWebHostEnvironment webHostEnvironment) => __WebHostEnvironment  = webHostEnvironment;
+    private readonly IImageManager __ImageManager;
+    public SlideshowMediaManager(IImageManager imageManager) => __ImageManager = imageManager;
 
     private async Task<SlideshowImageEntity> GetFileDataAsync(string path)
     {
-        string _FilePath = path;
-        
-        if (path.StartsWith("/") || path.StartsWith("\\"))
-        {
-            _FilePath = path.Substring(1);
-        }
-            
-        Image _Image = await Image.LoadAsync(Path.Combine(__WebHostEnvironment.WebRootPath, _FilePath));
+        ImageEntity? _Image = await __ImageManager.GetImageAsync(path);
 
+        if (_Image == null)
+        {
+            throw new FileNotFoundException($"Image not found: {path}");
+        }
+        
         return new SlideshowImageEntity
         {
-            Ratio = decimal.Divide(_Image.Width, _Image.Height),
+            Ratio = _Image.Ratio,
             URL = path
         };
     }

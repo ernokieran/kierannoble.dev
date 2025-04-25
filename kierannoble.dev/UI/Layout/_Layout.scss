@@ -44,6 +44,12 @@ body {
   flex-direction: column;
   gap: 24px; //TODOK
   
+  &__column {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+  }
+  
   &__row {
     display: flex;
     gap: 24px; //TODOK

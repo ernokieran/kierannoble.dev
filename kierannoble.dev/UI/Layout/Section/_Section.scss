@@ -76,6 +76,10 @@
       }
     }
     
+    &--full {
+      max-width: 100%;
+    }
+    
     &:has(.section__media-action) {
       cursor: pointer;
     }

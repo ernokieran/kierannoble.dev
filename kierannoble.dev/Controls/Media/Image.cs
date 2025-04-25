@@ -3,26 +3,53 @@ namespace kierannoble.dev.Controls.Media;
 [HtmlTargetElement(TAG_NAME)]
 public class Image : TagHelperBase
 {
+    private readonly IImageManager __ImageManager;
     internal const string TAG_NAME = "media:image";
+    
+    public Image(IHttpContextAccessor httpContextAccessor, IImageManager imageManager) : base(httpContextAccessor) => __ImageManager = imageManager;
 
-    public Image(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) { }
-
-    public override void Process(TagHelperContext context, TagHelperOutput output)
+    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
+        ImageEntity? _Image = await __ImageManager.GetImageAsync(Path);
+
+        if (_Image == null)
+        {
+            throw new InvalidOperationException("Image not found");
+        }
+        
+        if (Width.HasValue && Height.HasValue)
+        {
+            throw new ArgumentException($"Only one of {nameof(Width)} or {nameof(Height)} should be provided.");
+        }
+
+        if (!Width.HasValue && !Height.HasValue)
+        {
+            throw new ArgumentException($"You must provide either {nameof(Width)} or {nameof(Height)}.");
+        }
+        
+        if (Width.HasValue)
+        {
+            Height = (int)Math.Round(Width!.Value / _Image.Ratio);
+        }
+        else
+        {
+            Width = (int)Math.Round(Height!.Value * _Image.Ratio);
+        }
+        
         output.TagName = "img";
         
-        output.Attributes.SetAttribute("src", $"/api/image/resize/width={Width},height={Height}{URL}");
+        output.Attributes.SetAttribute("src", $"/api/image/resize/width={Width},height={Height}{Path}");
         output.Attributes.SetAttribute("width", $"{Width}px");
         output.Attributes.SetAttribute("height", $"{Height}px");
         output.Attributes.SetAttribute("class", "image");
         output.Attributes.SetAttribute("alt", AltText);
         output.Attributes.SetAttribute("loading", "loading");
-        output.Attributes.SetAttribute("decoding", "sync");
+        output.Attributes.SetAttribute("decoding", "aync");
         output.Attributes.SetAttribute("style", $"--w: {Width}; --h: {Height};");
     }
 
-    public required string URL { get; set; }
+    public required string Path { get; set; }
     public required string AltText { get; set; }
-    public required decimal Width { get; set; } = 800;
-    public required decimal Height { get; set; } = 450;
+    public required decimal? Width { get; set; } = 800;
+    public required decimal? Height { get; set; }
 }

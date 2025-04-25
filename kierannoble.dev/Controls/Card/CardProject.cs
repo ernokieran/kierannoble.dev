@@ -18,7 +18,7 @@ public class CardProject : TagHelperBase
         output.Content.AppendHtml($"""
                                            <article data-background-image="{BackgroundImageURL}">
                                                <h1 class="project__title">
-                                                   <img class="project__title-image" src="{LogoImageURL}" alt="{DescriptionText}" height="50" width="auto" />
+                                                   <img class="project__title-image" src="{LogoImageURL}" alt="{DescriptionText}" height="50" width="300" />
                                                    <p class="project__title-description">{DescriptionText}</p>
                                                </h1>
                                                <span class="project__chip">{ChipText}</span>

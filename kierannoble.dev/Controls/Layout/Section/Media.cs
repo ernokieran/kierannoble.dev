@@ -3,7 +3,7 @@ using kierannoble.dev.Controls.Media;
 
 namespace kierannoble.dev.Controls.Layout.Section;
 
-[HtmlTargetElement(TAG_NAME), RestrictChildren(Image.TAG_NAME)]
+[HtmlTargetElement(TAG_NAME)]
 public class Media : TagHelperBase
 {
     private const string TAG_NAME = "section:media";
@@ -13,7 +13,7 @@ public class Media : TagHelperBase
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         output.TagName = "div";
-        output.Attributes.SetAttribute("class", "section__media");
+        output.Attributes.SetAttribute("class", Full ? "section__media section__media--full" : "section__media");
         output.Attributes.SetAttribute("tabindex", 0);
 
         if (Slideshow is not null)
@@ -37,4 +37,6 @@ public class Media : TagHelperBase
     }
     
     public SlideshowEntity? Slideshow { get; set; }
+    
+    public bool Full { get; set; }
 }

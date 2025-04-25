@@ -1,0 +1,66 @@
+@page
+@model PartsAndSectionsModel
+@{
+    this.SetTitleText("Parts and Sections");
+    //TODOK;
+    ViewData["project"] = "partsAndSections";
+}
+
+<template:default>
+    <layout:section title="Logo Here" sub-title="A-Level Photography Component Two & Exam - Marked at Grade A" type="Primary" alignment="Centered">
+        <p>‘Photographing part of an object, view or person can be a way of creating abstract imagery or observing the subject more closely. Sonya Noskowiak often recorded very carefully selected portions of her subjects to direct attention to their detail and textural qualities. Judith Turner’s photographs of columns and leaves are often severely cropped to emphasize the repeated shapes and forms seen in close-up sections of her subjects. At times Patrick Caulfield’s paintings show just part of an interior, leaving the viewer to imagine what is left outside the frame. Produce your own response, making reference to appropriate work by others.’ (96 Marks)</p>
+    </layout:section>
+    <layout:section title="Project Introduction" type="Secondary">
+        <p>Within this project I explored the theme through the use of colour, use of framing and the use of space. During the first shoot of this project, I explored how much I could take away from a photo, but still have the viewer draw a connection to the model – to do this, experimented with black and white photography, as well as using a macro lens to get closer to the model than the viewer would normally experience. Moving further into this, I experimented with how the image is displayed to the viewer, using a 1:1 ratio crop, which is pretty unnatural in the world of photography.</p>
+        <section:media slideshow="@Model.IntroductionSlideshow" full="true">
+            <layout:row equal="true">
+                <media:image path="/img/Projects/PartsAndSections/Introduction/Initial_1.webp" width="500" alt-text="TODOK" />
+                <media:image path="/img/Projects/PartsAndSections/Introduction/Initial_2.webp" width="500" alt-text="TODOK" />
+                <media:image path="/img/Projects/PartsAndSections/Introduction/Initial_3.webp" width="500" alt-text="TODOK" />
+            </layout:row>
+        </section:media>
+    </layout:section>
+    <layout:section type="Tertiary" alignment="Centered" title="Polaroid Development">
+        <p>From this crop – I decided to move back into the world of ‘natural’ photography, and was inspired by the cropping of polaroid photos, and so I decided to take a look into how I could mix the world of digital and analogue photography, whilst still giving the viewer an experience that they would never usually be able to see – black and white polaroids.</p>
+        <section:media slideshow="@Model.PolaroidSlideshow" full="true">
+            <layout:column>
+                <layout:row equal="true">
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_1.webp" width="400" />
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_2.webp" width="400" />
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_3.webp" width="400" />
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_4.webp" width="400" />
+                </layout:row>
+                <layout:row equal="true">
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_5.webp" width="400" />
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_6.webp" width="400" />
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_7.webp" width="400" />
+                    <media:image path="/img/Projects/PartsAndSections/PolaroidDevelopment/Pol_8.webp" width="400" />
+                </layout:row>
+            </layout:column>
+        </section:media>
+    </layout:section>
+    <layout:section title="Further Development", type="Secondary" alignment="Right">
+        <p>During the course of this project, I began to explore more on how to make the viewer uncomfortable with what they are seeing – again moving closer to the model so that the viewer couldn’t easily distinguish many features of the person they were seeing, leaving them more in the dark about the photograph and its meaning and intent. This then gave me the idea of mixing different people’s features into one ‘mashup’ person.</p>
+        <section:media slideshow="@Model.FurtherDevelopmentSlideshow">
+            <media:image path="/img/Projects/PartsAndSections/PolFaceMash.webp" alt-text="TODOK" />
+        </section:media>
+    </layout:section>
+    <layout:section title="Final Development" type="Tertiary">
+        <p>At first, I did this digitally, however, I felt that this technique would work better in a read 3D space, so I created some ‘polaroids’ and used a model and held these photographs in front of the model’s face, replacing their features with the facial features of someone else, which created a very unnatural and almost concerning look for the viewer. In fact, it looked a little too unnatural, so I decided that it would be best for me to take things out of the studio and into nature – again giving a contrast between natural and unnatural.</p>
+        <p>Within these outcomes, I used colour to create more contrast between the deep and rich natural background and the very unnatural polaroids, which I tried to remove colour from, but leaving enough so that it wasn’t black and white.</p>
+    </layout:section>
+    <layout:section title="Final Outcomes" type="Secondary" alignment="Right">
+        <section:media slideshow="@Model.FinalOutcomesSlideshow" full="true">
+            <layout:row equal="true">
+                <media:image path="/img/Projects/PartsAndSections/FinalOutcomes/OFinal_1.webp" width="400" />
+                <media:image path="/img/Projects/PartsAndSections/FinalOutcomes/OFinal_2.webp" width="400" />
+                <media:image path="/img/Projects/PartsAndSections/FinalOutcomes/OFinal_3.webp" width="400" />
+            </layout:row>
+        </section:media>
+    </layout:section>
+    <layout:section title="Project Book" type="Primary" alignment="Centered">
+        <section:media slideshow="@Model.BookSlideshow">
+            <media:image path="/img/Projects/PartsAndSections/Book/Parts and Sections Final_000.webp" alt-text="TODOK" />
+        </section:media>
+    </layout:section>
+</template:default>

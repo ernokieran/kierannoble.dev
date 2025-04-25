@@ -5,6 +5,26 @@ using Image = SixLabors.ImageSharp.Image;
 
 namespace kierannoble.dev.Controllers.API;
 
+
+// int originalWidth = image.Width;
+// int originalHeight = image.Height;
+//
+// // Calculate scaling ratio
+// double ratioX = (double)maxWidth / originalWidth;
+// double ratioY = (double)maxHeight / originalHeight;
+// double ratio = Math.Min(ratioX, ratioY);
+//
+// // Only scale down
+// if (ratio >= 1)
+// {
+//     // Save original if no scaling is needed
+//     image.Save(outputPath);
+//     return;
+// }
+//
+// int newWidth = (int)(originalWidth * ratio);
+// int newHeight = (int)(originalHeight * ratio);
+
 //TODOK, this need some rate limiting
 [Route("api/[controller]")]
 public class ImageController : ControllerBase
