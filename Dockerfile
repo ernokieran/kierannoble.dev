@@ -16,6 +16,6 @@ COPY --from=build /app/publish .
 
 ENV ASPNETCORE_ENVIRONMENT=Production
 
-EXPOSE 5000
+EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "kierannoble.dev.dll"]
