@@ -2,8 +2,7 @@
 @model HarmonyModel
 @{
     this.SetTitleText("Harmony");
-    //TODOK;
-    ViewData["project"] = "harmony";
+    this.SetProject("harmony");
 }
 
 <template:default>
@@ -24,13 +23,13 @@
         <p>These wireframe designs were received very well by the client and were praised for them looking and feeling like something that could be implemented into a real and professional looking product that the client would actually make.</p>
         <p>Ultimately, we collectively decided that we would take a hybrid between the two wireframe designs and create a product that implemented the 'best' parts from each design into the UI/UX prototype.</p>
         <section:media slideshow="@Model.InitialDesignsSlideshow">
-            <media:image path="/img/Projects/Harmony/initial-designs.webp" alt-text="TODOK" />
+            <media:image path="/img/Projects/Harmony/initial-designs.webp" alt-text="A comparison of red and blue low-fidelity wireframes for a music website or app is shown for desktop and mobile. The red wireframes are basic layouts for the home page (popular playlists, new releases, events, newsletter), a product page (album details), and a music home (album grid). The blue wireframes offer more detail for the same pages, suggesting elements like carousels, track listings, filtering, and search functionality across both desktop and mobile interfaces." />
         </section:media>
     </layout:section>
     <layout:section title="UI/UX Prototype" type="Tertiary" alignment="Right">
         <layout:row equal="true">
             <section:media slideshow="@Model.UIUXSlideshow">
-                <media:image path="/img/Projects/Harmony/prototype-ui.webp" width="500" alt-text="TODOK" />
+                <media:image path="/img/Projects/Harmony/prototype-ui.webp" width="500" alt-text="Webpage capture of the Harmony online music store. The main content area shows a grid of album listings with cover art, artist names (e.g., Lorde, Jamie xx, Taylor Swift), album titles (e.g., Melodrama, In Colour, 1989, Emotion), available formats (Digital, CD, Vinyl), prices in British Pounds (£), and a 'Buy' button. Filter options for 'Vinyl', 'Tap', and 'Rock' are visible at the top left, along with a search bar. The website header includes links for 'Music', 'Events', 'Merch', 'Cart', and 'Log in'." />
             </section:media>
             <layout:column small="true">
                 <p>After the meeting with the client, we implemented the initial version of our UI/UX Prototype.</p>

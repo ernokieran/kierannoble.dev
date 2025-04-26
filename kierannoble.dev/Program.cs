@@ -4,8 +4,11 @@ namespace kierannoble.dev;
 
 public class Program
 {
-    private static int CACHE_AGE = 60 * 60 * 24 * 7;
+    private static readonly int __CacheAge = 60 * 60 * 24 * 7;
     
+    private const string CACHE_CONTROL = "Cache-Control";
+    private static readonly string __CacheControlValue = $"public, max-age={__CacheAge}";
+
     public static void Main(string[] args)
     {
         WebApplicationBuilder _Builder = WebApplication.CreateBuilder(args);
@@ -23,7 +26,7 @@ public class Program
         
         if (!_App.Environment.IsDevelopment())
         {
-            _App.UseExceptionHandler(ErrorModel.URL); //TODOK
+            _App.UseExceptionHandler(ErrorModel.URL);
             _App.UseHsts();
         }
         
@@ -34,7 +37,7 @@ public class Program
         {
             OnPrepareResponse = context =>
             {
-                context.Context.Response.Headers.Append("Cache-Control", $"public, max-age={CACHE_AGE}"); //TODOK
+                context.Context.Response.Headers.Append(CACHE_CONTROL, __CacheControlValue);
             }
         });
         _App.UseRouting();

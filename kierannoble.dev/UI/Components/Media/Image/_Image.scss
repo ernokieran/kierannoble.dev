@@ -1,7 +1,7 @@
 .image {
   border-radius: var(--rounded--large);
   box-shadow: var(--shadow--medium);
-  background: rgba(100, 100, 100, 0.2); //TODOK
+  background: rgba(100, 100, 100, 0.2);
   width: 100%;
   height: auto;
   aspect-ratio: calc(var(--w) / var(--h));

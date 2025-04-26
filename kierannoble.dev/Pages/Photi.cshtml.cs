@@ -15,7 +15,6 @@ public class PhotiModel : PageModel
         __ReportSlideshow ??= new SlideshowEntity
         {
             Images = await __SlideshowMediaManager.GetImagesAsync(Enumerable.Range(1, 148).Select(index => $"/img/Projects/Photi/Report/FYP-R-C-{index:D3}.webp").ToList())
-            // Images = await __SlideshowMediaManager.GetImagesAsync(Enumerable.Range(0, 209).Select(index => $"/img/Projects/ExperimentalImagery/Book/Experimental Imagery Final_{index:D3}.webp").ToList())
         };
         
         __DesignsSlideshow ??= new SlideshowEntity

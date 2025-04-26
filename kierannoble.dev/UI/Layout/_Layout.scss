@@ -1,3 +1,4 @@
+@use "Error/Error";
 @use "Footer/Footer";
 @use "Header/Header";
 @use "Loader/Loader";
@@ -12,20 +13,20 @@ html {
 }
 
 body {
-  min-height: calc(100dvh - (2 * 50px)); //TODOK: replace 50px with padding spacing var
+  min-height: calc(100dvh - (2 * var(--spacing--large)));
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 50px; //TODOK
+  padding: var(--spacing--large);
   margin: 0 auto;
-  max-width: 1200px; //TODOK
+  max-width: var(--max-width);
   font-family: var(--font-family--regular);
   
   @include Theme.mobileSize((
-    padding: 24px //TODOK
+    padding: var(--spacing--medium)
   ));
 
   & main {
@@ -42,11 +43,11 @@ body {
 .layout {
   display: flex;
   flex-direction: column;
-  gap: 24px; //TODOK
+  gap: var(--spacing--medium);
   
   &__column {
     display: flex;
-    gap: 24px;
+    gap: var(--spacing--medium);
     flex-direction: column;
     
     &--small {
@@ -59,7 +60,7 @@ body {
   
   &__row {
     display: flex;
-    gap: 24px; //TODOK
+    gap: var(--spacing--medium);
     flex-wrap: wrap;
     flex-direction: row;
     
@@ -85,7 +86,7 @@ body {
   }
 
   &--small {
-    gap: 12px; //TODOK;
+    gap: var(--spacing--small);
   }
 }
 

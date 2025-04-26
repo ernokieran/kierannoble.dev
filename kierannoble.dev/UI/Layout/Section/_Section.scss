@@ -1,5 +1,7 @@
 @use "../../Theme/Theme";
 
+$actionSize: 16px;
+
 .section {
   width: 100vw;
   position: relative;
@@ -7,15 +9,15 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  color: #666; //TODOK;
+  color: #666;
   
   &__content {
-    max-width: 1200px; //TODOK
+    max-width: var(--max-width);
     margin: auto;
-    padding: 24px 50px; //TODOK;
+    padding: var(--spacing--medium) var(--spacing--large);
     
     @include Theme.mobileSize((
-      padding: 24px //TODOK
+      padding: var(--spacing--medium)
     ));
   }
 
@@ -40,16 +42,16 @@
   
   &__media {
     position: relative;
-    max-width: 800px; //TODOK
+    max-width: var(--media-size);
     margin: auto;
     width: 100%;
     
     &-action {
       position: absolute;
-      top: 16px;
-      right: 16px; //TODOK
+      top: $actionSize;
+      right: $actionSize;
       display: flex;
-      gap: 0.5rem; //TODOK
+      gap: 0.5rem;
       
       &-tooltip {
         text-transform: uppercase;
@@ -63,11 +65,11 @@
       
       &-button {
         border-radius: 100%;
-        width: 32px; //TODOK
+        width: 32px;
         height: 32px;
         background-color: rgba(var(--theme-color));
         box-shadow: var(--shadow--medium);
-        color: white; //TODOK;
+        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -124,10 +126,10 @@
   }
   
   &--tertiary {
-    background-color: #ddd; //TODOK
+    background-color: #ddd;
 
     & .section__title {
-      color: #555; //TODOK
+      color: #555;
     }
 
   }
@@ -135,7 +137,7 @@
   &--centered {
     text-align: center;
 
-    & .section__title { //TODOK
+    & .section__title {
       width: 100%;
       text-align: center;
     }
@@ -156,5 +158,5 @@
 }
 
 .layout:has(.section) {
-  gap: 0; //TODOK;
+  gap: 0;
 }

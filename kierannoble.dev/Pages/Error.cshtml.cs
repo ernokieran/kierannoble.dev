@@ -12,6 +12,13 @@ public class ErrorModel : PageModel
     public int ErrorCode { get; set; }
 
     public string HomeURL => IndexModel.URL;
+    
+    public string ErrorMessage => ErrorCode switch
+    {
+        404 => "That page could not be found",
+        500 => "Internal server error",
+        _ => "An error occurred"
+    };
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     

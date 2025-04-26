@@ -3,18 +3,18 @@
 header {
   display: flex;
   flex-direction: row-reverse;
-  gap: 30px; //TODOK
+  gap: 30px;
   
   @include Theme.mobileSize((
     flex-direction: column,
     text-align: center,
-    gap: 12px
+    gap: var(--spacing--small)
   ));
   
   & .avatar {
     border-radius: 100%;
     margin: 0 auto;
-    width: 135px; //TODOK
-    height: 135px; //TODOK
+    width: 135px; 
+    height: 135px;
   }
 }

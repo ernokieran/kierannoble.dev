@@ -2,8 +2,7 @@
 @model PhotiModel
 @{
     this.SetTitleText("Photi");
-    //TODOK;
-    ViewData["project"] = "photi";
+    this.SetProject("photi");
 }
 
 <template:default>
@@ -25,7 +24,7 @@
     <layout:section alignment="Right" title="Initial Designs" sub-title="Creating a unique yet familiar look and feel for the application was important to the success of the project. It was necessary to create a design that was easy to use and navigate, but also looked modern and clean.">
         <p>To deliver this, a custom design system was created. This design system was created using Figma and was used to create the initial designs for the application. The initial designs were then used to create a prototype of the application, without working data, but enough to give an insight into how the application would look and feel, especially useful for asking for user feedback before moving onto the technical development of the application as a whole.</p>
         <section:media slideshow="@Model.DesignsSlideshow">
-            <media:image path="/img/Projects/Photi/Designs/Designs-01.webp" alt-text="TODOK" />
+            <media:image path="/img/Projects/Photi/Designs/Designs-01.webp" alt-text="Log In interface for Photi social media image sharing platform mockup, showing email and password fields and a 'Log In' button." />
         </section:media>
     </layout:section>
     <layout:section type="Tertiary" alignment="Centered" title="Technology Stack" sub-title="To be able to deliver the project, a wide variety of different technologies were used. These technologies were used to deliver the project in a way that was performant, scalable and easy to maintain.">
@@ -61,7 +60,7 @@
         <p>The documents were used to give an insight into each decision made throughout the project, with the reasoning given for each. This documentation aims to provide an explanation into why each technology and product was chosen, as well as how they were used to deliver the project.</p>
         <p>These documents and the main report document are available to read below.</p>
         <section:media slideshow="@Model.ReportSlideshow">
-            <media:image path="/img/Projects/Photi/Report/FYP-R-C-001.webp" alt-text="TODOK" />
+            <media:image path="/img/Projects/Photi/Report/FYP-R-C-001.webp" alt-text="Dissertation Report Cover Page" />
         </section:media>
     </layout:section>
     <layout:section type="Primary" alignment="Centered" title="Final Product" sub-title="The outcome of this project was a fully functional web application that allows users to upload images and have them automatically tagged with relevant tags. The application also allows users to search for images based on tags and other users.">

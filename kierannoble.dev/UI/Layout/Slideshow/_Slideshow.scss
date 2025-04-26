@@ -10,9 +10,10 @@
   display: none;
   z-index: 10;
   pointer-events: auto;
-  background-color: rgba(51, 51, 51, 0.85); //TODOK
+  background-color: rgba(51, 51, 51, 0.85);
   --theme-color: 185, 185, 185;
   --thumbnail-height: 60px;
+  --button-spacing: 12px;
   @include Theme.mobileSize((
     --thumbnail-height: 90px
   ));
@@ -41,7 +42,7 @@
         max-width: var(--max-image-fill);
         max-height: var(--max-image-fill);
         border-radius: var(--rounded--medium);
-        background: rgba(51, 51, 51, 0.25); //TODOK
+        background: rgba(51, 51, 51, 0.25);
         box-shadow: var(--shadow--medium);
         
         @include Theme.mobileSize((
@@ -59,7 +60,7 @@
       width: auto;
       height: var(--thumbnail-height);
       cursor: pointer;
-      border-radius: 3px; //TODOK
+      border-radius: var(--rounded--small);
       background: rgba(51, 51, 51, 0.75);
     }
 
@@ -79,10 +80,10 @@
 
       &-holder {
         display: flex;
-        max-width: 1200px;
+        max-width: var(--max-width);
         overflow-x: auto;
-        gap: 3px; //TODOK;
-        border-radius: 3px; //TODOK
+        gap: 3px;
+        border-radius: var(--rounded--small);
         
         @include Theme.mobileSize((
             scrollbar-width: none
@@ -121,21 +122,21 @@
     }
 
     &--next {
-      right: 16px; //TODOK
+      right: var(--button-spacing);
     }
 
     &--previous {
-      left: 16px; //TODOK
+      left: var(--button-spacing);
     }
 
     &--close {
-      top: 16px; //TODOK
-      right: 16px; //TODOK
+      top: var(--button-spacing);
+      right: var(--button-spacing);
     }
 
     &--download {
-      top: 16px; //TODOK
-      right: calc((16px * 4) + calc(16px - 4px));
+      top: var(--button-spacing);
+      right: calc((var(--button-spacing) * 4) + calc(var(--button-spacing) - 4px));
     }
 
     &:hover {

@@ -6,30 +6,30 @@
   &__name {
     font-family: var(--font-family--block);
     font-size: var(--font-size--extraLarge);
-    letter-spacing: 1px; //TODOK
+    letter-spacing: 1px;
     color: rgba(var(--main-theme-color));
-    margin-bottom: 8px; //TODOK
+    margin-bottom: 8px;
   }
   
   &__title {
     text-transform: uppercase;
-    color: rgba(var(--main-theme-color), 0.6); //TODOK
+    color: rgba(var(--main-theme-color), 0.6);
     font-size: var(--font-size--medium);
-    letter-spacing: 2px; //TODOK
+    letter-spacing: 2px;
     font-family: var(--font-family--block);
   }
   
   &__bio {
-    line-height: 26px; //TODOK
+    line-height: 26px;
     font-family: var(--font-family--regular);
-    color: #777; //TODOK
+    color: #777;
     display: flex;
     flex-direction: column;
     
     & span:first-of-type {
       font-family: var(--font-family--bold);
       //color: black;
-      margin-bottom: 8px; //TODOK
+      margin-bottom: 8px;
     }
   }
 }

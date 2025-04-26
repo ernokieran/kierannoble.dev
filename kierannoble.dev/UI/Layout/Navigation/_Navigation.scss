@@ -1,5 +1,5 @@
 nav {
-  margin-bottom: 24px; //TODOK
+  margin-bottom: var(--spacing--medium);
   display: flex;
   justify-content: space-between;
   
@@ -13,7 +13,6 @@ nav {
     font-family: var(--font-family--block);
     opacity: 0.65;
     transition: opacity .25s ease, color .5s ease-in-out;
-    margin-top: auto;
     cursor: pointer;
     text-decoration: none;
     margin: auto;
@@ -24,7 +23,7 @@ nav {
     
     &s {
       display: flex;
-      gap: 10px; //TODOK
+      gap: 10px;
     }
     
     &:has(header) {

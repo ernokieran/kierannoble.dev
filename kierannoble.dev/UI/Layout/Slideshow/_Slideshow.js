@@ -27,8 +27,7 @@
         images = [],
         isOpen = false;
     
-    let
-        screenWidth,
+    let 
         touchStartX,
         touchEndX;
     
@@ -59,7 +58,7 @@
             slideshowImageHolder.addEventListener("touchend", (event) => {
                 touchEndX = event.changedTouches[0].screenX;
                 
-                let swipeThreshold = screenWidth * 0.1;
+                let swipeThreshold = window.innerWidth * 0.1;
                 
                 if ((touchStartX - touchEndX) > swipeThreshold) {
                     _next();
@@ -89,7 +88,6 @@
             
             window.addEventListener("resize", () => {
                if (isOpen) {
-                   //TODOK: debounce;
                    _renderThumbnails();
                    _selectImageByIndex(currentIndex);
                }
@@ -137,9 +135,7 @@
         isOpen = true;
     }
     
-    function _renderThumbnails() {
-        screenWidth = window.innerWidth; //TODOK: move this;
-        
+    function _renderThumbnails() {        
         if (imageCount !== 1) {
             slideshowThumbnailsHolder.innerHTML = '';
             

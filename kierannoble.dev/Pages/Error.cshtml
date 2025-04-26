@@ -1,20 +1,14 @@
 ﻿@page "{ErrorCode}"
 @model ErrorModel
 @{
-    ViewData["Title"] = @Model.ErrorCode.ToString();
+    this.SetTitleText(Model.ErrorCode.ToString());
 }
 
 <template:error>
-    <h1>@Model.ErrorCode</h1>
-
-    <h2>Whoops!</h2>
-    <h3>Something went wrong :(</h3>
-    <h4>Please try again later.</h4>
-
-    <a href="@Model.HomeURL">Go Home</a>
-
-    @if (Model.ShowRequestId)
-    {
-        <p>@Model.RequestId</p>
-    }
+    <div class="error">
+        <h1 class="error__title">@Model.ErrorCode</h1>
+        <h2 class="error__subtitle">@Model.ErrorMessage</h2>
+        <p class="error__description">Please try again later.</p>
+        <a href="@Model.HomeURL" class="error__action">Go Home</a>
+    </div>
 </template:error>
