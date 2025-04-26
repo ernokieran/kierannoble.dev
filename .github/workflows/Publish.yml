@@ -1,0 +1,55 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+
+          - name: Set up Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: '22'
+
+          - name: Install NPM dependencies
+            run: npm install
+
+          - name: Run Gulp tasks
+            run: npx gulp
+
+          - name: Set up .NET
+            uses: actions/setup-dotnet@v4
+            with:
+              dotnet-version: '8.0.x'
+
+          - name: Restore .NET dependencies
+            run: dotnet restore
+
+          - name: Build .NET app
+            run: dotnet build --configuration Release
+
+          - name: Publish .NET app
+            run: dotnet publish --configuration Release --output ./publish
+
+          - name: Log in to DockerHub
+            uses: docker/login-action@v3
+            with:
+              username: ${{ secrets.DOCKERHUB_USERNAME }}
+              password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+          - name: Build and push Docker image
+            uses: docker/build-push-action@v5
+            with:
+              context: .
+              file: ./Dockerfile
+              push: true
+              tags: ernokieran/kierannoble.dev:latest
