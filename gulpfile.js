@@ -10,7 +10,7 @@ const jsFiles = ['./kierannoble.dev/UI/Layout/Slideshow/_Slideshow.js'];
 gulp.task('css', function () {
     return gulp.src('./kierannoble.dev/UI/site.scss')
         .pipe(purgecss({
-            content: ['./kierannoble.dev/**/**.cs', './kierannoble.dev/**/**.cshtml'] //TODOK
+            content: ['./kierannoble.dev/**/**.cs', './kierannoble.dev/**/**.cshtml']
         }))
         .pipe(sass.sync({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(cleanCss())

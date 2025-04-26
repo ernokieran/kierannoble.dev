@@ -136,7 +136,7 @@
 
     &--download {
       top: var(--button-spacing);
-      right: calc((var(--button-spacing) * 4) + calc(var(--button-spacing) - 4px));
+      right: calc((var(--button-spacing)) + 50px + 8px);
     }
 
     &:hover {
