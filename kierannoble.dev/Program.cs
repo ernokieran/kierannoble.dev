@@ -1,3 +1,4 @@
+using kierannoble.dev.Managers.Application;
 using kierannoble.dev.Pages;
 
 namespace kierannoble.dev;
@@ -15,6 +16,7 @@ public class Program
         _Builder.Services.AddHttpContextAccessor();
         _Builder.Services.AddRazorPages();
         _Builder.Services.AddControllers();
+        _Builder.Services.AddScoped<IVersionManager, VersionManager>();
         _Builder.Services.AddScoped<IImageManager, ImageManager>();
         _Builder.Services.AddScoped<ISlideshowMediaManager, SlideshowMediaManager>();
         _Builder.Services.AddResponseCompression(options =>
