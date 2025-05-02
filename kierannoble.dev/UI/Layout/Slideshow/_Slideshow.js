@@ -25,7 +25,8 @@
         hasPrevious,
         imageCount,
         images = [],
-        isOpen = false;
+        isOpen = false,
+        openedByElement;
     
     let 
         touchStartX,
@@ -33,23 +34,44 @@
     
     let currentImageElement;
     
+    function _addClickAndKeyboardEventListener(element, callback) {
+        element.addEventListener("click", () => callback())
+        
+        element.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                callback();
+            }
+        });
+    }
+    
     function _init() {
         let slideshowElements = document.querySelectorAll(`[${DATA_SLIDESHOW}]`);
         
         if (slideshowElements.length !== 0) {
             slideshowElements.forEach((slideshow) => {
-                slideshow.addEventListener("click", () => _open(JSON.parse(slideshow.getAttribute(DATA_SLIDESHOW))));
+                const slideshowData = JSON.parse(slideshow.getAttribute(DATA_SLIDESHOW));
+                
+                slideshow.addEventListener("click", () => _open(slideshowData));
+                slideshow.addEventListener("keydown", function (event) {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        
+                        openedByElement = event.target
+                        _open(slideshowData);
+                    }
+                });
             });
             
             slideshow.addEventListener("click", (event) => {
                 if (event.target.classList.contains(CSS_SLIDESHOW_IMAGE_HOLDER)) {
                     _close();
                 }
-            })
-            
-            slideshowClose.addEventListener("click", () => _close());
-            slideshowNext.addEventListener("click", () => _next());
-            slideshowPrevious.addEventListener("click", () => _previous());
+            });
+
+            _addClickAndKeyboardEventListener(slideshowClose, () => _close());
+            _addClickAndKeyboardEventListener(slideshowNext, () => _next());
+            _addClickAndKeyboardEventListener(slideshowPrevious, () => _previous());
 
             slideshowImageHolder.addEventListener("touchstart", (event) => {
                 touchStartX = event.changedTouches[0].screenX;
@@ -105,7 +127,8 @@
         if (imageCount === 1) {
             slideshow.classList.remove(CSS_SLIDESHOW_SINGLE);
         }
-        
+
+        openedByElement.focus();
         isOpen = false;
     }
     
@@ -132,6 +155,7 @@
         _renderThumbnails();
 
         _selectImageByIndex(0);
+        slideshowClose.focus();
         isOpen = true;
     }
     
