@@ -7,12 +7,20 @@ namespace kierannoble.dev.Pages;
 public class ErrorModel : PageModel
 {
     public const string URL = "/error";
-    
-    public string? RequestId { get; set; }
+
+    public IActionResult OnGet()
+    {
+        ErrorCode = HttpContext.Response.StatusCode;
+        RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+
+        return Page();
+    }
+
+    public string RequestId { get; set; }
     public int ErrorCode { get; set; }
 
     public string HomeURL => IndexModel.URL;
-    
+
     public string ErrorMessage => ErrorCode switch
     {
         404 => "That page could not be found",
@@ -21,12 +29,4 @@ public class ErrorModel : PageModel
     };
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-    
-    public IActionResult OnGet()
-    {
-        ErrorCode = HttpContext.Response.StatusCode;
-        RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-
-        return Page();
-    }
 }

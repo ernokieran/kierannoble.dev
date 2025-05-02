@@ -3,9 +3,9 @@ namespace kierannoble.dev.Controls.Layout.Section;
 [HtmlTargetElement(TAG_NAME)]
 public class Section : TagHelperBase
 {
-    internal const string TAG_NAME = "layout:section";
-    
-    public Section(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) { }
+    private const string TAG_NAME = "layout:section";
+
+    public Section(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) {}
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
@@ -16,27 +16,24 @@ public class Section : TagHelperBase
 
         if (!string.IsNullOrWhiteSpace(Title))
         {
-           output.Content.AppendHtml($"""<h1 class="section__title">{Title}</h1>"""); 
+            output.Content.AppendHtml($"""<h1 class="section__title">{Title}</h1>""");
         }
 
         if (!string.IsNullOrWhiteSpace(LogoURL))
         {
             output.Content.AppendHtml($"""<img class="section__logo" src="{LogoURL}" alt="{Title}" width="300" height="50" loading="lazy" decoding="async" />""");
         }
-        
+
         if (!string.IsNullOrWhiteSpace(SubTitle))
         {
-            output.Content.AppendHtml($"""<h2 class="section__subtitle">{SubTitle}</h2>"""); 
+            output.Content.AppendHtml($"""<h2 class="section__subtitle">{SubTitle}</h2>""");
         }
 
         output.Content.AppendHtml(_ChildContent);
         output.PostContent.AppendHtml("</div>");
     }
 
-    private string GetStyleClasses()
-    {
-        return $"section {ToClass(Type)} {ToClass(Alignment)}";
-    }
+    private string GetStyleClasses() => $"section {ToClass(Type)} {ToClass(Alignment)}";
 
     private static string ToClass(SectionType type) => type switch
     {

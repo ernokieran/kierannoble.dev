@@ -1,4 +1,4 @@
-namespace kierannoble.dev.Controls.Layout;
+namespace kierannoble.dev.Controls.Layout.Section;
 
 public enum SectionAlignment
 {
