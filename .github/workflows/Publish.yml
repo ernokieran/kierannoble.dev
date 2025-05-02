@@ -4,52 +4,60 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-      
+
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-latest
 
-          - name: Set up Node.js
-            uses: actions/setup-node@v3
-            with:
-              node-version: '22'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-          - name: Install NPM dependencies
-            run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
 
-          - name: Run Gulp tasks
-            run: npx gulp
+      - name: Install NPM dependencies
+        run: npm install
 
-          - name: Set up .NET
-            uses: actions/setup-dotnet@v4
-            with:
-              dotnet-version: '8.0.x'
+      - name: Run Gulp tasks
+        run: npx gulp
 
-          - name: Restore .NET dependencies
-            run: dotnet restore
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
 
-          - name: Build .NET app
-            run: dotnet build --configuration Release
+      - name: Restore .NET dependencies
+        run: dotnet restore
 
-          - name: Publish .NET app
-            run: dotnet publish --configuration Release --output ./publish
+      - name: Set version variables
+        id: vars
+        run: |
+          DATE=$(date +'%Y%m%d')
+          VERSION_TAG="${DATE}.${{ github.run_number }}"
+          echo "version_tag=$VERSION_TAG" >> $GITHUB_OUTPUT
 
-          - name: Log in to DockerHub
-            uses: docker/login-action@v3
-            with:
-              username: ${{ secrets.DOCKERHUB_USERNAME }}
-              password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build .NET app
+        run: dotnet build --configuration Release -p:Version=${{ steps.vars.outputs.version_tag }}
 
-          - name: Build and push Docker image
-            uses: docker/build-push-action@v5
-            with:
-              context: .
-              file: ./Dockerfile
-              push: true
-              tags: ernokieran/kierannoble.dev:latest
+      - name: Publish .NET app
+        run: dotnet publish --configuration Release --output ./publish
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.version_tag }}
