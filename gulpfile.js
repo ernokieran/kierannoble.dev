@@ -1,10 +1,11 @@
-const gulp = require('gulp'),
-    purgecss = require('gulp-purgecss'),
-    concat = require('gulp-concat'),
-    sass = require('gulp-sass')(require('sass')),
-    terser = require('gulp-terser'),
+const
     cleanCss = require('gulp-clean-css'),
-    rename = require('gulp-rename');
+    concat = require('gulp-concat'),
+    gulp = require('gulp'),
+    purgecss = require('gulp-purgecss'),
+    rename = require('gulp-rename')
+    sass = require('gulp-sass')(require('sass')),
+    terser = require('gulp-terser');
 
 const jsFiles = [
     './kierannoble.dev/UI/Layout/Blackout/_Blackout.js',

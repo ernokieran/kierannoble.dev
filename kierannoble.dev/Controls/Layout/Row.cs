@@ -5,7 +5,7 @@ public class Row : TagHelperBase
 {
     internal const string TAG_NAME = "layout:row";
 
-    public Row(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) { }
+    public Row(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) {}
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {

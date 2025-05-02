@@ -5,7 +5,7 @@ public class Column : TagHelperBase
 {
     private const string TAG_NAME = "layout:column";
 
-    public Column(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) { }
+    public Column(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) {}
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
@@ -14,6 +14,6 @@ public class Column : TagHelperBase
     }
 
     private string ClassName => Small ? "layout__column layout__column--small" : "layout__column";
-    
+
     public bool Small { get; set; }
 }

@@ -4,6 +4,6 @@ namespace kierannoble.dev.Controls.Template;
 public class TemplateDefault : BaseTemplate
 {
     internal const string TAG_NAME = "template:default";
-    
-    public TemplateDefault(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) { }
+
+    public TemplateDefault(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) {}
 }
