@@ -35,8 +35,10 @@ jobs:
       - name: Set version variables
         id: vars
         run: |
-          DATE=$(date +'%Y%m%d')
-          VERSION_TAG="${DATE}.${{ github.run_number }}"
+          YEAR=$(date +'%Y')
+          MONTH=$(date +'%m')
+          DAY=$(date +'%d')
+          VERSION_TAG="${YEAR}.${MONTH}.${DAY}.${{ github.run_number }}"
           echo "version_tag=$VERSION_TAG" >> $GITHUB_OUTPUT
 
       - name: Build .NET app
