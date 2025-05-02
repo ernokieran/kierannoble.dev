@@ -8,18 +8,20 @@
   left: 0;
   right: 0;
   display: none;
+  flex-direction: column;
   z-index: 10;
   pointer-events: auto;
   background-color: rgba(51, 51, 51, 0.85);
   --theme-color: 185, 185, 185;
-  --thumbnail-height: 60px;
+  --thumbnail-height: 80px;
   --button-spacing: 12px;
   @include Theme.mobileSize((
-    --thumbnail-height: 90px
+    --thumbnail-height: 80px
   ));
   
   &__image {
-    height: calc(100% - 30px - var(--thumbnail-height));
+    --image--spacing: 30px;
+    height: calc(100% - var(--image--spacing) - var(--thumbnail-height));
     display: flex;
     flex-direction: column;
     position: relative;
@@ -50,6 +52,10 @@
         ));
       }
     }
+    
+    @include Theme.mobileSize((
+        --image--spacing: 80px
+    ));
   }
   
   &__thumbnail {
@@ -66,13 +72,11 @@
 
     &s {
       --spacing: 6px;
-
       width: calc(100% - calc(var(--spacing) * 2));
       bottom: 8px;
-      position: fixed;
       display: flex;
       justify-content: center;
-      margin: 0 var(--spacing);
+      margin: 0 var(--spacing) auto var(--spacing);
 
       @include Theme.mobileSize((
         --spacing: 10px
@@ -145,7 +149,7 @@
   }
   
   &--shown {
-    display: block;
+    display: flex;
   }
 
   &--single {

@@ -53,6 +53,7 @@ public class Image : TagHelperBase
         output.Attributes.SetAttribute("height", $"{Height}px");
         output.Attributes.SetAttribute("class", "image");
         output.Attributes.SetAttribute("alt", AltText);
+        output.Attributes.SetAttribute("title", AltText);
         output.Attributes.SetAttribute("loading", "lazy");
         output.Attributes.SetAttribute("decoding", "async");
         output.Attributes.SetAttribute("style", $"--w: {Width}; --h: {Height};");

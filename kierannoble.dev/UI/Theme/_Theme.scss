@@ -10,7 +10,6 @@ $projects: (
 
 :root {
   --max-width: 75rem;
-  --main-theme-color: 0, 150, 136;
 
   // Sizing and Spacing
   --font-size--extraLarge: 42px;
@@ -42,7 +41,7 @@ $projects: (
   --font-family--bold: "Lato Bold";
   
   // Project Theme Variables
-  --theme-color: var(--main-theme-color);
+  --theme-color: 0, 150, 136;
 }
 
 @mixin mobileSize($styles: ()) {

@@ -1,0 +1,20 @@
+.blackout {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: opacity .25s ease-in-out, backdrop-filter .25s ease-in-out;
+  opacity: 0;
+  backdrop-filter: none;
+  pointer-events: none;
+  --theme-color: 230, 230, 230;
+  
+  &--shown {
+    opacity: 1;
+    backdrop-filter: blur(5px);
+    pointer-events: auto;
+  }
+}

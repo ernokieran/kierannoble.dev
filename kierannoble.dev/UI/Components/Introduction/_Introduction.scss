@@ -7,13 +7,13 @@
     font-family: var(--font-family--block);
     font-size: var(--font-size--extraLarge);
     letter-spacing: 1px;
-    color: rgba(var(--main-theme-color));
+    color: rgba(var(--theme-color));
     margin-bottom: 8px;
   }
   
   &__title {
     text-transform: uppercase;
-    color: rgba(var(--main-theme-color), 0.6);
+    color: rgba(var(--theme-color), 0.6);
     font-size: var(--font-size--medium);
     letter-spacing: 2px;
     font-family: var(--font-family--block);
@@ -28,7 +28,6 @@
     
     & span:first-of-type {
       font-family: var(--font-family--bold);
-      //color: black;
       margin-bottom: 8px;
     }
   }
