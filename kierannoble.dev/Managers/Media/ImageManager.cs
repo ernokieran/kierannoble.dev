@@ -12,19 +12,19 @@ public class ImageManager : IImageManager
     
     public async Task<ImageEntity?> GetImageAsync(string path)
     {
-        string _FilePath = path;
-        
-        if (_FilePath.StartsWith("/") || _FilePath.StartsWith("\\"))
-        {
-            _FilePath = _FilePath[1..];
-        }
-        
         if (__Images.TryGetValue(path, out ImageEntity? _ImageEntity))
         {
             return _ImageEntity;
         }
         
-        Image _Image = await Image.LoadAsync(Path.Combine(__WebHostEnvironment.WebRootPath, _FilePath));
+        string _FilePath = path;
+        
+        if (_FilePath.StartsWith('/') || _FilePath.StartsWith('\\'))
+        {
+            _FilePath = _FilePath[1..];
+        }
+        
+        using Image _Image = await Image.LoadAsync(Path.Combine(__WebHostEnvironment.WebRootPath, _FilePath));
 
         if (_Image == null)
         {

@@ -1,10 +1,14 @@
-﻿@{
+﻿@using kierannoble.dev.Managers.Application
+@inject IVersionManager __VersionManager;
+
+@{
     string _Title = string.IsNullOrWhiteSpace((string?)ViewData["title"]) ? "Kieran Noble" : $"{(string)ViewData["title"]!} - Kieran Noble";
     string _Project = (string?)ViewData["Project"] ?? string.Empty;
 }
 
 <!DOCTYPE html>
 <html lang="en" data-project="@_Project">
+    <!-- Version: @__VersionManager.GetVersion() -->
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=0.75" />
