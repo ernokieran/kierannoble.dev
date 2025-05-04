@@ -2,8 +2,8 @@
 @inject IVersionManager __VersionManager;
 
 @{
-    string _Title = string.IsNullOrWhiteSpace((string?)ViewData["title"]) ? "Kieran Noble" : $"{(string)ViewData["title"]!} - Kieran Noble";
-    string _Project = (string?)ViewData["Project"] ?? string.Empty;
+    string _Title = string.IsNullOrWhiteSpace((string)ViewData["title"]) ? "Kieran Noble" : $"{(string)ViewData["title"]!} - Kieran Noble";
+    string _Project = (string)ViewData["Project"] ?? string.Empty;
 }
 
 <!DOCTYPE html>

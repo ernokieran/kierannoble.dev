@@ -9,10 +9,9 @@ public class ImageManager : IImageManager
     private readonly IWebHostEnvironment __WebHostEnvironment;
     public ImageManager(IWebHostEnvironment webHostEnvironment) => __WebHostEnvironment = webHostEnvironment;
     
-    public async Task<ImageEntity?> GetImageAsync(string path)
+    public async Task<ImageEntity> GetImageAsync(string path)
     {
-       
-        if (__Images.TryGetValue(path, out ImageEntity? _ImageEntity))
+        if (__Images.TryGetValue(path, out ImageEntity _ImageEntity))
         {
             return _ImageEntity;
         }
