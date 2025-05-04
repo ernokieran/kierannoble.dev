@@ -3,9 +3,9 @@ namespace kierannoble.dev.Controls.Media;
 [HtmlTargetElement(TAG_NAME)]
 public class Image : TagHelperBase
 {
-    private readonly IImageManager __ImageManager;
     private const string TAG_NAME = "media:image";
-    
+    private readonly IImageManager __ImageManager;
+
     public Image(IHttpContextAccessor httpContextAccessor, IImageManager imageManager) : base(httpContextAccessor) => __ImageManager = imageManager;
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -14,12 +14,12 @@ public class Image : TagHelperBase
         {
             throw new ArgumentException($"You must provide a {nameof(Path)}.");
         }
-        
+
         if (!Width.HasValue && !Height.HasValue)
         {
             throw new ArgumentException($"You must provide either {nameof(Width)} or {nameof(Height)}.");
         }
-        
+
         if (Width.HasValue && Height.HasValue)
         {
             throw new ArgumentException($"Only one of {nameof(Width)} or {nameof(Height)} should be provided.");
@@ -29,14 +29,14 @@ public class Image : TagHelperBase
         {
             throw new ArgumentException($"You must provide an {nameof(AltText)}.");
         }
-        
-        ImageEntity? _Image = await __ImageManager.GetImageAsync(Path);
-        
+
+        ImageEntity _Image = await __ImageManager.GetImageAsync(Path);
+
         if (_Image == null)
         {
             throw new InvalidOperationException("Image not found");
         }
-        
+
         if (Width.HasValue)
         {
             Height = (int)Math.Round(Width!.Value / _Image.Ratio);
@@ -45,9 +45,9 @@ public class Image : TagHelperBase
         {
             Width = (int)Math.Round(Height!.Value * _Image.Ratio);
         }
-        
+
         output.TagName = "img";
-        
+
         output.Attributes.SetAttribute("src", $"/api/image/resize/width={Width},height={Height}{Path}");
         output.Attributes.SetAttribute("width", $"{Width}px");
         output.Attributes.SetAttribute("height", $"{Height}px");

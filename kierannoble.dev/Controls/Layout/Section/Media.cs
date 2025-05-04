@@ -7,7 +7,7 @@ public class Media : TagHelperBase
 {
     private const string TAG_NAME = "section:media";
 
-    public Media(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) { }
+    public Media(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor) {}
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
@@ -17,7 +17,7 @@ public class Media : TagHelperBase
 
         if (Slideshow is not null)
         {
-            output.Attributes.SetAttribute("data-slideshow", JsonSerializer.Serialize((Slideshow)));
+            output.Attributes.SetAttribute("data-slideshow", JsonSerializer.Serialize(Slideshow));
         }
 
         output.Content.AppendHtml(await GetChildContentAsync(output));
@@ -34,8 +34,8 @@ public class Media : TagHelperBase
                                       """);
         }
     }
-    
-    public SlideshowEntity? Slideshow { get; set; }
-    
+
+    public SlideshowEntity Slideshow { get; set; }
+
     public bool Full { get; set; }
 }

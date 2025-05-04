@@ -4,13 +4,13 @@ namespace kierannoble.dev.Managers.Application;
 
 public class VersionManager : IVersionManager
 {
-    private static string? __Version;
-    
+    private static string __Version;
+
     private readonly IWebHostEnvironment __WebHostEnvironment;
-    
-    public VersionManager(IWebHostEnvironment webHostEnvironment) 
+
+    public VersionManager(IWebHostEnvironment webHostEnvironment)
         => __WebHostEnvironment = webHostEnvironment;
-    
+
     public string GetVersion()
         => __WebHostEnvironment.IsDevelopment()
             ? DateTime.UtcNow.ToString("yyyy.MM.dd.HHmmss")
