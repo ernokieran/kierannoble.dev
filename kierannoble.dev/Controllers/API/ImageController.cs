@@ -1,7 +1,8 @@
+using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Webp;
 using SixLabors.ImageSharp.Processing;
-using Image=SixLabors.ImageSharp.Image;
+using Image = SixLabors.ImageSharp.Image;
 
 namespace kierannoble.dev.Controllers.API;
 
@@ -32,6 +33,12 @@ public class ImageController : ControllerBase
 
     private static readonly List<string> __AllowedOptions = ["width", "height", "quality"];
     private readonly IWebHostEnvironment __WebHostEnvironment;
+    private static readonly string __CacheControlHeaderValue = $"public, max-age={60 * 60 * 24 * 7}";
+
+    private static readonly DecoderOptions __DecoderOptions = new()
+    {
+        Configuration = Configuration.Default
+    };
     public ImageController(IWebHostEnvironment webHostEnvironment) => __WebHostEnvironment = webHostEnvironment;
     private bool ParseOption(Dictionary<string, string> options, string optionName, int comparisonProperty, out int parsedOption)
     {
@@ -90,7 +97,7 @@ public class ImageController : ControllerBase
         {
             string _FilePath = Path.Combine(__WebHostEnvironment.WebRootPath, path);
             
-            using Image _Image = await Image.LoadAsync(_FilePath);
+            using Image _Image = await Image.LoadAsync(__DecoderOptions, _FilePath);
             
             if (_Image == null)
             {
@@ -125,8 +132,7 @@ public class ImageController : ControllerBase
             await _Image.SaveAsync(_MemoryStream, _Encoder);
             _MemoryStream.Seek(0, SeekOrigin.Begin);
 
-
-            Response.Headers.Append("Cache-Control", $"public, max-age={60 * 60 * 24 * 7}");
+            Response.Headers.Append("Cache-Control", __CacheControlHeaderValue);
 
             return File(_MemoryStream.ToArray(), "image/webp");
         }
