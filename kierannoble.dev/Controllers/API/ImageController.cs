@@ -89,13 +89,13 @@ public class ImageController : ControllerBase
         try
         {
             string _FilePath = Path.Combine(__WebHostEnvironment.WebRootPath, path);
-
-            if (!System.IO.File.Exists(_FilePath))
+            
+            using Image _Image = await Image.LoadAsync(_FilePath);
+            
+            if (_Image == null)
             {
                 return NotFound("Image not found.");
             }
-
-            using Image _Image = await Image.LoadAsync(_FilePath);
 
             int _Width = _Image.Width;
             int _Height;

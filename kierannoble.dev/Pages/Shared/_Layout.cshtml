@@ -1,10 +1,30 @@
-﻿@{
-    string _Title = string.IsNullOrWhiteSpace((string)ViewData["title"]) ? "Kieran Noble" : $"{(string)ViewData["title"]} - Kieran Noble";
+@using kierannoble.dev.Managers.Application
+@inject IVersionManager __VersionManager;
+
+@{
+    string _Title = string.IsNullOrWhiteSpace((string)ViewData["title"]) ? "Kieran Noble" : $"{(string)ViewData["title"]!} - Kieran Noble";
     string _Project = (string)ViewData["Project"] ?? string.Empty;
 }
 
 <!DOCTYPE html>
 <html lang="en" data-project="@_Project">
+    <!-- Version: @__VersionManager.GetVersion() -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.75" />
+        <link rel="icon" type="image/png" href="favicon.png" asp-append-version="true" />
+        <link rel="preload" as="font" href="/fonts/fa-solid-900.woff2" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/Lato-Bold.ttf" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/Lato-Light.ttf" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/Lato-Regular.ttf" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="/fonts/Brandon-Grotesque-Black.woff2" crossorigin="anonymous" />
+        
+        <meta name="description" content="Kieran Noble - Full Stack Developer Portfolio: Showcasing fast, user-friendly platforms and tools built with .NET and React. Contact Kieran at hi@kierannoble.dev" />
+        
+        <link rel="stylesheet" href="/css/site.min.css" asp-append-version="true" />
+        
+        <title>@_Title</title>
+    </head>
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=0.75"/>
