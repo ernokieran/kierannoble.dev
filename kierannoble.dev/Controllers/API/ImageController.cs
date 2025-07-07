@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Webp;
@@ -34,6 +35,8 @@ public class ImageController : ControllerBase
     private static readonly List<string> __AllowedOptions = ["width", "height", "quality"];
     private readonly IWebHostEnvironment __WebHostEnvironment;
     private static readonly string __CacheControlHeaderValue = $"public, max-age={60 * 60 * 24 * 7}";
+
+    private static readonly ConcurrentDictionary<string, byte[]> __CachedImages = new();
 
     private static readonly DecoderOptions __DecoderOptions = new()
     {
@@ -87,10 +90,22 @@ public class ImageController : ControllerBase
 
                 _Options.Add(_KeyValue[0]!, _KeyValue[1]);
             }
+
+            _Options = new Dictionary<string, string>(_Options.OrderBy(x => x.Key).ToArray());
         }
         catch (Exception)
         {
             return BadRequest();
+        }
+
+        string _OptionsKey = string.Join(", ", _Options.Select(x => $"{x.Key}={x.Value}"));
+        
+        string _CacheKey = $"image:resize:{_OptionsKey}:{path}";
+        
+        if (__CachedImages.TryGetValue(_CacheKey, out byte[] _CachedImage))
+        {
+            Response.Headers.Append("Cache-Control", __CacheControlHeaderValue);
+            return File(_CachedImage, "image/webp");
         }
 
         try
@@ -131,10 +146,14 @@ public class ImageController : ControllerBase
             using MemoryStream _MemoryStream = new();
             await _Image.SaveAsync(_MemoryStream, _Encoder);
             _MemoryStream.Seek(0, SeekOrigin.Begin);
+            
+            byte[] _ImageBytes = _MemoryStream.ToArray();
+            
+            __CachedImages.TryAdd(_CacheKey, _ImageBytes);
 
             Response.Headers.Append("Cache-Control", __CacheControlHeaderValue);
 
-            return File(_MemoryStream.ToArray(), "image/webp");
+            return File(_ImageBytes, "image/webp");
         }
         catch (Exception _Ex)
         {
