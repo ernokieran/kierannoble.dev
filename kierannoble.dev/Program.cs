@@ -1,4 +1,3 @@
-using kierannoble.dev.Managers.Application;
 using kierannoble.dev.Pages;
 
 namespace kierannoble.dev;
@@ -6,6 +5,7 @@ namespace kierannoble.dev;
 public class Program
 {
     private const string CACHE_CONTROL = "Cache-Control";
+
     private static readonly int __CacheAge = 60 * 60 * 24 * 7;
     private static readonly string __CacheControlValue = $"public, max-age={__CacheAge}";
 
@@ -15,12 +15,20 @@ public class Program
         _Builder.Services.AddHttpContextAccessor();
         _Builder.Services.AddRazorPages();
         _Builder.Services.AddControllers();
-        _Builder.Services.AddScoped<IVersionManager, VersionManager>();
-        _Builder.Services.AddScoped<IImageManager, ImageManager>();
-        _Builder.Services.AddScoped<ISlideshowMediaManager, SlideshowMediaManager>();
-        _Builder.Services.AddResponseCompression(options => {
+        _Builder.Services.AddOutputCache(options =>
+        {
+            options.AddBasePolicy(builder =>
+            {
+                builder.Expire(TimeSpan.FromSeconds(__CacheAge));
+                builder.Tag("static");
+            });
+        });
+        _Builder.Services.AddResponseCompression(options =>
+        {
             options.EnableForHttps = true;
         });
+
+        _Builder.Services.RegisterDependencies();
 
         WebApplication _App = _Builder.Build();
 
@@ -35,11 +43,13 @@ public class Program
         _App.UseHttpsRedirection();
         _App.UseStaticFiles(new StaticFileOptions
         {
-            OnPrepareResponse = context => {
+            OnPrepareResponse = context =>
+            {
                 context.Context.Response.Headers.Append(CACHE_CONTROL, __CacheControlValue);
             }
         });
         _App.UseRouting();
+        _App.UseOutputCache();
         _App.UseAuthorization();
         _App.MapRazorPages();
         _App.MapControllers();

@@ -3,16 +3,8 @@ namespace kierannoble.dev.Managers.Media;
 public class SlideshowMediaManager : ISlideshowMediaManager
 {
     private readonly IImageManager __ImageManager;
+
     public SlideshowMediaManager(IImageManager imageManager) => __ImageManager = imageManager;
-
-    public async Task<List<SlideshowImageEntity>> GetImagesAsync(List<string> paths)
-    {
-        List<Task<SlideshowImageEntity>> _Tasks = paths.Select(GetFileDataAsync).ToList();
-
-        await Task.WhenAll(_Tasks);
-
-        return _Tasks.Select(task => task.Result).ToList();
-    }
 
     private async Task<SlideshowImageEntity> GetFileDataAsync(string path)
     {
@@ -29,4 +21,7 @@ public class SlideshowMediaManager : ISlideshowMediaManager
             URL = path
         };
     }
+
+    public async Task<List<SlideshowImageEntity>> GetImagesAsync(List<string> paths)
+        => [.. await Task.WhenAll(paths.Select(GetFileDataAsync))];
 }

@@ -1,5 +1,9 @@
+node_modules/
+.vs/
+*.csproj.user
 */**/bin/Debug
 */**/bin/Release
 */**/obj/**
+wwwroot/image_cache/
 site.min.css
 site.min.js
