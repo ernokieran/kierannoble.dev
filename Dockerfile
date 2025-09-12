@@ -8,6 +8,9 @@ RUN dotnet restore
 COPY ./kierannoble.dev/. ./
 RUN dotnet publish -c Release -o /app/publish
 
+RUN mkdir -p /app/wwwroot/image_cache
+VOLUME /app/wwwroot/image_cache
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 WORKDIR /app

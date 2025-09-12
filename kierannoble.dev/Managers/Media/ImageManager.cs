@@ -66,6 +66,7 @@ public class ImageManager : IImageManager
         _Quality = _Quality is <= 0 or > 100 ? DEFAULT_QUALITY : _Quality;
 
         string _CacheDir = Path.Combine(__WebRootPath, "image_cache");
+        Directory.CreateDirectory(_CacheDir);
 
         string _SafeFileName = path.Replace('/', '_').Replace('\\', '_');
         string _CacheFileName = $"{_SafeFileName}_{_Fingerprint}_{_Width}x{_Height}_q{_Quality}.webp";
