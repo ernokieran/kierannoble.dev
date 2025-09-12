@@ -48,7 +48,7 @@ public class Image : TagHelperBase
 
         output.TagName = "img";
 
-        output.Attributes.SetAttribute("src", $"/api/image/resize/width={Width},height={Height}{Path}");
+        output.Attributes.SetAttribute("src", $"/api/image/resize/width={Width * 2},height={Height * 2},quality=100{Path}");
         output.Attributes.SetAttribute("width", $"{Width}px");
         output.Attributes.SetAttribute("height", $"{Height}px");
         output.Attributes.SetAttribute("class", "image");

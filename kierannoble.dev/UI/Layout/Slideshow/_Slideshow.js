@@ -107,14 +107,23 @@
                 }
             });
 
-            window.addEventListener("resize", () => {
+            window.addEventListener("resize", _debounce(() => {
                 if (isOpen) {
                     _renderThumbnails();
                     _selectImageByIndex(currentIndex);
                 }
-            });
+            }, 50));
         }
     }
+
+    function _debounce(fn, delay) { //TODOK: move this to a utility file
+        let timer;
+        return function (...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn.apply(this, args), delay);
+        };
+    }
+
 
     function _close() {
         slideshow.classList.remove(CSS_SLIDESHOW_SHOWN);
@@ -174,7 +183,7 @@
                 let height = window.getComputedStyle(slideshow).getPropertyValue('--thumbnail-height').replace("px", ""),
                     width = Math.round(height * currentImage.Ratio);
 
-                imageElement.src = `/api/image/resize/height=${height}${currentImage.URL}`;
+                imageElement.src = `/api/image/resize/height=${height * 2}${currentImage.URL}`;
 
                 imageElement.height = height;
                 imageElement.width = width;

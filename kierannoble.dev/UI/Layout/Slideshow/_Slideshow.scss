@@ -13,10 +13,10 @@
   pointer-events: auto;
   background-color: rgba(51, 51, 51, 0.85);
   --theme-color: 185, 185, 185;
-  --thumbnail-height: 80px;
+  --thumbnail-height: 90px;
   --button-spacing: 12px;
   @include Theme.mobileSize((
-    --thumbnail-height: 80px
+    --thumbnail-height: 100px
   ));
   
   &__image {
