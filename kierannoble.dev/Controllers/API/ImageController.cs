@@ -36,6 +36,6 @@ public class ImageController : ControllerBase
 
         string _ResizedImagePath = await __ImageManager.ResizeImageAsync(path, _Options);
         Response.Headers.Append("Cache-Control", __CacheControlHeaderValue);
-        return PhysicalFile(_ResizedImagePath, "image/webp");
+        return Redirect(_ResizedImagePath);
     }
 }

@@ -1,3 +1,4 @@
+using kierannoble.dev.Managers.Media;
 using kierannoble.dev.Pages;
 
 namespace kierannoble.dev;
@@ -15,6 +16,7 @@ public class Program
         _Builder.Services.AddHttpContextAccessor();
         _Builder.Services.AddRazorPages();
         _Builder.Services.AddControllers();
+        _Builder.Services.Configure<R2StorageOptions>(_Builder.Configuration.GetSection("R2Storage"));
         _Builder.Services.AddOutputCache(options =>
         {
             options.AddBasePolicy(builder =>
@@ -28,6 +30,7 @@ public class Program
             options.EnableForHttps = true;
         });
 
+        _Builder.Services.AddHttpClient();
         _Builder.Services.RegisterDependencies();
 
         WebApplication _App = _Builder.Build();

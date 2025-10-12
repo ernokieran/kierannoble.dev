@@ -7,3 +7,4 @@ node_modules/
 wwwroot/image_cache/
 site.min.css
 site.min.js
+appsettings.Development.json
