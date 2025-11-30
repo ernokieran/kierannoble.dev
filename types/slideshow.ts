@@ -6,4 +6,5 @@ export interface SlideshowImage {
 export interface Slideshow {
   images: SlideshowImage[];
   downloadUrl?: string;
+  downloadFilename?: string;
 }
