@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 
 interface SeparatorProps {
   variant?: 'default' | 'small' | 'centered';
@@ -8,7 +8,7 @@ interface SeparatorProps {
 export function Separator({ variant = 'default', className }: SeparatorProps) {
   return (
     <div
-      className={cn(
+      className={clsx(
         'separator',
         variant === 'small' && 'separator--small',
         variant === 'centered' && 'separator--centered',

@@ -20,10 +20,8 @@ export async function OptimizedImage({
   priority = false,
   className,
 }: OptimizedImageProps) {
-  // Get actual image ratio from file system if not provided
   const actualRatio = ratio ?? await getImageDimensions(path);
 
-  // Calculate dimensions based on provided width or height
   let finalWidth: number;
   let finalHeight: number;
 
@@ -37,7 +35,6 @@ export async function OptimizedImage({
     finalWidth = Math.round(height * actualRatio);
     finalHeight = height;
   } else {
-    // Default to 800px width
     finalWidth = 800;
     finalHeight = Math.round(800 / actualRatio);
   }
@@ -46,7 +43,7 @@ export async function OptimizedImage({
     <Image
       src={path}
       alt={alt}
-      width={finalWidth * 2} // 2x for retina
+      width={finalWidth * 2}
       height={finalHeight * 2}
       className={className || 'image'}
       loading={priority ? undefined : 'lazy'}

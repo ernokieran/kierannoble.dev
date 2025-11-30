@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 import type { ProjectName } from '@/types/project';
 
 interface ProjectCardProps {
@@ -23,7 +23,7 @@ export function ProjectCard({
     <Link
       href={url}
       prefetch={true}
-      className={cn(
+      className={clsx(
         'project',
         featured && 'project--featured'
       )}

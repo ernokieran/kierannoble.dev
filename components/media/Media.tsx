@@ -1,13 +1,13 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
-import { cn } from '@/lib/utils';
-import { InlineSlideshow } from './InlineSlideshow';
-import type { Slideshow } from '@/types/slideshow';
+import { clsx } from 'clsx';
+import { Slideshow } from './Slideshow';
+import type { Slideshow as SlideshowType } from '@/types/slideshow';
 
 interface MediaProps {
   children: ReactNode;
-  slideshow?: Slideshow;
+  slideshow?: SlideshowType;
   full?: boolean;
   className?: string;
 }
@@ -15,27 +15,21 @@ interface MediaProps {
 export function Media({ children, slideshow, full = false, className }: MediaProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    if (slideshow) {
-      setIsOpen(true);
-    }
-  };
-
   return (
     <>
       <div
-        className={cn(
+        className={clsx(
           'section__media',
           full && 'section__media--full',
           className
         )}
-        onClick={slideshow ? handleClick : undefined}
-        onKeyDown={(e) => {
-          if (slideshow && (e.key === 'Enter' || e.key === ' ')) {
+        onClick={slideshow ? () => setIsOpen(true) : undefined}
+        onKeyDown={slideshow ? (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            handleClick();
+            setIsOpen(true);
           }
-        }}
+        } : undefined}
         role={slideshow ? 'button' : undefined}
         tabIndex={slideshow ? 0 : undefined}
       >
@@ -50,22 +44,8 @@ export function Media({ children, slideshow, full = false, className }: MediaPro
         )}
       </div>
 
-      {/* Hidden images for web crawlers (archive.org, search engines) */}
       {slideshow && (
-        <div style={{ display: 'none' }} aria-hidden="true">
-          {slideshow.images.map((image, idx) => (
-            <img
-              key={idx}
-              src={image.url}
-              alt=""
-              loading="lazy"
-            />
-          ))}
-        </div>
-      )}
-
-      {slideshow && (
-        <InlineSlideshow
+        <Slideshow
           slideshow={slideshow}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}

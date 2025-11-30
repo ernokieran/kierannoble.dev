@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 import type { SectionType, SectionAlignment } from '@/types/project';
 
 interface SectionProps {
@@ -23,7 +23,7 @@ export function Section({
 }: SectionProps) {
   return (
     <section
-      className={cn(
+      className={clsx(
         'section',
         type === 'primary' && 'section--primary',
         type === 'secondary' && 'section--secondary',

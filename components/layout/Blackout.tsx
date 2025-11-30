@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 
 export function Blackout() {
   const [isShown, setIsShown] = useState(false);
@@ -32,7 +32,7 @@ export function Blackout() {
   }, []);
 
   return (
-    <div className={cn('blackout', isShown && 'blackout--shown')}>
+    <div className={clsx('blackout', isShown && 'blackout--shown')}>
       <div className="loader" />
     </div>
   );

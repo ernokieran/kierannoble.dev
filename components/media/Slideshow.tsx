@@ -1,33 +1,51 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import { useSlideshowContext } from '@/components/providers/SlideshowProvider';
+import { clsx } from 'clsx';
+import type { Slideshow as SlideshowType } from '@/types/slideshow';
 
-export function Slideshow() {
-  const { state, closeSlideshow, nextImage, previousImage, setCurrentIndex } = useSlideshowContext();
+interface SlideshowProps {
+  slideshow: SlideshowType;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const thumbnailsRef = useRef<HTMLDivElement>(null);
+  const imageHolderRef = useRef<HTMLDivElement>(null);
+
+  const nextImage = () => {
+    setIsImageLoading(true);
+    setCurrentIndex((prev) => (prev + 1) % slideshow.images.length);
+  };
+
+  const previousImage = () => {
+    setIsImageLoading(true);
+    setCurrentIndex((prev) => (prev - 1 + slideshow.images.length) % slideshow.images.length);
+  };
 
   // Keyboard navigation
   useEffect(() => {
-    if (!state.isOpen) return;
+    if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeSlideshow();
+      if (e.key === 'Escape') onClose();
       if (e.key === 'ArrowLeft') previousImage();
       if (e.key === 'ArrowRight') nextImage();
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [state.isOpen, closeSlideshow, nextImage, previousImage]);
+  }, [isOpen, onClose]);
 
   // Touch gestures
   useEffect(() => {
-    if (!state.isOpen) return;
+    if (!isOpen || !imageHolderRef.current) return;
 
+    const imageHolder = imageHolderRef.current;
     let touchStartX = 0;
 
     const handleTouchStart = (e: TouchEvent) => {
@@ -44,20 +62,20 @@ export function Slideshow() {
       }
     };
 
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchEnd);
+    imageHolder.addEventListener('touchstart', handleTouchStart);
+    imageHolder.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
+      imageHolder.removeEventListener('touchstart', handleTouchStart);
+      imageHolder.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [state.isOpen, nextImage, previousImage]);
+  }, [isOpen]);
 
   // Scroll active thumbnail into view
   useEffect(() => {
-    if (!state.isOpen || !thumbnailsRef.current) return;
+    if (!isOpen || !thumbnailsRef.current) return;
 
-    const activeThumbnail = thumbnailsRef.current.children[state.currentIndex] as HTMLElement;
+    const activeThumbnail = thumbnailsRef.current.children[currentIndex] as HTMLElement;
     if (activeThumbnail) {
       activeThumbnail.scrollIntoView({
         behavior: 'smooth',
@@ -65,28 +83,29 @@ export function Slideshow() {
         inline: 'center',
       });
     }
-  }, [state.currentIndex, state.isOpen]);
+  }, [currentIndex, isOpen]);
+
+  // Reset index when closed
+  useEffect(() => {
+    if (!isOpen) {
+      setCurrentIndex(0);
+      setIsImageLoading(true);
+    }
+  }, [isOpen]);
 
   // Reset loading state when current index changes
   useEffect(() => {
     setIsImageLoading(true);
-  }, [state.currentIndex]);
+  }, [currentIndex]);
 
-  // Reset loading state when slideshow opens
-  useEffect(() => {
-    if (state.isOpen) {
-      setIsImageLoading(true);
-    }
-  }, [state.isOpen]);
+  if (!isOpen) return null;
 
-  if (!state.isOpen) return null;
-
-  const currentImage = state.images[state.currentIndex];
-  const isSingle = state.images.length === 1;
+  const currentImage = slideshow.images[currentIndex];
+  const isSingle = slideshow.images.length === 1;
 
   return (
     <div
-      className={cn(
+      className={clsx(
         'slideshow',
         'slideshow--shown',
         isSingle && 'slideshow--single'
@@ -94,10 +113,11 @@ export function Slideshow() {
     >
       <div className="slideshow__image">
         <div
+          ref={imageHolderRef}
           className="slideshow__image-holder"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
-              closeSlideshow();
+              onClose();
             }
           }}
         >
@@ -106,7 +126,7 @@ export function Slideshow() {
           )}
           <img
             src={currentImage.url}
-            alt={`Slide ${state.currentIndex + 1}`}
+            alt={`Slide ${currentIndex + 1}`}
             onLoad={() => setIsImageLoading(false)}
             style={{ display: isImageLoading ? 'none' : 'block' }}
           />
@@ -116,7 +136,7 @@ export function Slideshow() {
       {!isSingle && (
         <>
           <div
-            className={cn('slideshow__button', 'slideshow__button--previous')}
+            className={clsx('slideshow__button', 'slideshow__button--previous')}
             onClick={(e) => {
               e.stopPropagation();
               previousImage();
@@ -130,7 +150,7 @@ export function Slideshow() {
           </div>
 
           <div
-            className={cn('slideshow__button', 'slideshow__button--next')}
+            className={clsx('slideshow__button', 'slideshow__button--next')}
             onClick={(e) => {
               e.stopPropagation();
               nextImage();
@@ -145,12 +165,12 @@ export function Slideshow() {
 
           <div className="slideshow__thumbnails">
             <div className="slideshow__thumbnails-holder" ref={thumbnailsRef}>
-              {state.images.map((img, idx) => (
+              {slideshow.images.map((img, idx) => (
                 <div
                   key={idx}
-                  className={cn(
+                  className={clsx(
                     'slideshow__thumbnail',
-                    idx === state.currentIndex && 'slideshow__thumbnail--selected'
+                    idx === currentIndex && 'slideshow__thumbnail--selected'
                   )}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -158,7 +178,6 @@ export function Slideshow() {
                   }}
                   role="button"
                   tabIndex={0}
-                  aria-label={`Go to slide ${idx + 1}`}
                 >
                   <Image
                     src={img.url}
@@ -174,10 +193,10 @@ export function Slideshow() {
       )}
 
       <div
-        className={cn('slideshow__button', 'slideshow__button--close')}
+        className={clsx('slideshow__button', 'slideshow__button--close')}
         onClick={(e) => {
           e.stopPropagation();
-          closeSlideshow();
+          onClose();
         }}
         role="button"
         tabIndex={0}
@@ -187,11 +206,11 @@ export function Slideshow() {
         <span className="sr-only">Close</span>
       </div>
 
-      {state.downloadUrl && (
+      {slideshow.downloadUrl && (
         <a
-          href={state.downloadUrl}
-          download
-          className={cn('slideshow__button', 'slideshow__button--download')}
+          href={slideshow.downloadUrl}
+          download={slideshow.downloadFilename || true}
+          className={clsx('slideshow__button', 'slideshow__button--download')}
           onClick={(e) => e.stopPropagation()}
           aria-label="Download"
         >

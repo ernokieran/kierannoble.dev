@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 
 interface RowProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface RowProps {
 
 export function Row({ children, equal = false, className }: RowProps) {
   return (
-    <div className={cn(
+    <div className={clsx(
       'layout__row',
       equal && 'layout__row--equal',
       className

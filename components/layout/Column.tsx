@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 
 interface ColumnProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface ColumnProps {
 
 export function Column({ children, small = false, className }: ColumnProps) {
   return (
-    <div className={cn(
+    <div className={clsx(
       'layout__column',
       small && 'layout__column--small',
       className

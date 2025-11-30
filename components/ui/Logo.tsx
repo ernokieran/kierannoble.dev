@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { clsx } from 'clsx';
 
 interface LogoProps {
   variant?: 'default' | 'themed';
@@ -10,7 +10,7 @@ export function Logo({ variant = 'themed', className }: LogoProps) {
   return (
     <Link
       href="/"
-      className={cn(
+      className={clsx(
         'logo',
         variant === 'default' && 'logo--default',
         className

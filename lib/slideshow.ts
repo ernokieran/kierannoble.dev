@@ -29,32 +29,3 @@ export async function getSlideshowImages(
 
   return { images, downloadUrl };
 }
-
-export function calculateImageDimensions(
-  width?: number,
-  height?: number,
-  ratio: number = 1.5
-): { width: number; height: number } {
-  if (width && height) {
-    return { width, height };
-  }
-
-  if (width) {
-    return {
-      width,
-      height: Math.round(width / ratio),
-    };
-  }
-
-  if (height) {
-    return {
-      width: Math.round(height * ratio),
-      height,
-    };
-  }
-
-  return {
-    width: 800,
-    height: Math.round(800 / ratio),
-  };
-}

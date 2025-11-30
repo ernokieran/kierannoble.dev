@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { InlineSlideshow } from '@/components/media/InlineSlideshow';
-import type { Slideshow } from '@/types/slideshow';
+import { Slideshow } from '@/components/media/Slideshow';
+import type { Slideshow as SlideshowType } from '@/types/slideshow';
 
-const cvSlideshow: Slideshow = {
+const cvSlideshow: SlideshowType = {
   images: [
     {
       url: '/cv/cv.webp',
@@ -43,7 +43,7 @@ export function CVButton() {
         CV
       </div>
 
-      <InlineSlideshow
+      <Slideshow
         slideshow={cvSlideshow}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
