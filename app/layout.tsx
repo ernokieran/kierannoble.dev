@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Blackout } from "@/components/layout/Blackout";
 import "./../styles/ui/site.scss";
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body>
         <Blackout />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
