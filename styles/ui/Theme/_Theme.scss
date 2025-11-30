@@ -1,0 +1,62 @@
+$mobileSize: 48rem;
+
+$projects: (
+  // Name, //Color, //Card-Background
+  ("photi", "0, 139, 139", "/img/Projects/Photi/card.webp"),
+  ("harmony", "74, 67, 181", "/img/Projects/Harmony/card.webp"),
+  ("experimentalImagery", "111, 70, 139", "/img/Projects/ExperimentalImagery/card.webp"),
+  ("partsAndSections", "26, 66, 49", "/img/Projects/PartsAndSections/card.webp")
+);
+
+:root {
+  --max-width: 75rem;
+
+  // Sizing and Spacing
+  --font-size--extraLarge: 42px;
+  --font-size--large: 22px;
+  --font-size--medium: 18px;
+  --font-size--small: 15px;
+  --font-size--smaller: 12px;
+  --font-size--extraSmall: 10px;
+  
+  --spacing--small: 12px;
+  --spacing--medium: 24px;
+  --spacing--large: 50px;
+  
+  --rounded--extraLarge: 30px;
+  --rounded--large: 7px;
+  --rounded--medium: 5px;
+  --rounded--small: 3px;
+
+  --shadow--medium: 0px 0px 35px 0px rgb(0 0 0 / 30%);
+  --shadow--small: 0px 0px 35px 0px rgb(0 0 0 / 18%);
+  
+  --action-size: 40px;
+  --media-size: 800px;
+  
+  // Fonts
+  --font-family--block: "BrandonGrotesque";
+  --font-family--regular: "Lato";
+  --font-family--light: "Lato Light";
+  --font-family--bold: "Lato Bold";
+  
+  // Project Theme Variables
+  --theme-color: 0, 150, 136;
+}
+
+@mixin mobileSize($styles: ()) {
+  @media screen and (max-width: $mobileSize) {
+    & {
+      @each $property, $value in $styles {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@each $name, $color, $cardBackground in $projects {
+  [data-project="#{$name}"] {
+    --theme-color: #{$color};
+    --card-background: url(#{$cardBackground});
+  }
+}

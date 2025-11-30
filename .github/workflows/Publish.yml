@@ -17,25 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22'
-
-      - name: Install NPM dependencies
-        run: npm install
-
-      - name: Run Gulp tasks
-        run: npx gulp
-
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-
-      - name: Restore .NET dependencies
-        run: dotnet restore
-
       - name: Set version variables
         id: vars
         run: |
@@ -44,12 +25,6 @@ jobs:
           DAY=$(date +'%d')
           VERSION_TAG="${YEAR}.${MONTH}.${DAY}.${{ github.run_number }}"
           echo "version_tag=$VERSION_TAG" >> $GITHUB_OUTPUT
-
-      - name: Build .NET app
-        run: dotnet build --configuration Release -p:Version=${{ steps.vars.outputs.version_tag }}
-
-      - name: Publish .NET app
-        run: dotnet publish --configuration Release --output ./publish
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
