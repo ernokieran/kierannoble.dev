@@ -29,7 +29,7 @@ export default function Home() {
           logoImageUrl="/img/Projects/ExperimentalImagery/logo.svg"
           project="experimentalImagery"
           url="/experimentalimagery"
-        />1
+        />
         <ProjectCard
           chipText="Photography"
           descriptionText="A visual study of form, structure, and industrial repetition"
