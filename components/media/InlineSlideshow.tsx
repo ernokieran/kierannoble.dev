@@ -206,7 +206,7 @@ export function InlineSlideshow({ slideshow, isOpen, onClose }: InlineSlideshowP
       {slideshow.downloadUrl && (
         <a
           href={slideshow.downloadUrl}
-          download
+          download={slideshow.downloadFilename || true}
           className={cn('slideshow__button', 'slideshow__button--download')}
           onClick={(e) => e.stopPropagation()}
           aria-label="Download"

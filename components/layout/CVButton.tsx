@@ -12,6 +12,7 @@ const cvSlideshow: Slideshow = {
     },
   ],
   downloadUrl: '/cv/cv.pdf',
+  downloadFilename: 'KieranNoble-CV.pdf',
 };
 
 export function CVButton() {
