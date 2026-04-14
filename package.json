@@ -9,23 +9,23 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "image-size": "^2.0.2",
     "next": "^16.2.3",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "sass": "^1.94.2",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "sass": "^1.99.0",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "baseline-browser-mapping": "^2.8.32",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.4",
-    "typescript": "^5"
+    "baseline-browser-mapping": "^2.10.18",
+    "eslint": "^10",
+    "eslint-config-next": "16.2.3",
+    "typescript": "^6"
   }
 }
