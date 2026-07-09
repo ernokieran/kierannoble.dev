@@ -23,9 +23,9 @@
     "@types/node": "^26",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "baseline-browser-mapping": "^2.10.40",
+    "baseline-browser-mapping": "^2.10.42",
     "eslint": "^10",
     "eslint-config-next": "16.2.10",
-    "typescript": "^6"
+    "typescript": "^7"
   }
 }
