@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ReactNode } from 'react';
 import { clsx } from 'clsx';
 import type { SectionType, SectionAlignment } from '@/types/project';
@@ -35,14 +36,15 @@ export function Section({
     >
       <div className="section__content layout layout__column layout--small">
         {logoUrl && (
-          <img
+          <Image
             className="section__logo"
             src={logoUrl}
             alt=""
-            width="300"
-            height="50"
+            width={300}
+            height={50}
             loading="lazy"
             decoding="async"
+            unoptimized
           />
         )}
         {title && <h1 className="section__title">{title}</h1>}

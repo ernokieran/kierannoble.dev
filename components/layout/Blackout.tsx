@@ -9,8 +9,11 @@ export function Blackout() {
   const pathname = usePathname();
 
   useEffect(() => {
-    setIsShown(false);
-  }, [pathname]);
+    if (!isShown) return;
+
+    const timeoutId = window.setTimeout(() => setIsShown(false), 0);
+    return () => window.clearTimeout(timeoutId);
+  }, [isShown, pathname]);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
