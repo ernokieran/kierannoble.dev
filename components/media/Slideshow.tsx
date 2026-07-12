@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { clsx } from 'clsx';
 import type { Slideshow as SlideshowType } from '@/types/slideshow';
@@ -17,15 +17,15 @@ export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
   const thumbnailsRef = useRef<HTMLDivElement>(null);
   const imageHolderRef = useRef<HTMLDivElement>(null);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setIsImageLoading(true);
     setCurrentIndex((prev) => (prev + 1) % slideshow.images.length);
-  };
+  }, [slideshow.images.length]);
 
-  const previousImage = () => {
+  const previousImage = useCallback(() => {
     setIsImageLoading(true);
     setCurrentIndex((prev) => (prev - 1 + slideshow.images.length) % slideshow.images.length);
-  };
+  }, [slideshow.images.length]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -39,7 +39,7 @@ export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, nextImage, previousImage]);
 
   // Touch gestures
   useEffect(() => {
@@ -58,7 +58,11 @@ export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
       const threshold = window.innerWidth * 0.1;
 
       if (Math.abs(diff) > threshold) {
-        diff > 0 ? nextImage() : previousImage();
+        if (diff > 0) {
+          nextImage();
+        } else {
+          previousImage();
+        }
       }
     };
 
@@ -69,7 +73,7 @@ export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
       imageHolder.removeEventListener('touchstart', handleTouchStart);
       imageHolder.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [isOpen]);
+  }, [isOpen, nextImage, previousImage]);
 
   // Scroll active thumbnail into view
   useEffect(() => {
@@ -87,15 +91,23 @@ export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
 
   // Reset index when closed
   useEffect(() => {
-    if (!isOpen) {
+    if (!isOpen) return;
+
+    const timeoutId = window.setTimeout(() => {
       setCurrentIndex(0);
       setIsImageLoading(true);
-    }
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
   }, [isOpen]);
 
   // Reset loading state when current index changes
   useEffect(() => {
-    setIsImageLoading(true);
+    const timeoutId = window.setTimeout(() => {
+      setIsImageLoading(true);
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
   }, [currentIndex]);
 
   if (!isOpen) return null;
@@ -124,6 +136,7 @@ export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
           {isImageLoading && (
             <div className="loader" />
           )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={currentImage.url}
             alt={`Slide ${currentIndex + 1}`}

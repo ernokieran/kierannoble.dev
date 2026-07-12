@@ -11,7 +11,7 @@ export function Footer() {
         hi@kierannoble.dev
       </a>
       <p className="contact-note">
-        Feel free to drop me an email, I'd love to hear from you!
+        Feel free to drop me an email, I&apos;d love to hear from you!
       </p>
     </footer>
   );

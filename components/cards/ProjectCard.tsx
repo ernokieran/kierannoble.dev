@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { clsx } from 'clsx';
 import type { ProjectName } from '@/types/project';
@@ -31,14 +32,15 @@ export function ProjectCard({
     >
       <article>
         <h1 className="project__title">
-          <img
+          <Image
             className="project__title-image"
             src={logoImageUrl}
             alt={descriptionText}
-            height="50"
-            width="300"
+            width={300}
+            height={50}
             loading="lazy"
             decoding="async"
+            unoptimized
           />
           <p className="project__title-description">{descriptionText}</p>
         </h1>
