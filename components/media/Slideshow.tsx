@@ -136,17 +136,13 @@ export function Slideshow({ slideshow, isOpen, onClose }: SlideshowProps) {
           {isImageLoading && (
             <div className="loader" />
           )}
-          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-            <Image
-              src={currentImage.url}
-              alt={`Slide ${currentIndex + 1}`}
-              fill
-              unoptimized
-              onLoadingComplete={() => setIsImageLoading(false)}
-              style={{ opacity: isImageLoading ? 0 : 1, transition: 'opacity 200ms ease-in-out' }}
-              sizes="100vw"
-            />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={currentImage.url}
+            alt={`Slide ${currentIndex + 1}`}
+            onLoad={() => setIsImageLoading(false)}
+            style={{ display: isImageLoading ? 'none' : 'block' }}
+          />
         </div>
       </div>
 
