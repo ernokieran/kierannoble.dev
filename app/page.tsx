@@ -8,11 +8,27 @@ export default function Home() {
       <Row>
         <ProjectCard
           featured
+          chipText="Self-Hosted"
+          descriptionText="A self-hosted dashboard for solar, battery, and grid energy - built solo, top to bottom"
+          logoImageUrl="/img/Projects/Metrd/logo.svg"
+          project="metrd"
+          url="/metrd"
+        />
+        <ProjectCard
           chipText="Dissertation"
           descriptionText="AI-powered photo-sharing app with smart image tagging"
           logoImageUrl="/img/Projects/Photi/logo.svg"
           project="photi"
           url="/photi"
+        />
+      </Row>
+      <Row>
+        <ProjectCard
+          chipText="Senior Developer"
+          descriptionText="Full stack development and DevOps on the platform behind 2,000+ car dealerships"
+          logoImageUrl="/img/Projects/Pinewood/logo.svg"
+          project="pinewood"
+          url="/pinewood"
         />
         <ProjectCard
           chipText="Backend"
@@ -20,22 +36,6 @@ export default function Home() {
           logoImageUrl="/img/Projects/Harmony/logo.svg"
           project="harmony"
           url="/harmony"
-        />
-      </Row>
-      <Row>
-        <ProjectCard
-          chipText="Photography"
-          descriptionText="An exploration of distortion, glitching, and the deconstruction of images"
-          logoImageUrl="/img/Projects/ExperimentalImagery/logo.svg"
-          project="experimentalImagery"
-          url="/experimentalimagery"
-        />
-        <ProjectCard
-          chipText="Photography"
-          descriptionText="A visual study of form, structure, and industrial repetition"
-          logoImageUrl="/img/Projects/PartsAndSections/logo.svg"
-          project="partsAndSections"
-          url="/partsandsections"
         />
       </Row>
     </IntroductionTemplate>
