@@ -15,20 +15,20 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
-    "image-size": "^2.0.2",
-    "next": "^16.2.12",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "sass": "^1.102.0",
+    "image-size": "^2.0.4",
+    "next": "^16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "sass": "^1.104.1",
     "sharp": "^0.35.3"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.5.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "baseline-browser-mapping": "^2.11.5",
-    "eslint": "^9.39.5",
-    "eslint-config-next": "16.2.12",
-    "typescript": "^6"
+    "baseline-browser-mapping": "^2.11.23",
+    "eslint": "^10.10.0",
+    "eslint-config-next": "16.3.5",
+    "typescript": "^7"
   }
 }
